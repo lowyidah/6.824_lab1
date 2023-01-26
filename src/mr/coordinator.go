@@ -6,7 +6,7 @@ import "os"
 import "net/rpc"
 import "net/http"
 import "time"
-import "fmt"
+// import "fmt"
 import "sync"
 
 type Task struct {
@@ -31,8 +31,9 @@ type Coordinator struct {
 }
 
 func(c *Coordinator) HeartBeatRecieve(args *HeartBeatArgs, reply *HeartBeatReply) error {
-	fmt.Println("Receiving heartbeat")
+	// fmt.Println("Receiving heartbeat")
 	muCoordinator.Lock()
+	// fmt.Println("HeartBeatRecieveLock")
 	if args.WORKER_ID == -1 || c.worker_status[args.WORKER_ID] == "f" {
 		reply.WORKER_ID = c.last_worker_id
 		c.last_worker_id++
@@ -41,12 +42,14 @@ func(c *Coordinator) HeartBeatRecieve(args *HeartBeatArgs, reply *HeartBeatReply
 		reply.WORKER_ID = args.WORKER_ID
 	}
 	c.worker_to_last_heartbeat[reply.WORKER_ID] = time.Now()
+	// fmt.Println("HeartBeatRecieveUnlock")
 	muCoordinator.Unlock()
 	return nil
 }
 
 func(c *Coordinator) HeartBeatChecker() error {
 	muCoordinator.Lock()
+	// fmt.Println("HeartBeatCheckerLock")
 	for !(len(c.map_tasks_id_to_task_struct) == 0 && len(c.reduce_tasks) == 0 && len(c.worker_to_task) == 0) {
 		for worker_id, last_heartbeat := range c.worker_to_last_heartbeat {
 			// case where worker died
@@ -64,9 +67,12 @@ func(c *Coordinator) HeartBeatChecker() error {
 				delete(c.worker_to_last_heartbeat, worker_id)
 			}
 		}
+		// fmt.Println("HeartBeatCheckerUnlock")
 		muCoordinator.Unlock()
 		time.Sleep(time.Second)
-		muCoordinator.Lock() 
+		muCoordinator.Lock()
+		// fmt.Println("HeartBeatCheckerLock")
+		 
 	}
 	muCoordinator.Unlock()
 	return nil
@@ -77,6 +83,7 @@ func(c *Coordinator) HeartBeatChecker() error {
 // TODO: remove from struct when task is done
 func(c *Coordinator) ReadyDone(args *ReadyDoneArgs, reply *ReadyDoneReply) error {
 	muCoordinator.Lock()
+	// fmt.Println("ReadyDoneLock")
 	_, ok := c.worker_to_task[args.WORKER_ID]
 	if c.worker_status[args.WORKER_ID] != "f" && args.TASK_ID != -1 && ok {
 		delete(c.worker_to_task, args.WORKER_ID)
@@ -85,6 +92,7 @@ func(c *Coordinator) ReadyDone(args *ReadyDoneArgs, reply *ReadyDoneReply) error
 		// if worker dead, just send empty task and exit from func
 		if c.worker_status[args.WORKER_ID] == "f" {
 			reply.TASK_ID = -1
+			muCoordinator.Unlock()
 			return nil
 		}
 		if len(c.map_tasks_id_to_task_struct) > 0 {	// case where still have map task
@@ -98,6 +106,7 @@ func(c *Coordinator) ReadyDone(args *ReadyDoneArgs, reply *ReadyDoneReply) error
 			reply.FILE = c.map_tasks_id_to_task_struct[reply.TASK_ID].file
 			c.worker_to_task[args.WORKER_ID] = c.map_tasks_id_to_task_struct[reply.TASK_ID]
 			delete(c.map_tasks_id_to_task_struct, reply.TASK_ID)
+			muCoordinator.Unlock()
 			return nil
 		} else {	// case where all map task completed, do reduce
 			if len(c.worker_to_task) == 0 {
@@ -112,12 +121,15 @@ func(c *Coordinator) ReadyDone(args *ReadyDoneArgs, reply *ReadyDoneReply) error
 				task := Task{}
 				task.id = reply.TASK_ID
 				c.worker_to_task[args.WORKER_ID] = task
+				muCoordinator.Unlock()
 				return nil
 			}
 		}
+		// fmt.Println("unlock readydone")
 		muCoordinator.Unlock()
 		time.Sleep(time.Second)
-		muCoordinator.Lock() 
+		muCoordinator.Lock()
+		// fmt.Println("ReadyDoneLock") 
 	}
 	muCoordinator.Unlock()
 	reply.TASK_TYPE = "d"

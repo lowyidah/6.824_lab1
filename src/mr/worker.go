@@ -78,32 +78,38 @@ func Worker(mapf func(string, string) []KeyValue,
 }
 
 func CallHeartBeat() {
+	muWorker.Lock()
 	for task_type != "d" {
-		fmt.Println("in CallHeartBeat")
+		// fmt.Println("in CallHeartBeat")
 		args := HeartBeatArgs{}
-		muWorker.Lock()
 		args.WORKER_ID = worker_id
 		muWorker.Unlock()
 		reply := HeartBeatReply{}
-		fmt.Println("in CallHeartBeat before call")
+		// fmt.Println("in CallHeartBeat before call")
 		call("Coordinator.HeartBeatRecieve", &args, &reply)
-		fmt.Println("in CallHeartBeat after call")
+		// fmt.Println("in CallHeartBeat after call")
 		muWorker.Lock()
 		worker_id = reply.WORKER_ID
 		muWorker.Unlock()
 		time.Sleep(time.Second)
+		muWorker.Lock()
 	}
+	muWorker.Unlock()
+
 }
 
 
 func CallReadyDone(mapf func(string, string) []KeyValue, reducef func(string, []string) string) {
-	//for worker_id == -1 {
-	//	time.Sleep(time.Second) 
-	//}
+	muWorker.Lock()
+	for worker_id == -1 {
+		muWorker.Unlock() 
+		time.Sleep(time.Second)
+		muWorker.Lock()
+	} 
+
 
 	for task_type != "d" {
 		args := ReadyDoneArgs{}
-		muWorker.Lock()
 		args.WORKER_ID = worker_id
 		args.TASK_ID = task_id
 		args.TASK_TYPE = task_type
@@ -141,12 +147,12 @@ func CallReadyDone(mapf func(string, string) []KeyValue, reducef func(string, []
 				for i:=0; i < reply.NMR; i++ {
 					reduce_file_name := "m[" + strconv.Itoa(reply.TASK_ID) + "]-r[" + strconv.Itoa(i) + "]"
 					os.Rename(reduce_task_to_tmp_file_name[i].Name(), reduce_file_name)
-					fmt.Println("Finished: " + reduce_file_name)
+					// fmt.Println("Finished: " + reduce_file_name)
 				}
 
 			} else if reply.TASK_TYPE == "r" {
 				// intermediate file name format: "m[x]-r[y]", where 0 <= x <= nMap, 0 <= y <= nReduce
-				fmt.Println("Reached Reduce")
+				// fmt.Println("Reached Reduce")
 				intermediate := []KeyValue{}
 				for i := 0; i < reply.NMR; i++ {
 					reduce_file_name := "m[" + strconv.Itoa(i) + "]-r[" + strconv.Itoa(reply.TASK_ID) + "]"
@@ -187,11 +193,12 @@ func CallReadyDone(mapf func(string, string) []KeyValue, reducef func(string, []
 					i = j
 				}
 				ofile.Close()
-				fmt.Println("Finished: " + ofile.Name())
+				// fmt.Println("Finished: " + ofile.Name())
 			}
 		} else {
 			fmt.Printf("call failed!\n")
 		}
+		muWorker.Lock()
 	}
-	fmt.Println("Worker Done")
+	// fmt.Println("Worker Done")
 }
