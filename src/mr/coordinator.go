@@ -1,149 +1,167 @@
 package mr
 
-import "log"
-import "net"
-import "os"
-import "net/rpc"
-import "net/http"
-import "time"
-// import "fmt"
-import "sync"
+import (
+	"fmt"
+	"log"
+	"net"
+	"net/http"
+	"net/rpc"
+	"os"
+	"path/filepath"
+	"sync"
+	"time"
+)
+
+const TempDir = "tmp"
+const TaskTimeout = 10
+
+type TaskStatus int
+type TaskType int
+type JobStage int
+
+const (
+	MapTask TaskType = iota
+	ReduceTask
+	NoTask
+	ExitTask
+)
+
+const (
+	NotStarted TaskStatus = iota
+	Executing
+	Finished
+)
 
 type Task struct {
-	id int
-	file string
+	Type     TaskType
+	Status   TaskStatus
+	Index    int
+	File     string
+	WorkerId int
 }
 
-var muCoordinator sync.Mutex
-
-type Coordinator struct {
+type Master struct {
 	// Your definitions here.
-	// Either R or F
-	worker_status map[int]string 
-	map_tasks_id_to_task_struct map[int]Task
-	worker_to_task map[int]Task
-	reduce_tasks []int
-	nMap int
-	nReduce int
-	start_reduce bool
-	worker_to_last_heartbeat map[int]time.Time
-	last_worker_id int
+	mu          sync.Mutex
+	mapTasks    []Task
+	reduceTasks []Task
+	nMap        int
+	nReduce     int
 }
-
-func(c *Coordinator) HeartBeatRecieve(args *HeartBeatArgs, reply *HeartBeatReply) error {
-	// fmt.Println("Receiving heartbeat")
-	muCoordinator.Lock()
-	// fmt.Println("HeartBeatRecieveLock")
-	if args.WORKER_ID == -1 || c.worker_status[args.WORKER_ID] == "f" {
-		reply.WORKER_ID = c.last_worker_id
-		c.last_worker_id++
-		c.worker_status[reply.WORKER_ID] = "r"
-	} else {
-		reply.WORKER_ID = args.WORKER_ID
-	}
-	c.worker_to_last_heartbeat[reply.WORKER_ID] = time.Now()
-	// fmt.Println("HeartBeatRecieveUnlock")
-	muCoordinator.Unlock()
-	return nil
-}
-
-func(c *Coordinator) HeartBeatChecker() error {
-	muCoordinator.Lock()
-	// fmt.Println("HeartBeatCheckerLock")
-	for !(len(c.map_tasks_id_to_task_struct) == 0 && len(c.reduce_tasks) == 0 && len(c.worker_to_task) == 0) {
-		for worker_id, last_heartbeat := range c.worker_to_last_heartbeat {
-			// case where worker died
-			if (time.Now().Sub(last_heartbeat) > 10 * time.Second) {
-				task_struct, ok := c.worker_to_task[worker_id]
-				if ok {
-					if c.start_reduce {
-						c.reduce_tasks = append(c.reduce_tasks, task_struct.id)
-					} else {
-						c.map_tasks_id_to_task_struct[task_id] = task_struct
-					}
-					delete(c.worker_to_task, worker_id)
-				}
-				c.worker_status[worker_id] = "f"
-				delete(c.worker_to_last_heartbeat, worker_id)
-			}
-		}
-		// fmt.Println("HeartBeatCheckerUnlock")
-		muCoordinator.Unlock()
-		time.Sleep(time.Second)
-		muCoordinator.Lock()
-		// fmt.Println("HeartBeatCheckerLock")
-		 
-	}
-	muCoordinator.Unlock()
-	return nil
-}
-
 
 // Your code here -- RPC handlers for the worker to call.
-// TODO: remove from struct when task is done
-func(c *Coordinator) ReadyDone(args *ReadyDoneArgs, reply *ReadyDoneReply) error {
-	muCoordinator.Lock()
-	// fmt.Println("ReadyDoneLock")
-	_, ok := c.worker_to_task[args.WORKER_ID]
-	if c.worker_status[args.WORKER_ID] != "f" && args.TASK_ID != -1 && ok {
-		delete(c.worker_to_task, args.WORKER_ID)
-	}
-	for !(len(c.map_tasks_id_to_task_struct) == 0 && len(c.reduce_tasks) == 0 && len(c.worker_to_task) == 0) {
-		// if worker dead, just send empty task and exit from func
-		if c.worker_status[args.WORKER_ID] == "f" {
-			reply.TASK_ID = -1
-			muCoordinator.Unlock()
-			return nil
-		}
-		if len(c.map_tasks_id_to_task_struct) > 0 {	// case where still have map task
-			// Get first TASK_ID in map_tasks_id_to_task_struct
-			for key, _ := range c.map_tasks_id_to_task_struct {
-				reply.TASK_ID = key
-				break
-			}
-			reply.TASK_TYPE = "m"
-			reply.NMR = c.nReduce
-			reply.FILE = c.map_tasks_id_to_task_struct[reply.TASK_ID].file
-			c.worker_to_task[args.WORKER_ID] = c.map_tasks_id_to_task_struct[reply.TASK_ID]
-			delete(c.map_tasks_id_to_task_struct, reply.TASK_ID)
-			muCoordinator.Unlock()
-			return nil
-		} else {	// case where all map task completed, do reduce
-			if len(c.worker_to_task) == 0 {
-				c.start_reduce = true
-			}
-			if c.start_reduce && len(c.reduce_tasks) > 0 {
-				reply.TASK_TYPE = "r"
-				reply.NMR = c.nMap
-				reply.TASK_ID = c.reduce_tasks[len(c.reduce_tasks)-1]
-				// Removing the task from the slice
-				c.reduce_tasks = c.reduce_tasks[:len(c.reduce_tasks) - 1]
-				task := Task{}
-				task.id = reply.TASK_ID
-				c.worker_to_task[args.WORKER_ID] = task
-				muCoordinator.Unlock()
-				return nil
-			}
-		}
-		// fmt.Println("unlock readydone")
-		muCoordinator.Unlock()
-		time.Sleep(time.Second)
-		muCoordinator.Lock()
-		// fmt.Println("ReadyDoneLock") 
-	}
-	muCoordinator.Unlock()
-	reply.TASK_TYPE = "d"
+
+//
+// GetReduceCount RPC handler.
+//
+func (m *Master) GetReduceCount(args *GetReduceCountArgs, reply *GetReduceCountReply) error {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+
+	reply.ReduceCount = len(m.reduceTasks)
+
 	return nil
+}
+
+//
+// RequestTask RPC handler.
+//
+func (m *Master) RequestTask(args *RequestTaskArgs, reply *RequestTaskReply) error {
+	m.mu.Lock()
+
+	var task *Task
+	if m.nMap > 0 {
+		task = m.selectTask(m.mapTasks, args.WorkerId)
+	} else if m.nReduce > 0 {
+		task = m.selectTask(m.reduceTasks, args.WorkerId)
+	} else {
+		task = &Task{ExitTask, Finished, -1, "", -1}
+	}
+
+	reply.TaskType = task.Type
+	reply.TaskId = task.Index
+	reply.TaskFile = task.File
+
+	// fmt.Println("RequestTask: selected task: ", *task)
+	m.mu.Unlock()
+	go m.waitForTask(task)
+
+	return nil
+}
+
+//
+// RequestTask RPC handler.
+//
+func (m *Master) ReportTaskDone(args *ReportTaskArgs, reply *ReportTaskReply) error {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+
+	var task *Task
+	if args.TaskType == MapTask {
+		task = &m.mapTasks[args.TaskId]
+	} else if args.TaskType == ReduceTask {
+		task = &m.reduceTasks[args.TaskId]
+	} else {
+		fmt.Printf("Incorrect task type to report: %v\n", args.TaskType)
+		return nil
+	}
+
+	// workers can only report task done if the task was not re-assigned due to timeout
+	if args.WorkerId == task.WorkerId && task.Status == Executing {
+		// fmt.Printf("Task %v reports done.\n", *task)
+		task.Status = Finished
+		if args.TaskType == MapTask && m.nMap > 0 {
+			m.nMap--
+		} else if args.TaskType == ReduceTask && m.nReduce > 0 {
+			m.nReduce--
+		}
+	}
+
+	reply.CanExit = m.nMap == 0 && m.nReduce == 0
+
+	return nil
+}
+
+func (m *Master) selectTask(taskList []Task, workerId int) *Task {
+	var task *Task
+
+	for i := 0; i < len(taskList); i++ {
+		if taskList[i].Status == NotStarted {
+			task = &taskList[i]
+			task.Status = Executing
+			task.WorkerId = workerId
+			return task
+		}
+	}
+
+	return &Task{NoTask, Finished, -1, "", -1}
+}
+
+func (m *Master) waitForTask(task *Task) {
+	if task.Type != MapTask && task.Type != ReduceTask {
+		return
+	}
+
+	<-time.After(time.Second * TaskTimeout)
+
+	m.mu.Lock()
+	defer m.mu.Unlock()
+
+	if task.Status == Executing {
+		task.Status = NotStarted
+		task.WorkerId = -1
+		// fmt.Println("Task timeout, reset task status: ", *task)
+	}
 }
 
 //
 // start a thread that listens for RPCs from worker.go
 //
-func (c *Coordinator) server() {
-	rpc.Register(c)
+func (m *Master) server() {
+	rpc.Register(m)
 	rpc.HandleHTTP()
 	//l, e := net.Listen("tcp", ":1234")
-	sockname := coordinatorSock()
+	sockname := masterSock()
 	os.Remove(sockname)
 	l, e := net.Listen("unix", sockname)
 	if e != nil {
@@ -153,45 +171,58 @@ func (c *Coordinator) server() {
 }
 
 //
-// main/mrcoordinator.go calls Done() periodically to find out
+// main/mrmaster.go calls Done() periodically to find out
 // if the entire job has finished.
 //
-func (c *Coordinator) Done() bool {
-	muCoordinator.Lock()
-	ret := len(c.map_tasks_id_to_task_struct) == 0 && len(c.reduce_tasks) == 0 && len(c.worker_to_task) == 0
-	muCoordinator.Unlock()
-	return ret
+func (m *Master) Done() bool {
+	// Your code here.
+	m.mu.Lock()
+	defer m.mu.Unlock()
+
+	return m.nMap == 0 && m.nReduce == 0
 }
 
 //
-// create a Coordinator.
-// main/mrcoordinator.go calls this function.
+// create a Master.
+// main/mrmaster.go calls this function.
 // nReduce is the number of reduce tasks to use.
 //
-func MakeCoordinator(files []string, nReduce int) *Coordinator {
-	c := Coordinator{}
+func MakeCoordinator(files []string, nReduce int) *Master {
+	m := Master{}
 
 	// Your code here.
-	c.map_tasks_id_to_task_struct = make(map[int]Task)
-	c.worker_status = make(map[int]string)
-	c.worker_to_task = make(map[int]Task)
-	c.worker_to_last_heartbeat = make(map[int]time.Time)
-	// populate c.map_tasks_id_to_task_struct
-	for i := 0; i < len(files); i++ {
-		
-		c.map_tasks_id_to_task_struct[i] = Task{i, files[i]}
-	}
-	// populate c.reduce_tasks
-	for i:=0; i < nReduce; i++ {
-		c.reduce_tasks = append(c.reduce_tasks, i)
-	}
-	c.nMap = len(files)
-	c.nReduce = nReduce
-	c.start_reduce = false
-	c.last_worker_id = 0
+	nMap := len(files)
+	m.nMap = nMap
+	m.nReduce = nReduce
+	m.mapTasks = make([]Task, 0, nMap)
+	m.reduceTasks = make([]Task, 0, nReduce)
 
-	c.server()
-	go c.HeartBeatChecker()
+	for i := 0; i < nMap; i++ {
+		mTask := Task{MapTask, NotStarted, i, files[i], -1}
+		m.mapTasks = append(m.mapTasks, mTask)
+	}
+	for i := 0; i < nReduce; i++ {
+		rTask := Task{ReduceTask, NotStarted, i, "", -1}
+		m.reduceTasks = append(m.reduceTasks, rTask)
+	}
 
-	return &c
+	m.server()
+
+	// clean up and create temp directory
+	outFiles, _ := filepath.Glob("mr-out*")
+	for _, f := range outFiles {
+		if err := os.Remove(f); err != nil {
+			log.Fatalf("Cannot remove file %v\n", f)
+		}
+	}
+	err := os.RemoveAll(TempDir)
+	if err != nil {
+		log.Fatalf("Cannot remove temp directory %v\n", TempDir)
+	}
+	err = os.Mkdir(TempDir, 0755)
+	if err != nil {
+		log.Fatalf("Cannot create temp directory %v\n", TempDir)
+	}
+
+	return &m
 }
