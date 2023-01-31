@@ -35,7 +35,7 @@ else
 fi
 if [ "$TIMEOUT" != "" ]
 then
-  TIMEOUT+=" -k 2s 180000s "
+  TIMEOUT+=" -k 2s 180s "
 fi
 
 # run the test in a fresh sub-directory.
@@ -87,8 +87,8 @@ wait $pid
 
 # since workers are required to exit when a job is completely finished,
 # and not before, that means the job has finished.
-sort mr-out* | grep . > mr-wc-all.txt
-if cmp mr-wc-all.txt mr-correct-wc.txt
+sort mr-out* | grep . > mr-wc-all
+if cmp mr-wc-all mr-correct-wc.txt
 then
   echo '---' wc test: PASS
 else
