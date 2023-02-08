@@ -392,7 +392,7 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 		if ok {
 			// fmt.Println("Response AppendEntries" + strconv.FormatBool(reply.SUCCESS) + strconv.Itoa(reply.TERM) + strconv.Itoa(rf.currentTerm))
 			SUCCESS = reply.SUCCESS
-			if reply.TERM >= rf.currentTerm {
+			if reply.TERM > rf.currentTerm {
 				rf.currentTerm = reply.TERM
 				rf.role = "f"
 				rf.lastAppendEntries = time.Now()
@@ -402,7 +402,8 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 			if SUCCESS {
 				rf.nextIdx[server_idx] = len(rf.logEntries)
 				rf.matchIdx[server_idx] = len(rf.logEntries)
-				if rf.countResponses > len(rf.peers) / 2 {
+				rf.countResponses++
+				if rf.countResponses > len(rf.peers) / 2 || rf.role == "f"{
 					rf.cv.Signal()
 				}
 			} else {
@@ -433,16 +434,16 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 		logEntryEl := LogEntry{command, rf.currentTerm}
 		rf.logEntries = append(rf.logEntries, logEntryEl)
 	}
-	rf.countResponses = 0
+	rf.countResponses = 1
 	rf.wakeStart = false
 	for !rf.wakeStart {
 		rf.cv.Wait()
 	}
-	if rf.role == "l" {
-		// ??? is this the right way to use applyCh?
-		rf.applyCh <- {true, command, len(rf.logEntries) - 1}
-		rf.commitIdx = len(rf.logEntries) - 1
+
+	if rf.role == "l"{
+		fr
 	}
+	
 
 	return len(rf.logEntries), rf.currentTerm, rf.role == "l"
 }
