@@ -82,8 +82,6 @@ type Raft struct {
 	// TODO: ensure updating these correctly
 	nextIdx 	   map[int]int
 	matchIdx 	   map[int]int
-
-
 }
 
 // return currentTERM and whether this server
@@ -181,20 +179,15 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	rf.mu.Lock()
 	// fmt.Println("Inside Request Vote" + strconv.Itoa(rf.me))
 	defer rf.mu.Unlock()
-	if args.TERM > rf.currentTerm {
+	if args.TERM > rf.currentTerm && (rf.votedFor < args.TERM && args.lastLogIdx >= len(rf.logEntries) - 1 && rf.logEntries[len(rf.logEntries) -1].TERM <= args.lastLogTerm) {
+		if rf.role == "l" {
+			rf.cv.Signal()
+		}
 		rf.role = "f"
-		rf.cv.Signal()
 		rf.currentTerm = args.TERM
-		reply.VOTEGRANTED = true
 		rf.votedFor = args.TERM
 		rf.lastAppendEntries = time.Now()
-	} else if rf.votedFor < args.TERM && args.lastLogIdx >= len(rf.logEntries) -1 && rf.logEntries[len(rf.logEntries) -1].TERM <= args.lastLogTerm{
-		rf.role = "f"
-		rf.cv.Signal()
-		rf.currentTerm = args.TERM
 		reply.VOTEGRANTED = true
-		rf.votedFor = args.TERM
-		rf.lastAppendEntries = time.Now()
 	} else {
 		reply.VOTEGRANTED = false
 	}
@@ -227,8 +220,10 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
 	if args.LEADERTERM >= rf.currentTerm {
+		if rf.role == "l" {
+			rf.cv.Signal()
+		}
 		rf.role = "f"
-		rf.cv.Signal()
 		rf.currentTerm = args.LEADERTERM
 
 		if args.PREVLOGIDX < len(rf.logEntries) && rf.logEntries[args.PREVLOGIDX].TERM == args.PREVLOGTERM {
@@ -240,7 +235,6 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 				rf.commitIdx = min(args.LEADERCOMMIT, len(rf.logEntries) - 1)
 				// Apply all new commits
 				for i := prevCommitIdx + 1; i <= rf.commitIdx; ++i {
-					// TODO: check use of channel
 					rf.applyCh <- {true, rf.logEntries[i].command, i}
 				}
 			}
@@ -253,9 +247,6 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	} else {
 		reply.SUCCESS = false
 	}
-	
-	
-
 	
 	reply.TERM = rf.currentTerm
 	rf.lastAppendEntries = time.Now()
@@ -328,8 +319,10 @@ func (rf *Raft) sendRequestVote(server int, args *RequestVoteArgs) {
 	defer rf.mu.Unlock()
 	if reply.TERM > rf.currentTerm {
 		rf.currentTerm = reply.TERM
+		if rf.role == "l" {
+			rf.cv.Signal()
+		}
 		rf.role = "f"
-		rf.cv.Signal()
 		rf.lastAppendEntries = time.Now()
 		return
 	}
@@ -394,9 +387,11 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 			SUCCESS = reply.SUCCESS
 			if reply.TERM > rf.currentTerm {
 				rf.currentTerm = reply.TERM
+				if rf.role == "l" {
+					rf.cv.Signal()
+				}
 				rf.role = "f"
 				rf.lastAppendEntries = time.Now()
-				rf.cv.Signal()
 				return
 			}
 			if SUCCESS {
@@ -433,17 +428,30 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 	if rf.role == "l" {
 		logEntryEl := LogEntry{command, rf.currentTerm}
 		rf.logEntries = append(rf.logEntries, logEntryEl)
+		rf.countResponses = 1
+		rf.wakeStart = false
+		for !rf.wakeStart {
+			rf.cv.Wait()
+		}
+		if rf.role == "l" {
+			for N := rf.commitIdx + 1; N < len(rf.logEntries); ++N {
+				count := 0
+				for j := 0; j < len(rf.matchIdx); ++j {
+					if rf.matchIdx[j] >= N && rf.logEntries[N].TERM == rf.currentTerm{
+						count++
+					}
+					if count > len(rf.matchIdx) / 2 {
+						for i := rf.commitIdx + 1; i <= N; ++i {
+							rf.applyCh <- {true, rf.logEntries[i].command, i}
+						}
+						rf.commitIdx = N
+						N = len(rf.logEntries) // to break out of outer for
+						break
+					}
+				}
+			}
+ 		}
 	}
-	rf.countResponses = 1
-	rf.wakeStart = false
-	for !rf.wakeStart {
-		rf.cv.Wait()
-	}
-
-	if rf.role == "l"{
-		fr
-	}
-	
 
 	return len(rf.logEntries), rf.currentTerm, rf.role == "l"
 }
