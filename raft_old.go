@@ -72,7 +72,8 @@ type Raft struct {
 	r                 *rand.Rand
 	numVotes          int
 	// "f", "c", "l"
-	role string
+	role       string
+	logEntries []LogEntry
 }
 
 // return currentTERM and whether this server
@@ -168,9 +169,6 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	// fmt.Println("Inside Request Vote" + strconv.Itoa(rf.me))
 	defer rf.mu.Unlock()
 	if args.TERM > rf.currentTerm {
-		if rf.role != "f" {
-			go rf.follower()
-		}
 		rf.role = "f"
 		rf.currentTerm = args.TERM
 		reply.VOTEGRANTED = true
@@ -181,8 +179,18 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	reply.TERM = rf.currentTerm
 }
 
+type LogEntry struct {
+	CMD  interface{}
+	TERM int
+}
+
 type AppendEntriesArgs struct {
-	LEADERTERM int
+	LEADERTERM   int
+	LEADERID     int
+	PREVLOGIDX   int
+	PREVLOGTERM  int
+	ENTRIES      []LogEntry
+	LEADERCOMMIT int
 }
 
 type AppendEntriesReply struct {
@@ -197,9 +205,6 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
 	if args.LEADERTERM >= rf.currentTerm {
-		if rf.role != "f" {
-			go rf.follower()
-		}
 		rf.role = "f"
 		rf.currentTerm = args.LEADERTERM
 	}
@@ -208,42 +213,33 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	rf.lastAppendEntries = time.Now()
 }
 
-func (rf *Raft) candidate() {
+// The ticker go routine starts a new election if this peer hasn't received
+// heartsbeats recently.
+func (rf *Raft) ticker() {
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-	for rf.role == "c" && rf.killed() == false {
-		rf.currentTerm++
-		rf.numVotes = 1
-		rf.lastAppendEntries = time.Now()
-		args := RequestVoteArgs{}
-		args.TERM = rf.currentTerm
-		rf.mu.Unlock()
-		for server_idx, _ := range rf.peers {
-			if server_idx != rf.me {
-				go rf.sendRequestVote(server_idx, &args)
+	for rf.killed() == false {
+
+		// Candidate state once entered this if statement
+		if rf.role != "l" && time.Now().Sub(rf.lastAppendEntries) > time.Duration(rf.timeout)*time.Millisecond {
+			// fmt.Println("Inside Start Election")
+			rf.role = "c"
+			rf.currentTerm++
+			rf.numVotes = 1
+			rf.lastAppendEntries = time.Now()
+			args := RequestVoteArgs{}
+			args.TERM = rf.currentTerm
+			for server_idx, _ := range rf.peers {
+				if server_idx != rf.me {
+					go rf.sendRequestVote(server_idx, &args)
+				}
 			}
 		}
+		// Wait till signalled by a leader_routine ending
+		rf.mu.Unlock()
 		time.Sleep(time.Millisecond * time.Duration(rf.timeout))
 		rf.mu.Lock()
 		rf.timeout = 1000 + rand.Intn(500)
-	}
-}
-
-// The follower go routine starts a new election if this peer hasn't received
-// heartsbeats recently.
-func (rf *Raft) follower() {
-	rf.mu.Lock()
-	defer rf.mu.Unlock()
-	for rf.killed() == false && rf.role == "f" {
-
-		// Candidate state once entered this if statement
-		if time.Now().Sub(rf.lastAppendEntries) > time.Duration(rf.timeout)*time.Millisecond {
-			// fmt.Println("Inside Start Election")
-			rf.role = "c"
-			go rf.candidate()
-			return
-		}
-		// Wait till signalled by a leader ending
 	}
 }
 
@@ -283,9 +279,6 @@ func (rf *Raft) sendRequestVote(server int, args *RequestVoteArgs) {
 	defer rf.mu.Unlock()
 	if reply.TERM > rf.currentTerm {
 		rf.currentTerm = reply.TERM
-		if rf.role != "f" {
-			go rf.follower()
-		}
 		rf.role = "f"
 		rf.lastAppendEntries = time.Now()
 		return
@@ -296,25 +289,25 @@ func (rf *Raft) sendRequestVote(server int, args *RequestVoteArgs) {
 	if rf.role != "l" && rf.numVotes > (len(rf.peers)/2) {
 		// fmt.Println("Elected leader")
 		rf.role = "l"
-		go rf.leader()
+		rf.leader_routine()
 	}
 	return
 }
 
-func (rf *Raft) leader() {
+func (rf *Raft) leader_routine() {
 	// fmt.Println("Inside Leader Routine")
 	rf.mu.Lock()
-	defer rf.mu.Unlock()
 	for rf.killed() == false && rf.role == "l" {
-		rf.mu.Unlock()
 		for server_idx, _ := range rf.peers {
 			if server_idx != rf.me {
 				go rf.sendAppendEntry(server_idx)
 			}
 		}
+		rf.mu.Unlock()
 		time.Sleep(100 * time.Millisecond)
 		rf.mu.Lock()
 	}
+	rf.mu.Unlock()
 }
 
 func (rf *Raft) sendAppendEntry(server_idx int) {
@@ -334,9 +327,6 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 			SUCCESS = reply.SUCCESS
 			if reply.TERM > rf.currentTerm {
 				rf.currentTerm = reply.TERM
-				if rf.role != "f" {
-					go rf.follower()
-				}
 				rf.role = "f"
 				rf.lastAppendEntries = time.Now()
 				return
@@ -361,10 +351,15 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 //
 func (rf *Raft) Start(command interface{}) (int, int, bool) {
 	index := -1
-	TERM := -1
-	isLeader := true
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
+	TERM := rf.currentTerm
+	isLeader := (rf.role == "l")
 
 	// Your code here (2B).
+	if isLeader {
+		rf.logEntries = append(rf.logEntries, LogEntry{command, rf.currentTerm})
+	}
 
 	return index, TERM, isLeader
 }
@@ -421,7 +416,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.readPersist(persister.ReadRaftState())
 
 	// start ticker goroutine to start elections
-	go rf.follower()
+	go rf.ticker()
 
 	return rf
 }

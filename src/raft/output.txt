@@ -1,0 +1,11 @@
+Test (2A): initial election ...
+--- FAIL: TestInitialElection2A (3.54s)
+    config.go:473: servers disagree on term
+Test (2A): election after network failure ...
+  ... Passed --   8.0  3  196   10670    0
+Test (2A): multiple elections ...
+  ... Passed --  13.0  7  892   54458    0
+FAIL
+exit status 1
+FAIL	6.824/raft	24.536s
+*** FAILED TESTS IN TRIAL 1

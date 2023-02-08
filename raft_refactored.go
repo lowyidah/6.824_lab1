@@ -72,18 +72,7 @@ type Raft struct {
 	r                 *rand.Rand
 	numVotes          int
 	// "f", "c", "l"
-	role           string
-	logEntries     []LogEntry
-	wakeStart      bool
-	countResponses int
-	commitIdx      int
-	votedFor       int
-	applyCh 	   chan
-	// TODO: ensure updating these correctly
-	nextIdx 	   map[int]int
-	matchIdx 	   map[int]int
-
-
+	role string
 }
 
 // return currentTERM and whether this server
@@ -152,15 +141,96 @@ func (rf *Raft) Snapshot(index int, snapshot []byte) {
 }
 
 //
+// the service using Raft (e.g. a k/v server) wants to start
+// agreement on the next command to be appended to Raft's log. if this
+// server isn't the leader, returns false. otherwise start the
+// agreement and return immediately. there is no guarantee that this
+// command will ever be committed to the Raft log, since the leader
+// may fail or lose an election. even if the Raft instance has been killed,
+// this function should return gracefully.
+//
+// the first return value is the index that the command will appear at
+// if it's ever committed. the second return value is the current
+// TERM. the third return value is true if this server believes it is
+// the leader.
+//
+func (rf *Raft) Start(command interface{}) (int, int, bool) {
+	index := -1
+	TERM := -1
+	isLeader := true
+
+	// Your code here (2B).
+
+	return index, TERM, isLeader
+}
+
+//
+// the tester doesn't halt goroutines created by Raft after each test,
+// but it does call the Kill() method. your code can use killed() to
+// check whether Kill() has been called. the use of atomic avoids the
+// need for a lock.
+//
+// the issue is that long-running goroutines use memory and may chew
+// up CPU time, perhaps causing later tests to fail and generating
+// confusing debug output. any goroutine with a long-running loop
+// should call killed() to check whether it should stop.
+//
+func (rf *Raft) Kill() {
+	atomic.StoreInt32(&rf.dead, 1)
+	// Your code here, if desired.
+}
+
+func (rf *Raft) killed() bool {
+	z := atomic.LoadInt32(&rf.dead)
+	return z == 1
+}
+
+// The follower go routine starts a new election if this peer hasn't received
+// heartsbeats recently.
+func (rf *Raft) follower() {
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
+	rf.lastAppendEntries = time.Now()
+	for rf.killed() == false && rf.role == "f" {
+
+		// Candidate state once entered this if statement
+		if time.Now().Sub(rf.lastAppendEntries) > time.Duration(rf.timeout)*time.Millisecond {
+			// fmt.Println("Inside Start Election")
+			rf.role = "c"
+			go rf.candidate()
+			return
+		}
+		time.Sleep(time.Millisecond * time.Duration(rf.timeout))
+	}
+}
+
+func (rf *Raft) candidate() {
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
+	for rf.role == "c" && rf.killed() == false {
+		rf.timeout = 1000 + rand.Intn(500)
+		rf.currentTerm++
+		rf.numVotes = 1
+		args := RequestVoteArgs{}
+		args.TERM = rf.currentTerm
+		for server_idx, _ := range rf.peers {
+			if server_idx != rf.me {
+				go rf.sendRequestVote(server_idx, &args)
+			}
+		}
+		rf.mu.Unlock()
+		time.Sleep(time.Millisecond * time.Duration(rf.timeout))
+		rf.mu.Lock()
+	}
+}
+
+//
 // example RequestVote RPC arguments structure.
 // field names must start with capital letters!
 //
 type RequestVoteArgs struct {
 	// Your data here (2A, 2B).
 	TERM int
-	lastLogIdx int
-	lastLogTerm int
-	
 }
 
 //
@@ -171,125 +241,6 @@ type RequestVoteReply struct {
 	// Your data here (2A).
 	TERM        int
 	VOTEGRANTED bool
-}
-
-//
-// example RequestVote RPC handler.
-//
-func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
-	// Your code here (2A, 2B).
-	rf.mu.Lock()
-	// fmt.Println("Inside Request Vote" + strconv.Itoa(rf.me))
-	defer rf.mu.Unlock()
-	if args.TERM > rf.currentTerm {
-		rf.role = "f"
-		rf.cv.Signal()
-		rf.currentTerm = args.TERM
-		reply.VOTEGRANTED = true
-		rf.votedFor = args.TERM
-		rf.lastAppendEntries = time.Now()
-	} else if rf.votedFor < args.TERM && args.lastLogIdx >= len(rf.logEntries) -1 && rf.logEntries[len(rf.logEntries) -1].TERM <= args.lastLogTerm{
-		rf.role = "f"
-		rf.cv.Signal()
-		rf.currentTerm = args.TERM
-		reply.VOTEGRANTED = true
-		rf.votedFor = args.TERM
-		rf.lastAppendEntries = time.Now()
-	} else {
-		reply.VOTEGRANTED = false
-	}
-	reply.TERM = rf.currentTerm
-}
-
-type LogEntry struct {
-	CMD  interface{}
-	TERM int
-}
-
-type AppendEntriesArgs struct {
-	LEADERTERM   int
-	LEADERID     int
-	PREVLOGIDX   int
-	PREVLOGTERM  int
-	ENTRIES      []LogEntry
-	LEADERCOMMIT int
-}
-
-type AppendEntriesReply struct {
-	TERM    int
-	SUCCESS bool
-}
-
-func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply) {
-	// Your code here (2A, 2B).
-	// fmt.Println("Recieved Append Entries" + strconv.Itoa(rf.me))
-
-	rf.mu.Lock()
-	defer rf.mu.Unlock()
-	if args.LEADERTERM >= rf.currentTerm {
-		rf.role = "f"
-		rf.cv.Signal()
-		rf.currentTerm = args.LEADERTERM
-
-		if args.PREVLOGIDX < len(rf.logEntries) && rf.logEntries[args.PREVLOGIDX].TERM == args.PREVLOGTERM {
-			rf.logEntries = rf.logEntries[:args.PREVLOGIDX + 1]
-			reply.SUCCESS = true
-			rf.logEntries = append(rf.logEntries, args.ENTRIES...)
-			if args.LEADERCOMMIT > rf.commitIdx {
-				prevCommitIdx := rf.commitIdx
-				rf.commitIdx = min(args.LEADERCOMMIT, len(rf.logEntries) - 1)
-				// Apply all new commits
-				for i := prevCommitIdx + 1; i <= rf.commitIdx; ++i {
-					// TODO: check use of channel
-					rf.applyCh <- {true, rf.logEntries[i].command, i}
-				}
-			}
-		} else if args.PREVLOGIDX < len(rf.logEntries) && rf.logEntries[args.PREVLOGIDX].TERM != args.PREVLOGTERM {
-			rf.logEntries = rf.logEntries[:args.PREVLOGIDX]
-			reply.SUCCESS = false
-		} else {
-			reply.SUCCESS = false
-		}
-	} else {
-		reply.SUCCESS = false
-	}
-	
-	
-
-	
-	reply.TERM = rf.currentTerm
-	rf.lastAppendEntries = time.Now()
-}
-
-// The ticker go routine starts a new election if this peer hasn't received
-// heartsbeats recently.
-func (rf *Raft) ticker() {
-	rf.mu.Lock()
-	defer rf.mu.Unlock()
-	for rf.killed() == false {
-
-		// Candidate state once entered this if statement
-		if rf.role != "l" && time.Now().Sub(rf.lastAppendEntries) > time.Duration(rf.timeout)*time.Millisecond {
-			// fmt.Println("Inside Start Election")
-			rf.role = "c"
-			rf.currentTerm++
-			rf.numVotes = 1
-			rf.lastAppendEntries = time.Now()
-			rf.votedFor = rf.currentTerm
-			args := RequestVoteArgs{}
-			args.TERM = rf.currentTerm
-			for server_idx, _ := range rf.peers {
-				if server_idx != rf.me {
-					go rf.sendRequestVote(server_idx, &args)
-				}
-			}
-		}
-		// Wait till signalled by a leader_routine ending
-		rf.mu.Unlock()
-		time.Sleep(time.Millisecond * time.Duration(rf.timeout))
-		rf.mu.Lock()
-		rf.timeout = 1000 + rand.Intn(500)
-	}
 }
 
 //
@@ -324,67 +275,88 @@ func (rf *Raft) ticker() {
 func (rf *Raft) sendRequestVote(server int, args *RequestVoteArgs) {
 	reply := RequestVoteReply{}
 	rf.peers[server].Call("Raft.RequestVote", args, &reply)
+	// fmt.Println("Inside sendRequest Vote before lock" + strconv.Itoa(rf.me))
 	rf.mu.Lock()
+	// fmt.Println("Inside sendRequest Vote after lock" + strconv.Itoa(rf.me))
 	defer rf.mu.Unlock()
 	if reply.TERM > rf.currentTerm {
 		rf.currentTerm = reply.TERM
-		rf.role = "f"
-		rf.cv.Signal()
 		rf.lastAppendEntries = time.Now()
+		if rf.role != "f" {
+			rf.role = "f"
+			go rf.follower()
+		}
 		return
 	}
 	if reply.VOTEGRANTED {
 		rf.numVotes++
 	}
-	// Won election
 	if rf.role != "l" && rf.numVotes > (len(rf.peers)/2) {
-		// fmt.Println("Elected leader")
+		// fmt.Println("Elected leader me and currentTerm:" + strconv.Itoa(rf.me) + ", " + strconv.Itoa(rf.currentTerm))
+
 		rf.role = "l"
-		// Reset nextIdx and matchIdx
-		for i := 0; i < len(rf.peers); ++i {
-			rf.nextIdx[i] = len(rf.logEntries)
-			rf.matchIdx[i] = 0
-		}
-		rf.leader_routine()
+		go rf.leader()
 	}
 	return
 }
 
-func (rf *Raft) leader_routine() {
+//
+// example RequestVote RPC handler.
+//
+func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
+	// Your code here (2A, 2B).
+	// fmt.Println("Inside Request Vote before lock" + strconv.Itoa(rf.me))
+	rf.mu.Lock()
+	// fmt.Println("Inside Request Vote after lock" + strconv.Itoa(rf.me))
+	defer rf.mu.Unlock()
+	if args.TERM > rf.currentTerm {
+		rf.currentTerm = args.TERM
+		reply.VOTEGRANTED = true
+		rf.lastAppendEntries = time.Now()
+		if rf.role != "f" {
+			rf.role = "f"
+			go rf.follower()
+		}
+	} else {
+		reply.VOTEGRANTED = false
+	}
+	reply.TERM = rf.currentTerm
+}
+
+func (rf *Raft) leader() {
 	// fmt.Println("Inside Leader Routine")
 	rf.mu.Lock()
+	defer rf.mu.Unlock()
 	for rf.killed() == false && rf.role == "l" {
 		for server_idx, _ := range rf.peers {
 			if server_idx != rf.me {
 				go rf.sendAppendEntry(server_idx)
 			}
 		}
-		for i := len(rf.logEntries) - 1; i >= 0; i-- {
-			count := 0
-			for j := 0; j < len(rf.matchIdx); ++j {
-				
-			}
-		}
 		rf.mu.Unlock()
 		time.Sleep(100 * time.Millisecond)
 		rf.mu.Lock()
 	}
-	rf.mu.Unlock()
+}
+
+type AppendEntriesArgs struct {
+	LEADERTERM int
+}
+
+type AppendEntriesReply struct {
+	TERM    int
+	SUCCESS bool
 }
 
 func (rf *Raft) sendAppendEntry(server_idx int) {
 	SUCCESS := false
-	// fmt.Println("Inside sendAppendEntry")
+	// fmt.Println("Send [Before Lock] Append Entries me and currentTerm:" + strconv.Itoa(rf.me) + ", " + ", " + strconv.Itoa(rf.currentTerm))
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
+	// fmt.Println("Send [After Lock] Append Entries me and currentTerm:" + strconv.Itoa(rf.me) + ", " + ", " + strconv.Itoa(rf.currentTerm))
 	for rf.killed() == false && !SUCCESS && rf.role == "l" {
 		args := AppendEntriesArgs{}
 		args.LEADERTERM = rf.currentTerm
-		args.LEADERID = rf.me
-		args.PREVLOGIDX = rf.nextIdx[server_idx] - 1
-		args.PREVLOGTERM = rf.logEntries[args.PREVLOGIDX].TERM
-		args.ENTRIES = rf.logEntries[args.PREVLOGIDX + 1 :]
-		args.LEADERCOMMIT = rf.commitIdx
 		reply := AppendEntriesReply{}
 		rf.mu.Unlock()
 		ok := rf.peers[server_idx].Call("Raft.AppendEntries", &args, &reply)
@@ -392,85 +364,36 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 		if ok {
 			// fmt.Println("Response AppendEntries" + strconv.FormatBool(reply.SUCCESS) + strconv.Itoa(reply.TERM) + strconv.Itoa(rf.currentTerm))
 			SUCCESS = reply.SUCCESS
-			if reply.TERM >= rf.currentTerm {
+			if reply.TERM > rf.currentTerm {
 				rf.currentTerm = reply.TERM
-				rf.role = "f"
-				rf.lastAppendEntries = time.Now()
-				rf.cv.Signal()
-				return
-			}
-			if SUCCESS {
-				rf.nextIdx[server_idx] = len(rf.logEntries)
-				rf.matchIdx[server_idx] = len(rf.logEntries)
-				if rf.countResponses > len(rf.peers) / 2 {
-					rf.cv.Signal()
+				if rf.role != "f" {
+					rf.role = "f"
+					go rf.follower()
 				}
-			} else {
-				rf.nextIdx[server_idx]--
+				rf.lastAppendEntries = time.Now()
+				return
 			}
 		}
 	}
 }
 
-//
-// the service using Raft (e.g. a k/v server) wants to start
-// agreement on the next command to be appended to Raft's log. if this
-// server isn't the leader, returns false. otherwise start the
-// agreement and return immediately. there is no guarantee that this
-// command will ever be committed to the Raft log, since the leader
-// may fail or lose an election. even if the Raft instance has been killed,
-// this function should return gracefully.
-//
-// the first return value is the index that the command will appear at
-// if it's ever committed. the second return value is the current
-// TERM. the third return value is true if this server believes it is
-// the leader.
-//
-func (rf *Raft) Start(command interface{}) (int, int, bool) {
+func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply) {
+	// Your code here (2A, 2B).
+	// fmt.Println("Recieved [Before Lock] Append Entries me, leaderTerm and currentTerm:" + strconv.Itoa(rf.me) + ", " + strconv.Itoa(args.LEADERTERM) + ", " + strconv.Itoa(rf.currentTerm))
 
-	// Your code here (2B).
-	if rf.role == "l" {
-		logEntryEl := LogEntry{command, rf.currentTerm}
-		rf.logEntries = append(rf.logEntries, logEntryEl)
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
+	// fmt.Println("Recieved [Lock] Append Entries me, leaderTerm and currentTerm:" + strconv.Itoa(rf.me) + ", " + strconv.Itoa(args.LEADERTERM) + ", " + strconv.Itoa(rf.currentTerm))
+	if args.LEADERTERM >= rf.currentTerm {
+		rf.currentTerm = args.LEADERTERM
+		if rf.role != "f" {
+			rf.role = "f"
+			go rf.follower()
+		}
 	}
-	rf.countResponses = 0
-	rf.wakeStart = false
-	for !rf.wakeStart {
-		rf.cv.Wait()
-	}
-	if rf.role == "l" {
-		// ??? is this the right way to use applyCh?
-		rf.applyCh <- {true, command, len(rf.logEntries) - 1}
-		rf.commitIdx = len(rf.logEntries) - 1
-	}
-
-	return len(rf.logEntries), rf.currentTerm, rf.role == "l"
-}
-
-// current term: 5
-// 2 3 4 5
-// 2 3 4 4 4
-// 2 3 4 4 4
-
-//
-// the tester doesn't halt goroutines created by Raft after each test,
-// but it does call the Kill() method. your code can use killed() to
-// check whether Kill() has been called. the use of atomic avoids the
-// need for a lock.
-//
-// the issue is that long-running goroutines use memory and may chew
-// up CPU time, perhaps causing later tests to fail and generating
-// confusing debug output. any goroutine with a long-running loop
-// should call killed() to check whether it should stop.
-//
-func (rf *Raft) Kill() {
-	atomic.StoreInt32(&rf.dead, 1)
-	// Your code here, if desired.
-}
-
-func (rf *Raft) killed() bool {
-	z := atomic.LoadInt32(&rf.dead)
-	return z == 1
+	reply.SUCCESS = args.LEADERTERM >= rf.currentTerm
+	reply.TERM = rf.currentTerm
+	rf.lastAppendEntries = time.Now()
 }
 
 //
@@ -494,22 +417,8 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.cv = sync.NewCond(&rf.mu)
 	rf.currentTerm = 0
 	rf.timeout = 1000 + rand.Intn(500)
-	rf.role = "f"
 	rf.lastAppendEntries = time.Now()
 	rf.numVotes = 0
-	rf.wakeStart = false
-	rf.countResponses = 0
-	rf.votedFor = -1
-	// ??? possible fuck up
-	rf.applyCh = applyCh
-
-	rf.nextIdx = make(map[int]int)
-	rf.matchIdx = make(map[int]int)
-
-	for i := 0; i < len(rf.peers); ++i {
-		rf.nextIdx[i] = 0
-		rf.matchIdx[i] = 0
-	}
 
 	// Your initialization code here (2A, 2B, 2C).
 
@@ -517,7 +426,8 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.readPersist(persister.ReadRaftState())
 
 	// start ticker goroutine to start elections
-	go rf.ticker()
+	rf.role = "f"
+	go rf.follower()
 
 	return rf
 }
