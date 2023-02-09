@@ -1,0 +1,2612 @@
+Test (2B): basic agreement ...
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Inside Start Election0
+Inside Request Vote before lock2f
+Inside Request Vote after lock2
+Granted Vote2
+Elected leader
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[]Commit Idx: -1
+--------
+--------
+Append Entries Leader01l
+[]--------
+Inside Request Vote before lock1f
+Inside Request Vote after lock1
+Granted Vote1
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[]Commit Idx: -1
+--------
+--------
+Append Entries Leader01l
+[]--------
+Start before lockkkk1f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+100
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0l
+100
+Start acquired lockkkk
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Recieved Append Entries SUCCESS 2
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+Response AppendEntries11
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+Leader Start After Start
+--------
+Leader Start CommitIdx: 0l
+Recieved Append Entries SUCCESS 1
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+Response AppendEntries11
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'d' '\x01'}]--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'d' '\x01'}]--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+--------
+Append Entries 11f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Line 602 config
+--- FAIL: TestBasicAgree2B (3.53s)
+    config.go:608: one(100) failed to reach agreement
+--------
+Append Entries 21f
+[{'d' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+Inside sendAppendEntry after lock0
+--------
+Append Entries Leader01l
+[{'d' '\x01'}]--------
+Test (2B): RPC byte count ...
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Leader Routine Lock0
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Inside Start Election0
+Inside Request Vote before lock2f
+Inside Request Vote after lock2
+Granted Vote2
+Inside Request Vote before lock1f
+Inside Request Vote after lock1
+Granted Vote1
+Elected leader
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[]Commit Idx: -1
+--------
+--------
+Append Entries 11f
+[]Commit Idx: -1
+--------
+--------
+Append Entries Leader01l
+[]--------
+--------
+Append Entries Leader01l
+[]--------
+Start before lockkkk1f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk2f
+99
+Start acquired lockkkk
+--------
+Leader Start CommitIdx: -1f
+[]--------
+Start before lockkkk0l
+99
+Start acquired lockkkk
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Recieved Append Entries SUCCESS 1
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+Recieved Append Entries SUCCESS 2
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+Response AppendEntries11
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+Leader Start After Start
+--------
+Leader Start CommitIdx: 0l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+Response AppendEntries11
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+cmd1: 
+<nil>
+nd: 
+0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'c' '\x01'}]--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Inside sendAppendEntry before lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+cmd1: 
+<nil>
+nd: 
+Inside sendAppendEntry after lock0
+0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries 21f
+[{'c' '\x01'}]--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+Leader Routine Unlock0
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+cmd1: 
+<nil>
+nd: 
+0
+Leader Routine Lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 21f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+--------
+Append Entries 11f
+[{'c' '\x01'}]Commit Idx: 0
+--------
+--------
+Append Entries Leader01l
+[{'c' '\x01'}]--------
+signal: interrupt
+FAIL	6.824/raft	6.911s

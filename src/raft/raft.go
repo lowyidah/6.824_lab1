@@ -264,11 +264,21 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 		rf.commitIdx = min(args.LEADERCOMMIT, len(rf.logEntries) - 1)
 		// Apply all new commits
 		for i := prevCommitIdx + 1; i <= rf.commitIdx; i++ {
-			rf.applyCh <- ApplyMsg{true, rf.logEntries[i].CMD, i, false, nil, 0, 0}
+			rf.applyCh <- ApplyMsg{
+				CommandValid: true,
+				Command:      rf.logEntries[i].CMD,
+				CommandIndex: i,
+			}
 		}
 	}
 	reply.TERM = rf.currentTerm
 	rf.lastAppendEntries = time.Now()
+
+	fmt.Println("--------")
+	fmt.Println("Append Entries " + strconv.Itoa(rf.me) + strconv.Itoa(rf.currentTerm) + rf.role)
+	fmt.Printf("%+q", rf.logEntries)
+	fmt.Println("Commit Idx: " + strconv.Itoa(rf.commitIdx))
+	fmt.Println("--------")
 }
 
 // The ticker go routine starts a new election if this peer hasn't received
@@ -364,9 +374,9 @@ func (rf *Raft) sendRequestVote(server int, args *RequestVoteArgs) {
 }
 
 func (rf *Raft) leader_routine() {
-	fmt.Println("Inside Leader Routine before lock" + strconv.Itoa(rf.me))
+	//fmt.Println("Inside Leader Routine before lock" + strconv.Itoa(rf.me))
 	//rf.mu.Lock()
-	fmt.Println("Inside Leader Routine after lock" + strconv.Itoa(rf.me))
+	//fmt.Println("Inside Leader Routine after lock" + strconv.Itoa(rf.me))
 
 	for rf.killed() == false && rf.role == "l" {
 		for server_idx, _ := range rf.peers {
@@ -384,8 +394,9 @@ func (rf *Raft) leader_routine() {
 
 func (rf *Raft) sendAppendEntry(server_idx int) {
 	SUCCESS := false
-	fmt.Println("Inside sendAppendEntry")
+	fmt.Println("Inside sendAppendEntry before lock" + strconv.Itoa(rf.me))
 	rf.mu.Lock()
+	fmt.Println("Inside sendAppendEntry after lock" + strconv.Itoa(rf.me))
 	defer rf.mu.Unlock()
 	for rf.killed() == false && !SUCCESS && rf.role == "l" {
 		args := AppendEntriesArgs{}
@@ -426,11 +437,17 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 					rf.wakeStart = true
 					rf.cv.Signal()
 				}
+			} else if len(args.ENTRIES) == 0 {
+				SUCCESS = true	
 			} else if len(args.ENTRIES) != 0 {
 				nextIdx[server_idx]--
 			}
 		}
 	}
+	fmt.Println("--------")
+	fmt.Println("Append Entries Leader" + strconv.Itoa(rf.me) + strconv.Itoa(rf.currentTerm) + rf.role)
+	fmt.Printf("%+q", rf.logEntries)
+	fmt.Println("--------")
 }
 
 //
@@ -448,7 +465,8 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 // the leader.
 //
 func (rf *Raft) Start(command interface{}) (int, int, bool) {
-	fmt.Println("Start before lockkkk")
+	fmt.Println("Start before lockkkk" + strconv.Itoa(rf.me) + rf.role)
+	fmt.Println(command)
 	rf.mu.Lock()
 	fmt.Println("Start acquired lockkkk")
 	defer rf.mu.Unlock()
@@ -461,6 +479,7 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 		for !rf.wakeStart {
 			rf.cv.Wait()
 		}
+		fmt.Println("Leader Start After Start")
 		if rf.role == "l" {
 			for N := rf.commitIdx + 1; N < len(rf.logEntries); N++ {
 				count := 0
@@ -470,7 +489,11 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 					}
 					if count > len(matchIdx) / 2 {
 						for i := rf.commitIdx + 1; i <= N; i++ {
-							rf.applyCh <- ApplyMsg{true, rf.logEntries[i].CMD, i, false, nil, 0, 0}
+							rf.applyCh <- ApplyMsg{
+								CommandValid: true,
+								Command:      rf.logEntries[i].CMD,
+								CommandIndex: i,
+							}
 						}
 						rf.commitIdx = N
 						N = len(rf.logEntries) // to break out of outer for
@@ -478,8 +501,18 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 					}
 				}
 			}
+			fmt.Println("--------")
+			fmt.Println("Leader Start CommitIdx: " + strconv.Itoa(rf.commitIdx) + rf.role)
+			fmt.Printf("%+q", rf.logEntries)
+			fmt.Println("--------")
+
+			return len(rf.logEntries) - 1, rf.currentTerm, rf.role == "l"
  		}
 	}
+	fmt.Println("--------")
+	fmt.Println("Leader Start CommitIdx: " + strconv.Itoa(rf.commitIdx) + rf.role)
+	fmt.Printf("%+q", rf.logEntries)
+	fmt.Println("--------")
 
 	return len(rf.logEntries), rf.currentTerm, rf.role == "l"
 }
@@ -542,6 +575,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.applyCh = applyCh
 	nextIdx = make(map[int]int)
 	matchIdx = make(map[int]int)
+	rf.commitIdx = -1
 
 
 	for i := 0; i < len(rf.peers); i++ {

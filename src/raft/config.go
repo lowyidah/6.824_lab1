@@ -589,6 +589,11 @@ func (cfg *config) one(cmd interface{}, expectedServers int, retry bool) int {
 			t1 := time.Now()
 			for time.Since(t1).Seconds() < 2 {
 				nd, cmd1 := cfg.nCommitted(index)
+				fmt.Println("cmd1: ")
+				fmt.Println(cmd1)
+				fmt.Println("nd: ")
+				fmt.Println(nd)
+
 				if nd > 0 && nd >= expectedServers {
 					// committed
 					if cmd1 == cmd {
@@ -599,6 +604,7 @@ func (cfg *config) one(cmd interface{}, expectedServers int, retry bool) int {
 				time.Sleep(20 * time.Millisecond)
 			}
 			if retry == false {
+				fmt.Println("Line 602 config")
 				cfg.t.Fatalf("one(%v) failed to reach agreement", cmd)
 			}
 		} else {
@@ -606,6 +612,7 @@ func (cfg *config) one(cmd interface{}, expectedServers int, retry bool) int {
 		}
 	}
 	if cfg.checkFinished() == false {
+		fmt.Println("Line 610 config")
 		cfg.t.Fatalf("one(%v) failed to reach agreement", cmd)
 	}
 	return -1

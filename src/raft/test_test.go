@@ -14,6 +14,7 @@ import "time"
 import "math/rand"
 import "sync/atomic"
 import "sync"
+import "strconv"
 
 // The tester generously allows solutions to complete elections in one second
 // (much more than the paper's range of timeouts).
@@ -138,10 +139,14 @@ func TestBasicAgree2B(t *testing.T) {
 		}
 
 		xindex := cfg.one(index*100, servers, false)
+		fmt.Println("Machine number: " + strconv.Itoa(index))
 		if xindex != index {
 			t.Fatalf("got index %v but expected %v", xindex, index)
 		}
 	}
+
+	fmt.Println("Before end")
+
 
 	cfg.end()
 }
