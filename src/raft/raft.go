@@ -178,11 +178,11 @@ type RequestVoteReply struct {
 //
 func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	// Your code here (2A, 2B).
-	fmt.Println("Inside Request Vote before lock" + strconv.Itoa(rf.me) + rf.role)
+	// fmt.Println("Inside Request Vote before lock" + strconv.Itoa(rf.me) + rf.role)
 	rf.mu.Lock()
-	fmt.Println("Inside Request Vote after lock" + strconv.Itoa(rf.me))
+	// fmt.Println("Inside Request Vote after lock" + strconv.Itoa(rf.me))
 	defer rf.mu.Unlock()
-	if args.TERM > rf.currentTerm && (rf.votedFor < args.TERM && ((len(rf.logEntries) == 0) || (args.LastLogIdx >= len(rf.logEntries) - 1 && rf.logEntries[len(rf.logEntries) -1].TERM <= args.LastLogTerm))) {
+	if args.TERM > rf.currentTerm && rf.votedFor < args.TERM && args.LastLogIdx >= len(rf.logEntries) - 1 && rf.logEntries[len(rf.logEntries) -1].TERM <= args.LastLogTerm {
 		if rf.role == "l" {
 			rf.wakeStart = true
 			rf.cv.Signal()
@@ -192,7 +192,7 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 		rf.votedFor = args.TERM
 		rf.lastAppendEntries = time.Now()
 		reply.VOTEGRANTED = true
-		fmt.Println("Granted Vote" + strconv.Itoa(rf.me))
+		// fmt.Println("Granted Vote" + strconv.Itoa(rf.me))
 	} else {
 		reply.VOTEGRANTED = false
 	}
@@ -228,9 +228,10 @@ func min(a, b int) int {
 
 func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply) {
 	// Your code here (2A, 2B).
-	//fmt.Println("Recieved Append Entries" + strconv.Itoa(rf.me))
+	fmt.Println("Recieved Append Entries before lock" + strconv.Itoa(rf.me))
 
 	rf.mu.Lock()
+	fmt.Println("Recieved Append Entries After Lock" + strconv.Itoa(rf.me))
 	defer rf.mu.Unlock()
 	if args.LEADERTERM >= rf.currentTerm {
 		if rf.role == "l" {
@@ -240,14 +241,22 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 		rf.role = "f"
 		rf.currentTerm = args.LEADERTERM
 
+		/* fmt.Println("rf.me: " + strconv.Itoa(rf.me))
+		fmt.Println("ENTRIES: ")
+		fmt.Println(args.ENTRIES) */
+
+
+
+		fmt.Println("Received appendEntries ENTRIES length" + strconv.Itoa(len(args.ENTRIES)) + "; " + strconv.Itoa(rf.me))
 		if len(args.ENTRIES) == 0 {	// if no log entries to append
-			// //fmt.Println("Received appendEntries ENTRIES length" + strconv.Itoa(len(args.ENTRIES)) + "; " + strconv.Itoa(rf.me))
 			reply.SUCCESS = false
-		} else if args.PREVLOGIDX < len(rf.logEntries) && ((args.PREVLOGIDX < 0) || (rf.logEntries[args.PREVLOGIDX].TERM == args.PREVLOGTERM)) { // if able to append log entries sent
+		} else if args.PREVLOGIDX < len(rf.logEntries) && (rf.logEntries[args.PREVLOGIDX].TERM == args.PREVLOGTERM) { // if able to append log entries sent
 			rf.logEntries = rf.logEntries[:args.PREVLOGIDX + 1]
 			reply.SUCCESS = true
 			rf.logEntries = append(rf.logEntries, args.ENTRIES...)
-			fmt.Println("Recieved Append Entries SUCCESS " + strconv.Itoa(rf.me))
+			fmt.Println("SUCCESS: ")
+			// fmt.Println(rf.logEntries)
+			// fmt.Println("Recieved Append Entries SUCCESS " + strconv.Itoa(rf.me))
 		} else if args.PREVLOGIDX < len(rf.logEntries) && rf.logEntries[args.PREVLOGIDX].TERM != args.PREVLOGTERM { // unable to append log entries due to mismatched terms
 			rf.logEntries = rf.logEntries[:args.PREVLOGIDX]
 			reply.SUCCESS = false
@@ -274,11 +283,11 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	reply.TERM = rf.currentTerm
 	rf.lastAppendEntries = time.Now()
 
-	fmt.Println("--------")
-	fmt.Println("Append Entries " + strconv.Itoa(rf.me) + strconv.Itoa(rf.currentTerm) + rf.role)
-	fmt.Printf("%+q", rf.logEntries)
-	fmt.Println("Commit Idx: " + strconv.Itoa(rf.commitIdx))
-	fmt.Println("--------")
+	// fmt.Println("--------")
+	// fmt.Println("Append Entries " + strconv.Itoa(rf.me) + strconv.Itoa(rf.currentTerm) + rf.role)
+	//fmt.Printf("%+q", rf.logEntries)
+	// fmt.Println("Commit Idx: " + strconv.Itoa(rf.commitIdx))
+	// fmt.Println("--------")
 }
 
 // The ticker go routine starts a new election if this peer hasn't received
@@ -286,11 +295,17 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 func (rf *Raft) ticker() {
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
+	rf.applyCh <- ApplyMsg{
+		CommandValid: true,
+		Command:      0,
+		CommandIndex: 0,
+	}
+	// fmt.Println("In ticker")
 	for rf.killed() == false {
 
 		// Candidate state once entered this if statement
 		if rf.role != "l" && time.Now().Sub(rf.lastAppendEntries) > time.Duration(rf.timeout)*time.Millisecond {
-			fmt.Println("Inside Start Election" +  strconv.Itoa(rf.me))
+			// fmt.Println("Inside Start Election" +  strconv.Itoa(rf.me))
 			rf.role = "c"
 			rf.currentTerm++
 			rf.numVotes = 1
@@ -361,7 +376,7 @@ func (rf *Raft) sendRequestVote(server int, args *RequestVoteArgs) {
 	}
 	// Won election
 	if rf.role != "l" && rf.numVotes > (len(rf.peers)/2) {
-		fmt.Println("Elected leader")
+		// fmt.Println("Elected leader")
 		rf.role = "l"
 		// Reset nextIdx and matchIdx
 		for i := 0; i < len(rf.peers); i++ {
@@ -374,9 +389,9 @@ func (rf *Raft) sendRequestVote(server int, args *RequestVoteArgs) {
 }
 
 func (rf *Raft) leader_routine() {
-	//fmt.Println("Inside Leader Routine before lock" + strconv.Itoa(rf.me))
+	// fmt.Println("Inside Leader Routine before lock" + strconv.Itoa(rf.me))
 	//rf.mu.Lock()
-	//fmt.Println("Inside Leader Routine after lock" + strconv.Itoa(rf.me))
+	// fmt.Println("Inside Leader Routine after lock" + strconv.Itoa(rf.me))
 
 	for rf.killed() == false && rf.role == "l" {
 		for server_idx, _ := range rf.peers {
@@ -385,69 +400,59 @@ func (rf *Raft) leader_routine() {
 			}
 		}
 		rf.mu.Unlock()
-		fmt.Println("Leader Routine Unlock" + strconv.Itoa(rf.me))
+		// fmt.Println("Leader Routine Unlock" + strconv.Itoa(rf.me))
 		time.Sleep(100 * time.Millisecond)
 		rf.mu.Lock()
-		fmt.Println("Leader Routine Lock" + strconv.Itoa(rf.me))
+		// fmt.Println("Leader Routine Lock" + strconv.Itoa(rf.me))
 	}
 }
 
 func (rf *Raft) sendAppendEntry(server_idx int) {
-	SUCCESS := false
-	fmt.Println("Inside sendAppendEntry before lock" + strconv.Itoa(rf.me))
+	// fmt.Println("Inside sendAppendEntry before lock" + strconv.Itoa(rf.me))
 	rf.mu.Lock()
-	fmt.Println("Inside sendAppendEntry after lock" + strconv.Itoa(rf.me))
+	// fmt.Println("Inside sendAppendEntry after lock" + strconv.Itoa(rf.me))
 	defer rf.mu.Unlock()
-	for rf.killed() == false && !SUCCESS && rf.role == "l" {
-		args := AppendEntriesArgs{}
-		args.LEADERTERM = rf.currentTerm
-		args.LEADERID = rf.me
-		args.PREVLOGIDX = nextIdx[server_idx] - 1
-		if args.PREVLOGIDX < 0 {
-			args.PREVLOGTERM = 0
-			args.ENTRIES = rf.logEntries
-			args.LEADERCOMMIT = 0
-		} else {
-			args.PREVLOGTERM = rf.logEntries[args.PREVLOGIDX].TERM
-			args.ENTRIES = rf.logEntries[args.PREVLOGIDX + 1 :]
-			args.LEADERCOMMIT = rf.commitIdx
-		}
-		reply := AppendEntriesReply{}
-		rf.mu.Unlock()
-		ok := rf.peers[server_idx].Call("Raft.AppendEntries", &args, &reply)
-		rf.mu.Lock()
-		if ok {
-			SUCCESS = reply.SUCCESS
-			if reply.TERM > rf.currentTerm {
-				rf.currentTerm = reply.TERM
-				if rf.role == "l" {
-					rf.wakeStart = true
-					rf.cv.Signal()
-				}
-				rf.role = "f"
-				rf.lastAppendEntries = time.Now()
-				return
+	args := AppendEntriesArgs{}
+	args.LEADERTERM = rf.currentTerm
+	args.LEADERID = rf.me
+	args.PREVLOGIDX = nextIdx[server_idx] - 1
+	args.PREVLOGTERM = rf.logEntries[args.PREVLOGIDX].TERM
+	args.ENTRIES = rf.logEntries[args.PREVLOGIDX + 1 :]
+	args.LEADERCOMMIT = rf.commitIdx
+	reply := AppendEntriesReply{}
+	rf.mu.Unlock()
+	fmt.Println("AppendEntries call " + strconv.Itoa(server_idx))
+	ok := rf.peers[server_idx].Call("Raft.AppendEntries", &args, &reply)
+	fmt.Println("Response AppendEntries call " + strconv.Itoa(server_idx))
+	rf.mu.Lock()
+	if ok {
+		if reply.TERM > rf.currentTerm {
+			rf.currentTerm = reply.TERM
+			if rf.role == "l" {
+				rf.wakeStart = true
+				rf.cv.Signal()
 			}
-			if SUCCESS {
-				fmt.Println("Response AppendEntries" + strconv.Itoa(reply.TERM) + strconv.Itoa(rf.currentTerm))
-				nextIdx[server_idx] = len(rf.logEntries)
-				matchIdx[server_idx] = len(rf.logEntries) - 1
-				rf.countResponses++
-				if rf.countResponses > len(rf.peers) / 2 || rf.role == "f" {
-					rf.wakeStart = true
-					rf.cv.Signal()
-				}
-			} else if len(args.ENTRIES) == 0 {
-				SUCCESS = true	
-			} else if len(args.ENTRIES) != 0 {
-				nextIdx[server_idx]--
-			}
+			rf.role = "f"
+			rf.lastAppendEntries = time.Now()
+			return
 		}
-	}
-	fmt.Println("--------")
-	fmt.Println("Append Entries Leader" + strconv.Itoa(rf.me) + strconv.Itoa(rf.currentTerm) + rf.role)
-	fmt.Printf("%+q", rf.logEntries)
-	fmt.Println("--------")
+		if reply.SUCCESS {
+			// fmt.Println("Response AppendEntries" + strconv.Itoa(reply.TERM) + strconv.Itoa(rf.currentTerm))
+			nextIdx[server_idx] = len(rf.logEntries)
+			matchIdx[server_idx] = len(rf.logEntries) - 1
+			rf.countResponses++
+			if rf.countResponses > len(rf.peers) / 2 || rf.role == "f" {
+				rf.wakeStart = true
+				rf.cv.Signal()
+			}
+		} else if len(args.ENTRIES) != 0 {
+			nextIdx[server_idx]--
+		}
+	} 
+	// fmt.Println("--------")
+	// fmt.Println("Append Entries Leader" + strconv.Itoa(rf.me) + strconv.Itoa(rf.currentTerm) + rf.role)
+	//fmt.Printf("%+q", rf.logEntries)
+	// fmt.Println("--------")
 }
 
 //
@@ -465,10 +470,10 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 // the leader.
 //
 func (rf *Raft) Start(command interface{}) (int, int, bool) {
-	fmt.Println("Start before lockkkk" + strconv.Itoa(rf.me) + rf.role)
-	fmt.Println(command)
+	// fmt.Println("Start before lockkkk" + strconv.Itoa(rf.me) + rf.role)
+	// fmt.Println(command)
 	rf.mu.Lock()
-	fmt.Println("Start acquired lockkkk")
+	// fmt.Println("Start acquired lockkkk")
 	defer rf.mu.Unlock()
 	// Your code here (2B).
 	if rf.role == "l" {
@@ -479,9 +484,10 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 		for !rf.wakeStart {
 			rf.cv.Wait()
 		}
-		fmt.Println("Leader Start After Start")
+		// fmt.Println("Leader Start After Start")
 		if rf.role == "l" {
-			for N := rf.commitIdx + 1; N < len(rf.logEntries); N++ {
+			matchIdx[rf.me] = len(rf.logEntries) - 1
+ 			for N := rf.commitIdx + 1; N < len(rf.logEntries); N++ {
 				count := 0
 				for j := 0; j < len(matchIdx); j++ {
 					if matchIdx[j] >= N && rf.logEntries[N].TERM == rf.currentTerm{
@@ -501,18 +507,21 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 					}
 				}
 			}
-			fmt.Println("--------")
-			fmt.Println("Leader Start CommitIdx: " + strconv.Itoa(rf.commitIdx) + rf.role)
-			fmt.Printf("%+q", rf.logEntries)
-			fmt.Println("--------")
+			// fmt.Println("--------")
+			// fmt.Println("Leader Start CommitIdx: " + strconv.Itoa(rf.commitIdx) + rf.role)
+			// fmt.Printf("%+q", rf.logEntries)
+			// fmt.Printf("%+q", matchIdx)
+			// fmt.Println("--------")
+
+			fmt.Println(nextIdx)
 
 			return len(rf.logEntries) - 1, rf.currentTerm, rf.role == "l"
  		}
 	}
-	fmt.Println("--------")
-	fmt.Println("Leader Start CommitIdx: " + strconv.Itoa(rf.commitIdx) + rf.role)
-	fmt.Printf("%+q", rf.logEntries)
-	fmt.Println("--------")
+	// fmt.Println("--------")
+	// fmt.Println("Follower Start CommitIdx: " + strconv.Itoa(rf.commitIdx) + rf.role)
+	// fmt.Printf("%+q", rf.logEntries)
+	// fmt.Println("--------")
 
 	return len(rf.logEntries), rf.currentTerm, rf.role == "l"
 }
@@ -556,6 +565,7 @@ func (rf *Raft) killed() bool {
 //
 func Make(peers []*labrpc.ClientEnd, me int,
 	persister *Persister, applyCh chan ApplyMsg) *Raft {
+	// fmt.Println("Started Make")
 	rf := &Raft{}
 	rf.peers = peers
 	rf.persister = persister
@@ -575,11 +585,12 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.applyCh = applyCh
 	nextIdx = make(map[int]int)
 	matchIdx = make(map[int]int)
-	rf.commitIdx = -1
+	rf.commitIdx = 0
+	rf.logEntries = append(rf.logEntries, LogEntry{0, 0})
 
 
 	for i := 0; i < len(rf.peers); i++ {
-		nextIdx[i] = 0
+		nextIdx[i] = 1
 		matchIdx[i] = 0
 	}
 
