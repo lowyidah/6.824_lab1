@@ -233,6 +233,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	rf.mu.Lock()
 	fmt.Println("Recieved Append Entries After Lock" + strconv.Itoa(rf.me))
 	defer rf.mu.Unlock()
+	fmt.Println("Leader Term: " + strconv.Itoa(args.LEADERTERM) + "Current Term: " + strconv.Itoa(rf.currentTerm) + "ID: " + strconv.Itoa(rf.me) + rf.role)
 	if args.LEADERTERM >= rf.currentTerm {
 		if rf.role == "l" {
 			rf.wakeStart = true
@@ -420,13 +421,19 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 	args.ENTRIES = rf.logEntries[args.PREVLOGIDX + 1 :]
 	args.LEADERCOMMIT = rf.commitIdx
 	reply := AppendEntriesReply{}
+	if rf.role != "l" {
+		return
+	}
 	rf.mu.Unlock()
 	fmt.Println("AppendEntries call " + strconv.Itoa(server_idx))
 	ok := rf.peers[server_idx].Call("Raft.AppendEntries", &args, &reply)
 	fmt.Println("Response AppendEntries call " + strconv.Itoa(server_idx))
 	rf.mu.Lock()
-	if ok {
+	fmt.Println("Response AppendEntries call " + strconv.Itoa(server_idx) + "Role: " + rf.role)
+	if ok && rf.role == "l" {
+		fmt.Println("Reply Term: " + strconv.Itoa(reply.TERM) + "current term: " + strconv.Itoa(rf.currentTerm))
 		if reply.TERM > rf.currentTerm {
+			fmt.Println("Reply term > current term leader")
 			rf.currentTerm = reply.TERM
 			if rf.role == "l" {
 				rf.wakeStart = true
@@ -448,11 +455,7 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 		} else if len(args.ENTRIES) != 0 {
 			nextIdx[server_idx]--
 		}
-	} 
-	// fmt.Println("--------")
-	// fmt.Println("Append Entries Leader" + strconv.Itoa(rf.me) + strconv.Itoa(rf.currentTerm) + rf.role)
-	//fmt.Printf("%+q", rf.logEntries)
-	// fmt.Println("--------")
+	}
 }
 
 //
