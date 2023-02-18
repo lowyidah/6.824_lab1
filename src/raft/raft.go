@@ -19,13 +19,12 @@ package raft
 
 import (
 	//	"bytes"
-	"fmt"
+	//"fmt"
 	"math/rand"
 	"sync"
 	"sync/atomic"
 	"time"
-	"strconv"
-
+	//"strconv"
 	//	"6.824/labgob"
 	"6.824/labrpc"
 )
@@ -184,7 +183,7 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	rf.mu.Lock()
 	// fmt.Println("Inside Request Vote after lock" + strconv.Itoa(rf.me))
 	defer rf.mu.Unlock()
-	rf.lastAppendEntries = time.Now()
+	//rf.lastAppendEntries = time.Now()
 	reply.TERM = rf.currentTerm
 	reply.VOTEGRANTED = false
 	if args.TERM < rf.currentTerm {
@@ -203,6 +202,7 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 
 	if (rf.votedFor == -1 || rf.votedFor == args.CANDIDATEID) && args.LastLogIdx >= len(rf.logEntries) - 1 && rf.logEntries[len(rf.logEntries) -1].TERM <= args.LastLogTerm {
 		reply.VOTEGRANTED = true
+		// fmt.Println("Vote granted to " + strconv.Itoa(args.CANDIDATEID) + " by " + strconv.Itoa(rf.me))
 		rf.votedFor = args.CANDIDATEID
 	}
 
@@ -240,30 +240,32 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-	fmt.Println("Leader Term: " + strconv.Itoa(args.LEADERTERM) + "Current Term: " + strconv.Itoa(rf.currentTerm) + "ID: " + strconv.Itoa(rf.me) + rf.role)
+	// fmt.Println("Leader Term: " + strconv.Itoa(args.LEADERTERM) + "Current Term: " + strconv.Itoa(rf.currentTerm) + "ID: " + strconv.Itoa(rf.me) + rf.role)
 	if args.LEADERTERM >= rf.currentTerm {
 		if rf.role == "l" {
 			rf.wakeStart = true
 			rf.cv.Signal()
 		}
 		rf.role = "f"
-		rf.votedFor = -1
-		rf.currentTerm = args.LEADERTERM
+		if(rf.currentTerm < args.LEADERTERM){
+			rf.votedFor = -1
+			rf.currentTerm = args.LEADERTERM
+		}
 
-		/* fmt.Println("rf.me: " + strconv.Itoa(rf.me))
-		fmt.Println("ENTRIES: ")
-		fmt.Println(args.ENTRIES) */
+		// /* fmt.Println("rf.me: " + strconv.Itoa(rf.me))
+		// fmt.Println("ENTRIES: ")
+		// fmt.Println(args.ENTRIES) */
 
 
 
-		fmt.Println("Received appendEntries ENTRIES length" + strconv.Itoa(len(args.ENTRIES)) + "; " + strconv.Itoa(rf.me))
+		// fmt.Println("Received appendEntries ENTRIES length" + strconv.Itoa(len(args.ENTRIES)) + "; " + strconv.Itoa(rf.me))
 		if len(args.ENTRIES) == 0 {	// if no log entries to append
 			reply.SUCCESS = false
 		} else if args.PREVLOGIDX < len(rf.logEntries) && (rf.logEntries[args.PREVLOGIDX].TERM == args.PREVLOGTERM) { // if able to append log entries sent
 			rf.logEntries = rf.logEntries[:args.PREVLOGIDX + 1]
 			reply.SUCCESS = true
 			rf.logEntries = append(rf.logEntries, args.ENTRIES...)
-			fmt.Println("SUCCESS: ")
+			// fmt.Println("SUCCESS: ")
 			// fmt.Println(rf.logEntries)
 			// fmt.Println("Recieved Append Entries SUCCESS " + strconv.Itoa(rf.me))
 		} else if args.PREVLOGIDX < len(rf.logEntries) && rf.logEntries[args.PREVLOGIDX].TERM != args.PREVLOGTERM { // unable to append log entries due to mismatched terms
@@ -294,7 +296,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 
 	// fmt.Println("--------")
 	// fmt.Println("Append Entries " + strconv.Itoa(rf.me) + strconv.Itoa(rf.currentTerm) + rf.role)
-	//fmt.Printf("%+q", rf.logEntries)
+	// fmt.Printf("%+q", rf.logEntries)
 	// fmt.Println("Commit Idx: " + strconv.Itoa(rf.commitIdx))
 	// fmt.Println("--------")
 }
@@ -319,16 +321,17 @@ func (rf *Raft) ticker() {
 			rf.currentTerm++
 			rf.numVotes = 1
 			rf.lastAppendEntries = time.Now()
-			rf.votedFor = rf.currentTerm
+			rf.votedFor = rf.me
 			args := RequestVoteArgs{}
 			args.TERM = rf.currentTerm
+			args.CANDIDATEID = rf.me
 			for server_idx, _ := range rf.peers {
 				if server_idx != rf.me {
-					fmt.Println("Vote sent to " + strconv.Itoa(server_idx) + " by " + strconv.Itoa(rf.me))
+					// fmt.Println("Request Vote sent to " + strconv.Itoa(server_idx) + " by " + strconv.Itoa(rf.me))
 					go rf.sendRequestVote(server_idx, &args)
 				}
 			}
-			fmt.Println("Requested Votes: " + strconv.Itoa(rf.me) + " Current Term: " + strconv.Itoa(rf.currentTerm))
+			// fmt.Println("Requested Votes: " + strconv.Itoa(rf.me) + " Current Term: " + strconv.Itoa(rf.currentTerm))
 		}
 		// Wait till signalled by a leader_routine ending
 		rf.mu.Unlock()
@@ -387,17 +390,18 @@ func (rf *Raft) sendRequestVote(server int, args *RequestVoteArgs) {
 		return
 	}
 	if reply.VOTEGRANTED {
-		fmt.Println("Vote Granted to " + strconv.Itoa(rf.me) + " Term: " + strconv.Itoa(rf.currentTerm))
+		// fmt.Println("Vote Granted to " + strconv.Itoa(rf.me) + " Term: " + strconv.Itoa(rf.currentTerm))
 		rf.numVotes++
 	}
 	// Won election
 	if rf.numVotes > (len(rf.peers)/2) {
-		fmt.Println("Elected leader: " + strconv.Itoa(rf.me))
+		// fmt.Println("Elected leader: " + strconv.Itoa(rf.me))
 		rf.role = "l"
 		// Reset nextIdx and matchIdx
 		for i := 0; i < len(rf.peers); i++ {
 			nextIdx[i] = len(rf.logEntries)
 			matchIdx[i] = 0
+			responseAE[i] = true
 		}
 		rf.leader_routine()
 	}
@@ -413,7 +417,6 @@ func (rf *Raft) leader_routine() {
 		for server_idx, _ := range rf.peers {
 			if server_idx != rf.me && responseAE[server_idx] {
 				go rf.sendAppendEntry(server_idx)
-				responseAE[server_idx] = false
 			}
 		}
 		rf.mu.Unlock()
@@ -422,6 +425,7 @@ func (rf *Raft) leader_routine() {
 		rf.mu.Lock()
 		// fmt.Println("Leader Routine Lock" + strconv.Itoa(rf.me))
 	}
+	// fmt.Println("Exiting leader routine")
 }
 
 func (rf *Raft) sendAppendEntry(server_idx int) {
@@ -440,16 +444,17 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 	if rf.role != "l" {
 		return
 	}
+	responseAE[server_idx] = false
 	rf.mu.Unlock()
-	fmt.Println("AppendEntries call " + strconv.Itoa(server_idx))
+	// fmt.Println("AppendEntries call " + strconv.Itoa(server_idx))
 	ok := rf.peers[server_idx].Call("Raft.AppendEntries", &args, &reply)
 	rf.mu.Lock()
-	fmt.Println("Response AppendEntries call " + strconv.Itoa(server_idx) + "Role: " + rf.role)
+	// fmt.Println("Response AppendEntries call " + strconv.Itoa(server_idx) + "Role: " + rf.role)
 	responseAE[server_idx] = true
 	if ok && rf.role == "l" {
-		fmt.Println("Reply Term: " + strconv.Itoa(reply.TERM) + "current term: " + strconv.Itoa(rf.currentTerm))
+		// fmt.Println("Reply Term: " + strconv.Itoa(reply.TERM) + "current term: " + strconv.Itoa(rf.currentTerm))
 		if reply.TERM > rf.currentTerm {
-			fmt.Println("Reply term > current term leader")
+			// fmt.Println("Reply term > current term leader")
 			rf.currentTerm = reply.TERM
 			if rf.role == "l" {
 				rf.wakeStart = true
@@ -533,7 +538,7 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 			// fmt.Printf("%+q", matchIdx)
 			// fmt.Println("--------")
 
-			fmt.Println(nextIdx)
+			// fmt.Println(nextIdx)
 
 			return len(rf.logEntries) - 1, rf.currentTerm, rf.role == "l"
  		}
