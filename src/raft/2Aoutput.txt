@@ -1,0 +1,2889 @@
+Started Make
+Started Make
+Started Make
+Test (2A): initial election ...
+In ticker
+In ticker
+In ticker
+Inside Start Election1
+Request Vote sent to 0 by 1
+Request Vote sent to 2 by 1
+Requested Votes: 1 Current Term: 1
+Inside Request Vote before lock0f
+Inside Request Vote after lock0
+Vote granted to 1 by 0
+Inside Request Vote before lock2f
+Inside Request Vote after lock2
+Vote granted to 1 by 2
+Vote Granted to 1 Term: 1
+Elected leader: 1
+Inside Leader Routine before lock1
+Inside Leader Routine after lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock1
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock1
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Inside sendAppendEntry before lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock1
+Leader Routine Unlock1
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 0
+Inside sendAppendEntry before lock1
+Inside sendAppendEntry after lock1
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+  ... Passed --   4.1  3   58   14872    0
+Started Make
+Started Make
+Started Make
+Test (2A): election after network failure ...
+In ticker
+In ticker
+In ticker
+Leader Routine Lock1
+Exiting leader routine
+Inside Start Election2
+Request Vote sent to 0 by 2
+Request Vote sent to 1 by 2
+Requested Votes: 2 Current Term: 1
+Inside Request Vote before lock0f
+Inside Request Vote after lock0
+Vote granted to 2 by 0
+Inside Request Vote before lock1f
+Inside Request Vote after lock1
+Vote granted to 2 by 1
+Vote Granted to 2 Term: 1
+Elected leader: 2
+Inside Leader Routine before lock2
+Inside Leader Routine after lock2
+Leader Routine Unlock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 0
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 1
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 1f
+rf.me: 1
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 1
+--------
+Append Entries 11f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 1Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 0
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 1
+Leader Term: 1Current Term: 1ID: 1f
+rf.me: 1
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 1
+--------
+Append Entries 11f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 1Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 0
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 1
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Response AppendEntries call 1Role: l
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 1
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside Start Election0
+Request Vote sent to 1 by 0
+Request Vote sent to 2 by 0
+Requested Votes: 0 Current Term: 2
+Inside Request Vote before lock1f
+Inside Request Vote after lock1
+Vote granted to 0 by 1
+Vote Granted to 0 Term: 2
+Elected leader: 0
+Inside Leader Routine before lock0
+Inside Leader Routine after lock0
+Leader Routine Unlock0
+Inside sendAppendEntry before lock0
+Inside sendAppendEntry after lock0
+AppendEntries call 1
+Leader Term: 2Current Term: 2ID: 1f
+rf.me: 1
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 1
+--------
+Append Entries 12f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock0
+Response AppendEntries call 1Role: l
+Reply Term: 2current term: 2
+Inside sendAppendEntry after lock0
+AppendEntries call 2
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 0
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 1
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Response AppendEntries call 0Role: l
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 0
+Leader Routine Lock0
+Leader Routine Unlock0
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside Start Election1
+Request Vote sent to 0 by 1
+Request Vote sent to 2 by 1
+Requested Votes: 1 Current Term: 3
+--- FAIL: TestReElection2A (5.43s)
+    config.go:489: expected no leader among connected servers, but 2 claims to be leader
+Started Make
+Started Make
+Started Make
+In ticker
+In ticker
+Started Make
+Started Make
+Started Make
+Started Make
+Test (2A): multiple elections ...
+In ticker
+In ticker
+In ticker
+In ticker
+In ticker
+Leader Routine Lock0
+Exiting leader routine
+Leader Routine Lock2
+Exiting leader routine
+Response AppendEntries call 1Role: l
+Inside Start Election5
+Request Vote sent to 0 by 5
+Request Vote sent to 1 by 5
+Request Vote sent to 2 by 5
+Request Vote sent to 3 by 5
+Request Vote sent to 4 by 5
+Request Vote sent to 6 by 5
+Requested Votes: 5 Current Term: 1
+Inside Request Vote before lock1f
+Inside Request Vote after lock1
+Vote granted to 5 by 1
+Vote Granted to 5 Term: 1
+Inside Request Vote before lock2f
+Inside Request Vote after lock2
+Vote granted to 5 by 2
+Inside Start Election4
+Request Vote sent to 0 by 4
+Request Vote sent to 1 by 4
+Request Vote sent to 2 by 4
+Request Vote sent to 3 by 4
+Request Vote sent to 5 by 4
+Request Vote sent to 6 by 4
+Requested Votes: 4 Current Term: 1
+Inside Request Vote before lock0f
+Inside Request Vote after lock0
+Vote granted to 4 by 0
+Vote Granted to 4 Term: 1
+Inside Request Vote before lock2f
+Inside Request Vote after lock2
+Inside Request Vote before lock3f
+Inside Request Vote after lock3
+Vote granted to 4 by 3
+Vote Granted to 4 Term: 1
+Inside Request Vote before lock6f
+Inside Request Vote after lock6
+Vote granted to 4 by 6
+Vote Granted to 4 Term: 1
+Elected leader: 4
+Inside Leader Routine before lock4
+Inside Leader Routine after lock4
+Leader Routine Unlock4
+Inside Request Vote before lock6f
+Inside Request Vote after lock6
+Inside Request Vote before lock3f
+Inside Request Vote after lock3
+Inside Request Vote before lock0f
+Inside Request Vote after lock0
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 1
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 3
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 6
+Leader Term: 1Current Term: 1ID: 6f
+rf.me: 6
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 6
+--------
+Append Entries 61f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 6Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 1f
+rf.me: 1
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 1
+--------
+Append Entries 11f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 1Role: l
+Reply Term: 1current term: 1
+Inside Request Vote before lock1f
+Inside Request Vote after lock1
+Inside Request Vote before lock5c
+Inside Request Vote before lock4f
+Inside Request Vote after lock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Vote Granted to 5 Term: 1
+Inside Request Vote after lock5
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 1Current Term: 1ID: 5c
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 51f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 3f
+rf.me: 3
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 3
+--------
+Append Entries 31f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 3Role: l
+Reply Term: 1current term: 1
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 0
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 3
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 0
+Leader Term: 1Current Term: 1ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 01f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 3f
+rf.me: 3
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 3
+--------
+Append Entries 31f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 3Role: l
+Reply Term: 1current term: 1
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 6
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 1Current Term: 1ID: 6f
+rf.me: 6
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 6
+--------
+Append Entries 61f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 6Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 51f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 1current term: 1
+Leader Term: 1Current Term: 1ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 21f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 1current term: 1
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 1
+Leader Term: 1Current Term: 1ID: 1f
+rf.me: 1
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 1
+--------
+Append Entries 11f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 1Role: l
+Reply Term: 1current term: 1
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 3
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 0
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 6
+Inside sendAppendEntry after lock4
+AppendEntries call 1
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Routine Lock4
+Leader Routine Unlock4
+Leader Routine Lock4
+Leader Routine Unlock4
+Response AppendEntries call 2Role: l
+Response AppendEntries call 1Role: l
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 1
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Response AppendEntries call 0Role: l
+Leader Routine Lock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 0
+Leader Routine Unlock4
+Leader Routine Lock4
+Leader Routine Unlock4
+Response AppendEntries call 0Role: l
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 0
+Leader Routine Lock4
+Leader Routine Unlock4
+Leader Routine Lock4
+Leader Routine Unlock4
+Response AppendEntries call 1Role: l
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 1
+Inside Start Election2
+Request Vote sent to 0 by 2
+Request Vote sent to 1 by 2
+Request Vote sent to 3 by 2
+Request Vote sent to 4 by 2
+Request Vote sent to 5 by 2
+Request Vote sent to 6 by 2
+Requested Votes: 2 Current Term: 2
+Inside Request Vote before lock5f
+Inside Request Vote after lock5
+Vote granted to 2 by 5
+Inside Request Vote before lock3f
+Inside Request Vote after lock3
+Vote granted to 2 by 3
+Inside Request Vote before lock6f
+Inside Request Vote after lock6
+Vote granted to 2 by 6
+Vote Granted to 2 Term: 2
+Vote Granted to 2 Term: 2
+Vote Granted to 2 Term: 2
+Elected leader: 2
+Inside Leader Routine before lock2
+Inside Leader Routine after lock2
+Leader Routine Unlock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 3
+Leader Term: 2Current Term: 2ID: 3f
+rf.me: 3
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 3
+--------
+Append Entries 32f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry before lock2
+Response AppendEntries call 3Role: l
+Reply Term: 2current term: 2
+Inside sendAppendEntry after lock2
+AppendEntries call 4
+Inside sendAppendEntry after lock2
+AppendEntries call 5
+Leader Term: 2Current Term: 2ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 52f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry after lock2
+AppendEntries call 6
+Leader Term: 2Current Term: 2ID: 6f
+rf.me: 6
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 6
+--------
+Append Entries 62f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry after lock2
+AppendEntries call 0
+Inside sendAppendEntry after lock2
+AppendEntries call 1
+Response AppendEntries call 5Role: l
+Reply Term: 2current term: 2
+Response AppendEntries call 6Role: l
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 3
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 6
+Leader Term: 1Current Term: 2ID: 3f
+--------
+Append Entries 32f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 3Role: l
+Reply Term: 2current term: 1
+Reply term > current term leader
+Leader Term: 1Current Term: 2ID: 6f
+--------
+Append Entries 62f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 6Role: f
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 3
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 5
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 6
+Leader Routine Lock4
+Exiting leader routine
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Response AppendEntries call 4Role: l
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 4
+Response AppendEntries call 1Role: l
+Leader Routine Lock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+Leader Routine Unlock2
+AppendEntries call 1
+Response AppendEntries call 0Role: l
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 0
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside Start Election0
+Request Vote sent to 1 by 0
+Request Vote sent to 2 by 0
+Request Vote sent to 3 by 0
+Request Vote sent to 4 by 0
+Request Vote sent to 5 by 0
+Request Vote sent to 6 by 0
+Requested Votes: 0 Current Term: 2
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside Start Election1
+Request Vote sent to 0 by 1
+Request Vote sent to 2 by 1
+Request Vote sent to 3 by 1
+Request Vote sent to 4 by 1
+Request Vote sent to 5 by 1
+Request Vote sent to 6 by 1
+Requested Votes: 1 Current Term: 2
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside Start Election3
+Request Vote sent to 0 by 3
+Request Vote sent to 1 by 3
+Request Vote sent to 2 by 3
+Request Vote sent to 4 by 3
+Request Vote sent to 5 by 3
+Inside Request Vote before lock4f
+Inside Request Vote after lock4
+Vote granted to 3 by 4
+Request Vote sent to 6 by 3
+Requested Votes: 3 Current Term: 3
+Vote Granted to 3 Term: 3
+Inside Request Vote before lock6f
+Inside Request Vote after lock6
+Vote granted to 3 by 6
+Inside Request Vote before lock5f
+Inside Request Vote after lock5
+Vote granted to 3 by 5
+Vote Granted to 3 Term: 3
+Vote Granted to 3 Term: 3
+Elected leader: 3
+Inside Leader Routine before lock3
+Inside Leader Routine after lock3
+Leader Routine Unlock3
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 2
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 4
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 0
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 6
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 5
+Leader Term: 3Current Term: 3ID: 6f
+rf.me: 6
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 6
+--------
+Append Entries 63f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 3Current Term: 3ID: 4f
+rf.me: 4
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 4
+--------
+Append Entries 43f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 1Role: l
+Response AppendEntries call 6Role: l
+Reply Term: 3current term: 3
+Response AppendEntries call 4Role: l
+Reply Term: 3current term: 3
+Leader Term: 3Current Term: 3ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 53f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock3
+Response AppendEntries call 5Role: l
+Reply Term: 3current term: 3
+Inside sendAppendEntry after lock3
+AppendEntries call 1
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 4
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 6
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 3
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 5
+Leader Routine Lock3
+Leader Routine Unlock3
+Response AppendEntries call 4Role: l
+Leader Routine Lock2
+Inside sendAppendEntry before lock2
+Leader Routine Unlock2
+Inside sendAppendEntry after lock2
+AppendEntries call 4
+Leader Routine Lock3
+Leader Routine Unlock3
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock3
+Leader Routine Unlock3
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock3
+Leader Routine Unlock3
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock3
+Leader Routine Unlock3
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock3
+Leader Routine Unlock3
+Response AppendEntries call 4Role: l
+Response AppendEntries call 0Role: l
+Leader Routine Lock2
+Leader Routine Unlock2
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 0
+Inside sendAppendEntry before lock2
+Inside sendAppendEntry after lock2
+AppendEntries call 4
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside Start Election0
+Request Vote sent to 1 by 0
+Request Vote sent to 2 by 0
+Request Vote sent to 3 by 0
+Request Vote sent to 4 by 0
+Request Vote sent to 5 by 0
+Request Vote sent to 6 by 0
+Requested Votes: 0 Current Term: 3
+Inside Request Vote before lock5f
+Inside Request Vote after lock5
+Inside Request Vote before lock6f
+Inside Request Vote after lock6
+Inside Request Vote before lock3l
+Inside Request Vote after lock3
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock3
+Leader Routine Unlock3
+Leader Routine Lock2
+Leader Routine Unlock2
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside Start Election1
+Request Vote sent to 0 by 1
+Request Vote sent to 2 by 1
+Request Vote sent to 3 by 1
+Request Vote sent to 4 by 1
+Request Vote sent to 5 by 1
+Request Vote sent to 6 by 1
+Requested Votes: 1 Current Term: 3
+Inside Request Vote before lock2l
+Inside Request Vote after lock2
+Vote granted to 1 by 2
+Inside Request Vote before lock3l
+Inside Request Vote after lock3
+Inside Request Vote before lock0c
+Inside Request Vote after lock0
+Inside Request Vote before lock4f
+Inside Request Vote after lock4
+Vote Granted to 1 Term: 3
+Leader Routine Lock2
+Exiting leader routine
+Leader Routine Lock3
+Leader Routine Unlock3
+Response AppendEntries call 1Role: f
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 1
+Leader Term: 3Current Term: 3ID: 1c
+rf.me: 1
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 1
+--------
+Append Entries 13f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 1Role: l
+Reply Term: 3current term: 3
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 1
+Leader Term: 3Current Term: 3ID: 1f
+rf.me: 1
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 1
+--------
+Append Entries 13f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 1Role: l
+Reply Term: 3current term: 3
+Response AppendEntries call 1Role: l
+Response AppendEntries call 5Role: f
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 1
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 5
+Leader Term: 3Current Term: 3ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 53f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 3current term: 3
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 5
+Leader Term: 3Current Term: 3ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 53f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 3current term: 3
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 5
+Leader Term: 3Current Term: 3ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 53f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 3current term: 3
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 5
+Leader Term: 3Current Term: 3ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 53f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 3current term: 3
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 5
+Leader Term: 3Current Term: 3ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 53f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 3current term: 3
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 5
+Leader Term: 3Current Term: 3ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 53f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 3current term: 3
+Inside Start Election4
+Request Vote sent to 0 by 4
+Request Vote sent to 1 by 4
+Request Vote sent to 2 by 4
+Request Vote sent to 3 by 4
+Request Vote sent to 5 by 4
+Request Vote sent to 6 by 4
+Requested Votes: 4 Current Term: 4
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 5
+Response AppendEntries call 6Role: f
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 6
+Inside Start Election2
+Request Vote sent to 0 by 2
+Request Vote sent to 1 by 2
+Request Vote sent to 3 by 2
+Request Vote sent to 4 by 2
+Request Vote sent to 5 by 2
+Request Vote sent to 6 by 2
+Requested Votes: 2 Current Term: 4
+Leader Routine Lock3
+Leader Routine Unlock3
+Leader Routine Lock3
+Leader Routine Unlock3
+Response AppendEntries call 5Role: c
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 5
+Response AppendEntries call 3Role: c
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside Start Election6
+Request Vote sent to 0 by 6
+Request Vote sent to 1 by 6
+Request Vote sent to 2 by 6
+Request Vote sent to 3 by 6
+Request Vote sent to 4 by 6
+Request Vote sent to 5 by 6
+Requested Votes: 6 Current Term: 4
+Inside Request Vote before lock0c
+Inside Request Vote after lock0
+Vote granted to 6 by 0
+Inside Request Vote before lock1f
+Inside Request Vote after lock1
+Vote granted to 6 by 1
+Inside Request Vote before lock5f
+Inside Request Vote after lock5
+Vote granted to 6 by 5
+Vote Granted to 6 Term: 4
+Vote Granted to 6 Term: 4
+Vote Granted to 6 Term: 4
+Elected leader: 6
+Inside Leader Routine before lock6
+Inside Leader Routine after lock6
+Leader Routine Unlock6
+Inside sendAppendEntry before lock6
+Inside sendAppendEntry after lock6
+AppendEntries call 2
+Inside sendAppendEntry before lock6
+Inside sendAppendEntry after lock6
+AppendEntries call 3
+Inside sendAppendEntry before lock6
+Inside sendAppendEntry after lock6
+AppendEntries call 0
+Leader Term: 4Current Term: 4ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 04f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 4current term: 4
+Inside sendAppendEntry before lock6
+Inside sendAppendEntry after lock6
+AppendEntries call 5
+Leader Term: 4Current Term: 4ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 54f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 4current term: 4
+Inside sendAppendEntry before lock6
+Inside sendAppendEntry after lock6
+AppendEntries call 1
+Leader Term: 4Current Term: 4ID: 1f
+rf.me: 1
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 1
+--------
+Append Entries 14f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 1Role: l
+Reply Term: 4current term: 4
+Inside sendAppendEntry before lock6
+Inside sendAppendEntry after lock6
+AppendEntries call 4
+Leader Routine Lock3
+Leader Routine Unlock3
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 1
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 6
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 0
+Inside sendAppendEntry before lock3
+Inside sendAppendEntry after lock3
+AppendEntries call 5
+Leader Routine Lock6
+Leader Routine Unlock6
+Leader Routine Lock3
+Leader Routine Unlock3
+Response AppendEntries call 2Role: l
+Leader Routine Lock6
+Leader Routine Unlock6
+Inside sendAppendEntry before lock6
+Inside sendAppendEntry after lock6
+AppendEntries call 2
+Leader Routine Lock3
+Leader Routine Unlock3
+Leader Routine Lock6
+Leader Routine Unlock6
+Leader Routine Lock3
+Leader Routine Unlock3
+Response AppendEntries call 3Role: c
+Leader Routine Lock6
+Leader Routine Unlock6
+Inside sendAppendEntry before lock6
+Inside sendAppendEntry after lock6
+AppendEntries call 3
+Leader Term: 4Current Term: 3ID: 3l
+rf.me: 3
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 3
+--------
+Append Entries 34f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 3Role: l
+Reply Term: 4current term: 4
+Leader Routine Lock3
+Exiting leader routine
+Leader Routine Lock6
+Leader Routine Unlock6
+Inside sendAppendEntry before lock6
+Inside sendAppendEntry after lock6
+AppendEntries call 3
+Leader Term: 4Current Term: 4ID: 3f
+rf.me: 3
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 3
+--------
+Append Entries 34f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 3Role: l
+Reply Term: 4current term: 4
+Response AppendEntries call 6Role: f
+Leader Routine Lock6
+Inside sendAppendEntry before lock6
+Inside sendAppendEntry after lock6
+Leader Routine Unlock6
+AppendEntries call 3
+Leader Term: 4Current Term: 4ID: 3f
+rf.me: 3
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 3
+--------
+Append Entries 34f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 3Role: l
+Reply Term: 4current term: 4
+Response AppendEntries call 2Role: l
+Response AppendEntries call 2Role: c
+Inside Start Election4
+Request Vote sent to 0 by 4
+Request Vote sent to 1 by 4
+Request Vote sent to 2 by 4
+Request Vote sent to 3 by 4
+Request Vote sent to 5 by 4
+Request Vote sent to 6 by 4
+Requested Votes: 4 Current Term: 5
+Inside Request Vote before lock2c
+Inside Request Vote after lock2
+Vote granted to 4 by 2
+Inside Request Vote before lock6l
+Inside Request Vote after lock6
+Vote granted to 4 by 6
+Vote Granted to 4 Term: 5
+Vote Granted to 4 Term: 5
+Inside Request Vote before lock3f
+Inside Request Vote after lock3
+Vote granted to 4 by 3
+Inside Request Vote before lock5f
+Inside Request Vote after lock5
+Vote granted to 4 by 5
+Vote Granted to 4 Term: 5
+Elected leader: 4
+Inside Leader Routine before lock4
+Inside Leader Routine after lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Routine Lock6
+Exiting leader routine
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 1
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 3
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Leader Term: 5Current Term: 5ID: 3f
+rf.me: 3
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 3
+--------
+Append Entries 35f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 3Role: l
+Reply Term: 5current term: 5
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 0
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 6
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Leader Term: 5Current Term: 5ID: 6f
+rf.me: 6
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 6
+--------
+Append Entries 65f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 6Role: l
+Reply Term: 5current term: 5
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 3
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 6
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock4
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 6Role: l
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock4
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Inside sendAppendEntry after lock4
+AppendEntries call 6
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 0Role: f
+Response AppendEntries call 1Role: l
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 1
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry before lock4
+Leader Term: 5Current Term: 4ID: 1f
+rf.me: 1
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 1
+--------
+Append Entries 15f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Inside sendAppendEntry after lock4
+AppendEntries call 0
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Response AppendEntries call 1Role: l
+Reply Term: 5current term: 5
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 6Role: l
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry before lock4
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Inside sendAppendEntry after lock4
+AppendEntries call 1
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 5Current Term: 5ID: 1f
+rf.me: 1
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 1
+--------
+Append Entries 15f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry after lock4
+AppendEntries call 6
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 1Role: l
+Reply Term: 5current term: 5
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 1
+Leader Term: 5Current Term: 5ID: 1f
+rf.me: 1
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 1
+--------
+Append Entries 15f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry before lock4
+Response AppendEntries call 1Role: l
+Reply Term: 5current term: 5
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 0Role: l
+Response AppendEntries call 6Role: f
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 1
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 6
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 0
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 0Role: f
+Response AppendEntries call 5Role: f
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 0
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 2Role: l
+Response AppendEntries call 4Role: f
+Response AppendEntries call 5Role: f
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 0Role: f
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 0
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 5Current Term: 4ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 05f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 0Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 6Role: f
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 6
+Leader Term: 5Current Term: 5ID: 6f
+rf.me: 6
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 6
+--------
+Append Entries 65f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry before lock4
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 6Role: l
+Reply Term: 5current term: 5
+Inside sendAppendEntry after lock4
+AppendEntries call 0
+Leader Term: 5Current Term: 5ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 05f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 0Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 6
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry before lock4
+Leader Term: 5Current Term: 5ID: 6f
+rf.me: 6
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 6
+--------
+Append Entries 65f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Inside sendAppendEntry after lock4
+AppendEntries call 0
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 05f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 6Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 0Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry before lock4
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Inside sendAppendEntry after lock4
+AppendEntries call 0
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 5Current Term: 5ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 05f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Inside sendAppendEntry after lock4
+AppendEntries call 6
+Leader Term: 5Current Term: 5ID: 6f
+rf.me: 6
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 6
+--------
+Append Entries 65f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 0Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 6Role: l
+Reply Term: 5current term: 5
+Leader Routine Lock4
+Leader Routine Unlock4
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 2
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 6
+Leader Term: 5Current Term: 5ID: 2f
+rf.me: 2
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 2
+--------
+Append Entries 25f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 2Role: l
+Reply Term: 5current term: 5
+Leader Term: 5Current Term: 5ID: 6f
+rf.me: 6
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 6
+--------
+Append Entries 65f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 6Role: l
+Reply Term: 5current term: 5
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 5
+Inside sendAppendEntry before lock4
+Inside sendAppendEntry after lock4
+AppendEntries call 0
+Leader Term: 5Current Term: 5ID: 0f
+rf.me: 0
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 0
+--------
+Append Entries 05f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Leader Term: 5Current Term: 5ID: 5f
+rf.me: 5
+ENTRIES: 
+[]
+Received appendEntries ENTRIES length0; 5
+--------
+Append Entries 55f
+[{'\x00' '\x00'}]Commit Idx: 0
+--------
+Response AppendEntries call 0Role: l
+Reply Term: 5current term: 5
+Response AppendEntries call 5Role: l
+Reply Term: 5current term: 5
+  ... Passed --   9.1  7  207   40616    0
+FAIL
+exit status 1
+FAIL	6.824/raft	18.614s

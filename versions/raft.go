@@ -20,7 +20,6 @@ package raft
 import (
 	//	"bytes"
 	//"fmt"
-
 	"fmt"
 	"math/rand"
 	"strconv"
@@ -86,6 +85,7 @@ type Raft struct {
 	applyCh        chan ApplyMsg
 	nextIdx        map[int]int
 	matchIdx       map[int]int
+	responseAE     map[int]bool
 }
 
 // return currentTERM and whether this server
@@ -160,8 +160,8 @@ func (rf *Raft) Snapshot(index int, snapshot []byte) {
 type RequestVoteArgs struct {
 	// Your data here (2A, 2B).
 	TERM        int
-	LASTLOGIDX  int
-	LASTLOGTERM int
+	LastLogIdx  int
+	LastLogTerm int
 	CANDIDATEID int
 }
 
@@ -182,7 +182,6 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	// Your code here (2A, 2B).
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-	fmt.Println(strconv.Itoa(rf.me) + " with currentTerm " + strconv.Itoa(rf.currentTerm) + " received requestVote from " + strconv.Itoa(args.CANDIDATEID) + " who has term " + strconv.Itoa(args.TERM))
 	//rf.lastAppendEntries = time.Now()
 	reply.TERM = rf.currentTerm
 	reply.VOTEGRANTED = false
@@ -196,15 +195,16 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 			rf.cv.Signal()
 		}
 		rf.role = "f"
+		fmt.Println("RequestVote: Current term of server " + strconv.Itoa(rf.me) + " updated from " + strconv.Itoa(rf.currentTerm) + " to " + strconv.Itoa(args.TERM))
 
 		rf.currentTerm = args.TERM
 		rf.votedFor = -1
 	}
 
-	if (rf.votedFor == -1 || rf.votedFor == args.CANDIDATEID) && args.LASTLOGIDX >= len(rf.logEntries)-1 && rf.logEntries[len(rf.logEntries)-1].TERM <= args.LASTLOGTERM {
+	if (rf.votedFor == -1 || rf.votedFor == args.CANDIDATEID) && args.LastLogIdx >= len(rf.logEntries)-1 && rf.logEntries[len(rf.logEntries)-1].TERM <= args.LastLogTerm {
 		reply.VOTEGRANTED = true
+		fmt.Println("Vote granted to " + strconv.Itoa(args.CANDIDATEID) + " by " + strconv.Itoa(rf.me))
 		rf.votedFor = args.CANDIDATEID
-		fmt.Println(strconv.Itoa(rf.me) + " voted for " + strconv.Itoa(args.CANDIDATEID))
 	}
 
 }
@@ -212,22 +212,6 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 type LogEntry struct {
 	CMD  interface{}
 	TERM int
-}
-
-func (rf *Raft) printLogEntries(prefix string) {
-	fmt.Print(prefix + " logEntries for " + strconv.Itoa(rf.me) + ": ")
-	for i := 0; i < len(rf.logEntries); i++ {
-		intCmd, intOk := rf.logEntries[i].CMD.(int)
-		if intOk {
-			fmt.Print("[CMD: " + strconv.Itoa(intCmd) + "; TERM: " + strconv.Itoa(rf.logEntries[i].TERM) + "]")
-		}
-		stringCmd, stringOk := rf.logEntries[i].CMD.(string)
-		if stringOk {
-			fmt.Print("[CMD: " + stringCmd + "; TERM: " + strconv.Itoa(rf.logEntries[i].TERM) + "]")
-		}
-
-	}
-	fmt.Println("")
 }
 
 type AppendEntriesArgs struct {
@@ -253,8 +237,10 @@ func min(a, b int) int {
 
 func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply) {
 	// Your code here (2A, 2B).
+	fmt.Println("Inside AppendEntries before lock for server: " + strconv.Itoa(rf.me))
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
+	fmt.Println("AppendEntries: Leader Term: " + strconv.Itoa(args.LEADERTERM) + "Current Term: " + strconv.Itoa(rf.currentTerm) + "ID: " + strconv.Itoa(rf.me) + rf.role)
 	if args.LEADERTERM >= rf.currentTerm {
 		if rf.role == "l" {
 			rf.wakeStart = true
@@ -263,6 +249,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 		rf.role = "f"
 		if rf.currentTerm < args.LEADERTERM {
 			rf.votedFor = -1
+			fmt.Println("AppendEntries: Current term of server " + strconv.Itoa(rf.me) + " updated from " + strconv.Itoa(rf.currentTerm) + " to " + strconv.Itoa(args.LEADERTERM))
 			rf.currentTerm = args.LEADERTERM
 		}
 
@@ -297,10 +284,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	reply.TERM = rf.currentTerm
 	rf.lastAppendEntries = time.Now()
 
-	// fmt.Print("AppendEntries logEntries for " + strconv.Itoa(rf.me) + ": ")
 	// fmt.Printf("%+q", rf.logEntries)
-	// fmt.Println(rf.logEntries)
-	rf.printLogEntries("AppendEntries")
 }
 
 // The ticker go routine starts a new election if this peer hasn't received
@@ -319,14 +303,15 @@ func (rf *Raft) ticker() {
 		if rf.role != "l" && time.Now().Sub(rf.lastAppendEntries) > time.Duration(rf.timeout)*time.Millisecond {
 			rf.role = "c"
 			rf.currentTerm++
-			fmt.Println("Candidate server: " + strconv.Itoa(rf.me) + " currentTerm is: " + strconv.Itoa(rf.currentTerm))
 			rf.numVotes = 1
 			rf.lastAppendEntries = time.Now()
 			rf.votedFor = rf.me
-			// TODO: maybe lock over this, args in sendRequestVote
+			args := RequestVoteArgs{}
+			args.TERM = rf.currentTerm
+			args.CANDIDATEID = rf.me
 			for server_idx, _ := range rf.peers {
 				if server_idx != rf.me {
-					go rf.sendRequestVote(server_idx)
+					go rf.sendRequestVote(server_idx, &args)
 				}
 			}
 		}
@@ -367,24 +352,16 @@ func (rf *Raft) ticker() {
 // that the caller passes the address of the reply struct with &, not
 // the struct itself.
 //
-func (rf *Raft) sendRequestVote(server int) {
+func (rf *Raft) sendRequestVote(server int, args *RequestVoteArgs) {
+	reply := RequestVoteReply{}
+	rf.peers[server].Call("Raft.RequestVote", args, &reply)
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-	args := RequestVoteArgs{}
-	args.TERM = rf.currentTerm
-	args.LASTLOGIDX = len(rf.logEntries) - 1
-	args.LASTLOGTERM = rf.logEntries[args.LASTLOGIDX].TERM
-	args.CANDIDATEID = rf.me
-	reply := RequestVoteReply{}
-	fmt.Println("Sending requestVote from " + strconv.Itoa(rf.me) + " to " + strconv.Itoa(server))
-	rf.mu.Unlock()
-	rf.peers[server].Call("Raft.RequestVote", &args, &reply)
-	rf.mu.Lock()
-	fmt.Println("Return from sending requestVote from " + strconv.Itoa(rf.me) + " to " + strconv.Itoa(server))
 	if rf.role != "c" {
 		return
 	}
 	if reply.TERM > rf.currentTerm {
+		fmt.Println("sendRequestVote: Current term of server " + strconv.Itoa(rf.me) + " updated from " + strconv.Itoa(rf.currentTerm) + " to " + strconv.Itoa(reply.TERM))
 		rf.currentTerm = reply.TERM
 		if rf.role == "l" {
 			rf.wakeStart = true
@@ -396,15 +373,18 @@ func (rf *Raft) sendRequestVote(server int) {
 		return
 	}
 	if reply.VOTEGRANTED {
+		fmt.Println("Vote Granted to me: " + strconv.Itoa(rf.me) + " Term: " + strconv.Itoa(rf.currentTerm))
 		rf.numVotes++
 	}
 	// Won election
 	if rf.numVotes > (len(rf.peers) / 2) {
+		fmt.Println("Elected leader: " + strconv.Itoa(rf.me))
 		rf.role = "l"
 		// Reset rf.nextIdx and rf.matchIdx
 		for i := 0; i < len(rf.peers); i++ {
 			rf.nextIdx[i] = len(rf.logEntries)
 			rf.matchIdx[i] = 0
+			rf.responseAE[i] = true
 		}
 		rf.leader_routine()
 	}
@@ -415,9 +395,10 @@ func (rf *Raft) leader_routine() {
 	//rf.mu.Lock()
 
 	for rf.killed() == false && rf.role == "l" {
-		fmt.Println("Leader routine of leader " + strconv.Itoa(rf.me))
+		fmt.Println("One iteration of leader_routine for leader: " + strconv.Itoa(rf.me))
 		for server_idx, _ := range rf.peers {
-			if server_idx != rf.me {
+			fmt.Println("leader_routine for leader: " + strconv.Itoa(rf.me) + " rf.responseAE for server: " + strconv.Itoa(rf.me) + " is: " + strconv.FormatBool(rf.responseAE[server_idx]))
+			if server_idx != rf.me && rf.responseAE[server_idx] {
 				go rf.sendAppendEntry(server_idx)
 			}
 		}
@@ -428,6 +409,7 @@ func (rf *Raft) leader_routine() {
 }
 
 func (rf *Raft) sendAppendEntry(server_idx int) {
+	fmt.Println("Inside sendAppendEntry of leader: " + strconv.Itoa(rf.me) + " sending to: " + strconv.Itoa(server_idx))
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
 	args := AppendEntriesArgs{}
@@ -441,11 +423,16 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 	if rf.role != "l" {
 		return
 	}
+	rf.responseAE[server_idx] = false
+	fmt.Println("sendAppendEntries call from leader: " + strconv.Itoa(rf.me) + " to server: " + strconv.Itoa(server_idx))
 	rf.mu.Unlock()
 	ok := rf.peers[server_idx].Call("Raft.AppendEntries", &args, &reply)
 	rf.mu.Lock()
+	fmt.Println("sendAppendEntries call return from leader: " + strconv.Itoa(rf.me) + " to server: " + strconv.Itoa(server_idx))
+	rf.responseAE[server_idx] = true
 	if ok && rf.role == "l" {
 		if reply.TERM > rf.currentTerm {
+			fmt.Println("sendAppendEntry: Current term of server " + strconv.Itoa(rf.me) + " updated from " + strconv.Itoa(rf.currentTerm) + " to " + strconv.Itoa(reply.TERM))
 			rf.currentTerm = reply.TERM
 			if rf.role == "l" {
 				rf.wakeStart = true
@@ -518,17 +505,13 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 					}
 				}
 			}
-
-			// fmt.Printf("%+q", rf.logEntries)
-			// fmt.Printf("%+q", rf.matchIdx)
-			// fmt.Print("Leader " + strconv.Itoa(rf.me) + " logEntries: ")
-			// fmt.Printf("%+q", rf.logEntries)
-			rf.printLogEntries("Start leader")
+			fmt.Printf("%+q", rf.logEntries)
+			fmt.Printf("%+q", rf.matchIdx)
 
 			return len(rf.logEntries) - 1, rf.currentTerm, rf.role == "l"
 		}
 	}
-	// fmt.Printf("%+q", rf.logEntries)
+	fmt.Printf("%+q", rf.logEntries)
 
 	return len(rf.logEntries), rf.currentTerm, rf.role == "l"
 }
@@ -591,12 +574,14 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.applyCh = applyCh
 	rf.nextIdx = make(map[int]int)
 	rf.matchIdx = make(map[int]int)
+	rf.responseAE = make(map[int]bool)
 	rf.commitIdx = 0
 	rf.logEntries = append(rf.logEntries, LogEntry{0, 0})
 
 	for i := 0; i < len(rf.peers); i++ {
 		rf.nextIdx[i] = 1
 		rf.matchIdx[i] = 0
+		rf.responseAE[i] = true
 	}
 
 	// Your initialization code here (2A, 2B, 2C).

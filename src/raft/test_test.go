@@ -8,13 +8,15 @@ package raft
 // test with the original before submitting.
 //
 
-import "testing"
-import "fmt"
-import "time"
-import "math/rand"
-import "sync/atomic"
-import "sync"
-import "strconv"
+import (
+	"fmt"
+	"math/rand"
+	"strconv"
+	"sync"
+	"sync/atomic"
+	"testing"
+	"time"
+)
 
 // The tester generously allows solutions to complete elections in one second
 // (much more than the paper's range of timeouts).
@@ -62,18 +64,28 @@ func TestReElection2A(t *testing.T) {
 
 	// if the leader disconnects, a new one should be elected.
 	cfg.disconnect(leader1)
+	// fmt.Print("Disconnected leader1: ")
+	// fmt.Println(leader1)
 	cfg.checkOneLeader()
 
 	// if the old leader rejoins, that shouldn't
 	// disturb the new leader. and the old leader
 	// should switch to follower.
 	cfg.connect(leader1)
+	// fmt.Print("Reconnected leader1: ")
+	// fmt.Println(leader1)
+	// waits 450ms, leader1 should have gotten more recent term and stepped down from leader due to appendentries heartbeat
+	// however, leader1 never gets appendentry heartbeat to tell it to demote (or at least never progressed past appendentry lock)
 	leader2 := cfg.checkOneLeader()
 
 	// if there's no quorum, no new leader should
 	// be elected.
 	cfg.disconnect(leader2)
 	cfg.disconnect((leader2 + 1) % servers)
+	// fmt.Print("Disconnected leader2 and other server: ")
+	// fmt.Print(leader2)
+	// fmt.Print(", ")
+	// fmt.Println((leader2 + 1) % servers)
 	time.Sleep(2 * RaftElectionTimeout)
 
 	// check that the one connected server
@@ -139,14 +151,13 @@ func TestBasicAgree2B(t *testing.T) {
 		}
 
 		xindex := cfg.one(index*100, servers, false)
-		fmt.Println("Machine number: " + strconv.Itoa(index))
+		// fmt.Println("Machine number: " + strconv.Itoa(index))
 		if xindex != index {
 			t.Fatalf("got index %v but expected %v", xindex, index)
 		}
 	}
 
-	fmt.Println("Before end")
-
+	// fmt.Println("Before end")
 
 	cfg.end()
 }
@@ -291,6 +302,7 @@ func TestFailAgree2B(t *testing.T) {
 	// disconnect one follower from the network.
 	leader := cfg.checkOneLeader()
 	cfg.disconnect((leader + 1) % servers)
+	fmt.Println("Disconnecting server: " + strconv.Itoa((leader+1)%servers))
 
 	// the leader and remaining follower should be
 	// able to agree despite the disconnected follower.
@@ -302,6 +314,7 @@ func TestFailAgree2B(t *testing.T) {
 
 	// re-connect
 	cfg.connect((leader + 1) % servers)
+	fmt.Println("Reconnecting server: " + strconv.Itoa((leader+1)%servers))
 
 	// the full set of servers should preserve
 	// previous agreements, and be able to agree
@@ -327,6 +340,9 @@ func TestFailNoAgree2B(t *testing.T) {
 	cfg.disconnect((leader + 1) % servers)
 	cfg.disconnect((leader + 2) % servers)
 	cfg.disconnect((leader + 3) % servers)
+	fmt.Println("Disconnecting server: " + strconv.Itoa((leader+1)%servers))
+	fmt.Println("Disconnecting server: " + strconv.Itoa((leader+2)%servers))
+	fmt.Println("Disconnecting server: " + strconv.Itoa((leader+3)%servers))
 
 	index, _, ok := cfg.rafts[leader].Start(20)
 	if ok != true {
@@ -336,17 +352,26 @@ func TestFailNoAgree2B(t *testing.T) {
 		t.Fatalf("expected index 2, got %v", index)
 	}
 
+	fmt.Println("Tester line 355")
+
 	time.Sleep(2 * RaftElectionTimeout)
+
+	fmt.Println("Tester line 359")
 
 	n, _ := cfg.nCommitted(index)
 	if n > 0 {
 		t.Fatalf("%v committed but no majority", n)
 	}
 
+	fmt.Println("Tester line 366")
+
 	// repair
 	cfg.connect((leader + 1) % servers)
 	cfg.connect((leader + 2) % servers)
 	cfg.connect((leader + 3) % servers)
+	fmt.Println("Reconnecting server: " + strconv.Itoa((leader+1)%servers))
+	fmt.Println("Reconnecting server: " + strconv.Itoa((leader+2)%servers))
+	fmt.Println("Reconnecting server: " + strconv.Itoa((leader+3)%servers))
 
 	// the disconnected majority may have chosen a leader from
 	// among their own ranks, forgetting index 2.
