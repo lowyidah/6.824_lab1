@@ -79,7 +79,6 @@ type Raft struct {
 	// "f", "c", "l"
 	role           string
 	logEntries     []LogEntry
-	wakeStart      bool
 	countResponses int
 	commitIdx      int
 	votedFor       int
@@ -192,8 +191,6 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 
 	if args.TERM > rf.currentTerm {
 		if rf.role == "l" {
-			rf.wakeStart = true
-			rf.cv.Signal()
 		}
 		rf.role = "f"
 
@@ -257,8 +254,6 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	defer rf.mu.Unlock()
 	if args.LEADERTERM >= rf.currentTerm {
 		if rf.role == "l" {
-			rf.wakeStart = true
-			rf.cv.Signal()
 		}
 		rf.role = "f"
 		if rf.currentTerm < args.LEADERTERM {
@@ -330,7 +325,6 @@ func (rf *Raft) ticker() {
 				}
 			}
 		}
-		// Wait till signalled by a leader_routine ending
 		rf.mu.Unlock()
 		time.Sleep(time.Millisecond * time.Duration(rf.timeout))
 		rf.mu.Lock()
@@ -387,8 +381,6 @@ func (rf *Raft) sendRequestVote(server int) {
 	if reply.TERM > rf.currentTerm {
 		rf.currentTerm = reply.TERM
 		if rf.role == "l" {
-			rf.wakeStart = true
-			rf.cv.Signal()
 		}
 		rf.role = "f"
 		rf.votedFor = -1
@@ -415,6 +407,29 @@ func (rf *Raft) leader_routine() {
 	//rf.mu.Lock()
 
 	for rf.killed() == false && rf.role == "l" {
+		// Match index algo
+		rf.matchIdx[rf.me] = len(rf.logEntries) - 1
+		for N := rf.commitIdx + 1; N < len(rf.logEntries); N++ {
+			count := 0
+			for j := 0; j < len(rf.matchIdx); j++ {
+				if rf.matchIdx[j] >= N && rf.logEntries[N].TERM == rf.currentTerm {
+					count++
+				}
+				if count > len(rf.matchIdx)/2 {
+					for i := rf.commitIdx + 1; i <= N; i++ {
+						rf.applyCh <- ApplyMsg{
+							CommandValid: true,
+							Command:      rf.logEntries[i].CMD,
+							CommandIndex: i,
+						}
+					}
+					rf.commitIdx = N
+					N = len(rf.logEntries) // to break out of outer for
+					break
+				}
+			}
+		}
+
 		fmt.Println("Leader routine of leader " + strconv.Itoa(rf.me))
 		for server_idx, _ := range rf.peers {
 			if server_idx != rf.me {
@@ -448,8 +463,6 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 		if reply.TERM > rf.currentTerm {
 			rf.currentTerm = reply.TERM
 			if rf.role == "l" {
-				rf.wakeStart = true
-				rf.cv.Signal()
 			}
 			rf.role = "f"
 			rf.votedFor = -1
@@ -461,8 +474,6 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 			rf.matchIdx[server_idx] = len(rf.logEntries) - 1
 			rf.countResponses++
 			if rf.countResponses > len(rf.peers)/2 || rf.role == "f" {
-				rf.wakeStart = true
-				rf.cv.Signal()
 			}
 		} else if len(args.ENTRIES) != 0 {
 			rf.nextIdx[server_idx]--
@@ -492,41 +503,15 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 		logEntryEl := LogEntry{command, rf.currentTerm}
 		rf.logEntries = append(rf.logEntries, logEntryEl)
 		rf.countResponses = 1
-		rf.wakeStart = false
-		for !rf.wakeStart {
-			rf.cv.Wait()
-		}
-		if rf.role == "l" {
-			rf.matchIdx[rf.me] = len(rf.logEntries) - 1
-			for N := rf.commitIdx + 1; N < len(rf.logEntries); N++ {
-				count := 0
-				for j := 0; j < len(rf.matchIdx); j++ {
-					if rf.matchIdx[j] >= N && rf.logEntries[N].TERM == rf.currentTerm {
-						count++
-					}
-					if count > len(rf.matchIdx)/2 {
-						for i := rf.commitIdx + 1; i <= N; i++ {
-							rf.applyCh <- ApplyMsg{
-								CommandValid: true,
-								Command:      rf.logEntries[i].CMD,
-								CommandIndex: i,
-							}
-						}
-						rf.commitIdx = N
-						N = len(rf.logEntries) // to break out of outer for
-						break
-					}
-				}
-			}
 
-			// fmt.Printf("%+q", rf.logEntries)
-			// fmt.Printf("%+q", rf.matchIdx)
-			// fmt.Print("Leader " + strconv.Itoa(rf.me) + " logEntries: ")
-			// fmt.Printf("%+q", rf.logEntries)
-			rf.printLogEntries("Start leader")
+		// fmt.Printf("%+q", rf.logEntries)
+		// fmt.Printf("%+q", rf.matchIdx)
+		// fmt.Print("Leader " + strconv.Itoa(rf.me) + " logEntries: ")
+		// fmt.Printf("%+q", rf.logEntries)
+		rf.printLogEntries("Start leader")
 
-			return len(rf.logEntries) - 1, rf.currentTerm, rf.role == "l"
-		}
+		return len(rf.logEntries) - 1, rf.currentTerm, rf.role == "l"
+
 	}
 	// fmt.Printf("%+q", rf.logEntries)
 
@@ -583,7 +568,6 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.role = "f"
 	rf.lastAppendEntries = time.Now()
 	rf.numVotes = 0
-	rf.wakeStart = false
 	rf.countResponses = 0
 	rf.votedFor = -1
 	rf.test = 0
