@@ -11,6 +11,7 @@ package raft
 import (
 	"fmt"
 	"math/rand"
+	"strconv"
 	"sync"
 	"sync/atomic"
 	"testing"
@@ -502,6 +503,8 @@ func TestRejoin2B(t *testing.T) {
 	leader1 := cfg.checkOneLeader()
 	cfg.disconnect(leader1)
 
+	fmt.Println("Disconnected leader1: " + strconv.Itoa(leader1))
+
 	// make old leader try to agree on some entries
 	cfg.rafts[leader1].Start(102)
 	cfg.rafts[leader1].Start(103)
@@ -513,14 +516,17 @@ func TestRejoin2B(t *testing.T) {
 	// new leader network failure
 	leader2 := cfg.checkOneLeader()
 	cfg.disconnect(leader2)
+	fmt.Println("Disconnected leader2: " + strconv.Itoa(leader2))
 
 	// old leader connected again
 	cfg.connect(leader1)
+	fmt.Println("Reconnected leader1: " + strconv.Itoa(leader1))
 
 	cfg.one(104, 2, true)
 
 	// all together now
 	cfg.connect(leader2)
+	fmt.Println("Reconnected leader2: " + strconv.Itoa(leader1))
 
 	cfg.one(105, servers, true)
 

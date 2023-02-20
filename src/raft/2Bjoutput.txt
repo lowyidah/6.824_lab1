@@ -1,0 +1,382 @@
+Test (2B): rejoin of partitioned leader ...
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+Candidate server: 1 currentTerm is: 1
+Sending requestVote from 1 to 2
+2 with currentTerm 0 received requestVote from 1 who has term 1
+2 voted for 1
+Sending requestVote from 1 to 0
+Return from sending requestVote from 1 to 2
+Leader routine of leader: 1 with commitIdx: 0
+0 with currentTerm 0 received requestVote from 1 who has term 1
+0 voted for 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0]
+Return from sending requestVote from 1 to 0
+One iteration of one()
+Start leader logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Found leader!
+Leader routine of leader: 1 with commitIdx: 0
+args.LEADERCOMMIT: 0
+rf.commitIdx: 0
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+args.LEADERCOMMIT: 0
+rf.commitIdx: 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+One iteration of one()
+Start leader logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Found leader!
+Leader routine of leader: 1 with commitIdx: 1
+args.LEADERCOMMIT: 1
+rf.commitIdx: 0
+Server: 0 commited index: 1
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+args.LEADERCOMMIT: 1
+rf.commitIdx: 0
+Server: 2 commited index: 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 2: AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+[CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 2
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+One iteration of one()
+Start leader logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Found leader!
+Leader routine of leader: 1 with commitIdx: 2
+args.LEADERCOMMIT: 2
+rf.commitIdx: 1
+Server: 0 commited index: 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+args.LEADERCOMMIT: 2
+rf.commitIdx: 1
+Server: 2 commited index: 2
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]AppendEntries logEntries for 2: 
+[CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1]AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+[CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 3
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+One iteration of one()
+Start leader logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Found leader!
+Leader routine of leader: 1 with commitIdx: 3
+args.LEADERCOMMIT: 3
+rf.commitIdx: 2
+Server: 2 commited index: 3
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+args.LEADERCOMMIT: 3
+rf.commitIdx: 2
+Server: 0 commited index: 3
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+[CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 4
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+One iteration of one()
+Start leader logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Found leader!
+Leader routine of leader: 1 with commitIdx: 4
+args.LEADERCOMMIT: 4
+rf.commitIdx: 3
+Server: 2 commited index: 4
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+args.LEADERCOMMIT: 4
+rf.commitIdx: 3
+Server: 0 commited index: 4
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]AppendEntries logEntries for 2: [CMD: 101; TERM: 1]
+[CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+
+Leader routine of leader: 1 with commitIdx: 5
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1][CMD: 101; TERM: 1]
+One iteration of one()
+--- FAIL: TestRejoin2B (11.49s)
+    config.go:620: one(101) failed to reach agreement
+FAIL
+exit status 1
+FAIL	6.824/raft	11.502s

@@ -198,7 +198,9 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 		rf.votedFor = -1
 	}
 
-	if (rf.votedFor == -1 || rf.votedFor == args.CANDIDATEID) && args.LASTLOGIDX >= len(rf.logEntries)-1 && rf.logEntries[len(rf.logEntries)-1].TERM <= args.LASTLOGTERM {
+	if (rf.votedFor == -1 || rf.votedFor == args.CANDIDATEID) &&
+		((rf.logEntries[len(rf.logEntries)-1].TERM < args.LASTLOGTERM) ||
+			((rf.logEntries[len(rf.logEntries)-1].TERM == args.LASTLOGTERM) && args.LASTLOGIDX >= len(rf.logEntries)-1)) {
 		reply.VOTEGRANTED = true
 		rf.votedFor = args.CANDIDATEID
 		fmt.Println(strconv.Itoa(rf.me) + " voted for " + strconv.Itoa(args.CANDIDATEID))
@@ -252,6 +254,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	// Your code here (2A, 2B).
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
+	canCommit := false
 	if args.LEADERTERM >= rf.currentTerm {
 		if rf.role == "l" {
 		}
@@ -267,6 +270,22 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 			rf.logEntries = rf.logEntries[:args.PREVLOGIDX+1]
 			reply.SUCCESS = true
 			rf.logEntries = append(rf.logEntries, args.ENTRIES...)
+			fmt.Println("args.LEADERCOMMIT: " + strconv.Itoa(args.LEADERCOMMIT))
+			fmt.Println("rf.commitIdx: " + strconv.Itoa(rf.commitIdx))
+
+			if args.LEADERCOMMIT > rf.commitIdx {
+				prevCommitIdx := rf.commitIdx
+				rf.commitIdx = min(args.LEADERCOMMIT, len(rf.logEntries)-1)
+				// Apply all new commits
+				for i := prevCommitIdx + 1; i <= rf.commitIdx; i++ {
+					rf.applyCh <- ApplyMsg{
+						CommandValid: true,
+						Command:      rf.logEntries[i].CMD,
+						CommandIndex: i,
+					}
+					fmt.Println("Server: " + strconv.Itoa(rf.me) + " commited index: " + strconv.Itoa(i))
+				}
+			}
 		} else if args.PREVLOGIDX < len(rf.logEntries) && rf.logEntries[args.PREVLOGIDX].TERM != args.PREVLOGTERM { // unable to append log entries due to mismatched terms
 			rf.logEntries = rf.logEntries[:args.PREVLOGIDX]
 			reply.SUCCESS = false
@@ -277,18 +296,6 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 		reply.SUCCESS = false
 	}
 
-	if args.LEADERCOMMIT > rf.commitIdx {
-		prevCommitIdx := rf.commitIdx
-		rf.commitIdx = min(args.LEADERCOMMIT, len(rf.logEntries)-1)
-		// Apply all new commits
-		for i := prevCommitIdx + 1; i <= rf.commitIdx; i++ {
-			rf.applyCh <- ApplyMsg{
-				CommandValid: true,
-				Command:      rf.logEntries[i].CMD,
-				CommandIndex: i,
-			}
-		}
-	}
 	reply.TERM = rf.currentTerm
 	rf.lastAppendEntries = time.Now()
 
@@ -430,7 +437,7 @@ func (rf *Raft) leader_routine() {
 			}
 		}
 
-		fmt.Println("Leader routine of leader " + strconv.Itoa(rf.me))
+		fmt.Println("Leader routine of leader: " + strconv.Itoa(rf.me) + " with commitIdx: " + strconv.Itoa(rf.commitIdx))
 		for server_idx, _ := range rf.peers {
 			if server_idx != rf.me {
 				go rf.sendAppendEntry(server_idx)
@@ -472,9 +479,6 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 		if reply.SUCCESS {
 			rf.nextIdx[server_idx] = len(rf.logEntries)
 			rf.matchIdx[server_idx] = len(rf.logEntries) - 1
-			rf.countResponses++
-			if rf.countResponses > len(rf.peers)/2 || rf.role == "f" {
-			}
 		} else if len(args.ENTRIES) != 0 {
 			rf.nextIdx[server_idx]--
 		}

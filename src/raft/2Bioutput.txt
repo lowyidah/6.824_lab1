@@ -1,0 +1,268 @@
+Test (2B): rejoin of partitioned leader ...
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+One iteration of one()
+Candidate server: 1 currentTerm is: 1
+Sending requestVote from 1 to 2
+One iteration of one()
+Sending requestVote from 1 to 0
+2 with currentTerm 0 received requestVote from 1 who has term 1
+2 voted for 1
+0 with currentTerm 0 received requestVote from 1 who has term 1
+0 voted for 1
+Return from sending requestVote from 1 to 2
+Leader routine of leader 1
+Return from sending requestVote from 1 to 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0]
+One iteration of one()
+Start leader logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader 1
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader 1
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader 1
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Disconnected leader1: 1
+Start leader logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 102; TERM: 1]
+Start leader logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 102; TERM: 1][CMD: 103; TERM: 1]
+Start leader logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 102; TERM: 1][CMD: 103; TERM: 1][CMD: 104; TERM: 1]
+Leader routine of leader 1
+One iteration of one()
+One iteration of one()
+Leader routine of leader 1
+One iteration of one()
+One iteration of one()
+Leader routine of leader 1
+One iteration of one()
+One iteration of one()
+Leader routine of leader 1
+One iteration of one()
+One iteration of one()
+Leader routine of leader 1
+One iteration of one()
+One iteration of one()
+Leader routine of leader 1
+One iteration of one()
+One iteration of one()
+Leader routine of leader 1
+One iteration of one()
+One iteration of one()
+Leader routine of leader 1
+One iteration of one()
+One iteration of one()
+Leader routine of leader 1
+One iteration of one()
+One iteration of one()
+Leader routine of leader 1
+One iteration of one()
+One iteration of one()
+Leader routine of leader 1
+One iteration of one()
+One iteration of one()
+Leader routine of leader 1
+One iteration of one()
+Leader routine of leader 1
+One iteration of one()
+One iteration of one()
+Leader routine of leader 1
+One iteration of one()
+One iteration of one()
+Leader routine of leader 1
+One iteration of one()
+Candidate server: 2 currentTerm is: 2
+Sending requestVote from 2 to 1
+Sending requestVote from 2 to 0
+One iteration of one()
+0 with currentTerm 1 received requestVote from 2 who has term 2
+0 voted for 2
+Return from sending requestVote from 2 to 0
+Leader routine of leader 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader 1
+One iteration of one()
+Start leader logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2]
+Leader routine of leader 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2]
+Leader routine of leader 1
+Leader routine of leader 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2]
+Leader routine of leader 1
+Leader routine of leader 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2]
+Leader routine of leader 1
+Leader routine of leader 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2]
+Leader routine of leader 1
+Leader routine of leader 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2]
+Leader routine of leader 1
+Leader routine of leader 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2]
+Leader routine of leader 1
+Leader routine of leader 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2]
+Disconnected leader2: 2
+Reconnected leader1: 1
+Start leader logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 102; TERM: 1][CMD: 103; TERM: 1][CMD: 104; TERM: 1][CMD: 104; TERM: 1]
+Leader routine of leader 1
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2]
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Candidate server: 1 currentTerm is: 3
+Sending requestVote from 1 to 2
+Sending requestVote from 1 to 0
+0 with currentTerm 2 received requestVote from 1 who has term 3
+Return from sending requestVote from 1 to 0
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+Leader routine of leader 2
+One iteration of one()
+Return from sending requestVote from 2 to 1
+One iteration of one()
+Leader routine of leader 2
+One iteration of one()
+Candidate server: 0 currentTerm is: 4
+Sending requestVote from 0 to 2
+Sending requestVote from 0 to 1
+1 with currentTerm 3 received requestVote from 0 who has term 4
+1 voted for 0
+One iteration of one()
+Return from sending requestVote from 0 to 1
+Leader routine of leader 0
+Start leader logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1]
+Leader routine of leader 2
+Leader routine of leader 0
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 2
+Leader routine of leader 0
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Reconnected leader2: 1
+Start leader logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 105; TERM: 2]
+Leader routine of leader 2
+AppendEntries logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Return from sending requestVote from 1 to 2
+Leader routine of leader 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4]
+One iteration of one()
+Start leader logEntries for 0: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4][CMD: 105; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4][CMD: 105; TERM: 4]
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4][CMD: 105; TERM: 4]
+Leader routine of leader 0
+AppendEntries logEntries for 1: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4][CMD: 105; TERM: 4]
+AppendEntries logEntries for 2: [CMD: 0; TERM: 0][CMD: 101; TERM: 1][CMD: 103; TERM: 2][CMD: 104; TERM: 4][CMD: 105; TERM: 4]
+  ... Passed --   9.1  3  182   43607    4
+PASS
+ok  	6.824/raft	9.117s
