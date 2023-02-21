@@ -21,9 +21,7 @@ import (
 	//	"bytes"
 
 	// "fmt"
-	"fmt"
 	"math/rand"
-	"strconv"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -213,21 +211,21 @@ type LogEntry struct {
 	TERM int
 }
 
-func (rf *Raft) printLogEntries(prefix string) {
-	fmt.Print(prefix + " logEntries for " + strconv.Itoa(rf.me) + ": ")
-	for i := 0; i < len(rf.logEntries); i++ {
-		intCmd, intOk := rf.logEntries[i].CMD.(int)
-		if intOk {
-			fmt.Print("[CMD: " + strconv.Itoa(intCmd) + "; TERM: " + strconv.Itoa(rf.logEntries[i].TERM) + "]")
-		}
-		stringCmd, stringOk := rf.logEntries[i].CMD.(string)
-		if stringOk {
-			fmt.Print("[CMD: " + stringCmd + "; TERM: " + strconv.Itoa(rf.logEntries[i].TERM) + "]")
-		}
+// func (rf *Raft) printLogEntries(prefix string) {
+// 	// fmt.Print(prefix + " logEntries for " + strconv.Itoa(rf.me) + ": ")
+// 	for i := 0; i < len(rf.logEntries); i++ {
+// 		intCmd, intOk := rf.logEntries[i].CMD.(int)
+// 		if intOk {
+// 			// fmt.Print("[CMD: " + strconv.Itoa(intCmd) + "; TERM: " + strconv.Itoa(rf.logEntries[i].TERM) + "]")
+// 		}
+// 		stringCmd, stringOk := rf.logEntries[i].CMD.(string)
+// 		if stringOk {
+// 			// fmt.Print("[CMD: " + stringCmd + "; TERM: " + strconv.Itoa(rf.logEntries[i].TERM) + "]")
+// 		}
 
-	}
-	fmt.Println("")
-}
+// 	}
+// 	// fmt.Println("")
+// }
 
 type AppendEntriesArgs struct {
 	LEADERTERM   int
@@ -268,8 +266,6 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 			rf.logEntries = rf.logEntries[:args.PREVLOGIDX+1]
 			reply.SUCCESS = true
 			rf.logEntries = append(rf.logEntries, args.ENTRIES...)
-			// fmt.Println("args.LEADERCOMMIT: " + strconv.Itoa(args.LEADERCOMMIT))
-			// fmt.Println("rf.commitIdx: " + strconv.Itoa(rf.commitIdx))
 
 			if args.LEADERCOMMIT > rf.commitIdx {
 				prevCommitIdx := rf.commitIdx
@@ -281,7 +277,6 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 						Command:      rf.logEntries[i].CMD,
 						CommandIndex: i,
 					}
-					// fmt.Println("Server: " + strconv.Itoa(rf.me) + " commited index: " + strconv.Itoa(i))
 				}
 			}
 		} else if args.PREVLOGIDX < len(rf.logEntries) && rf.logEntries[args.PREVLOGIDX].TERM != args.PREVLOGTERM { // unable to append log entries due to mismatched terms
@@ -297,9 +292,6 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	reply.TERM = rf.currentTerm
 	rf.lastAppendEntries = time.Now()
 
-	// fmt.Print("AppendEntries logEntries for " + strconv.Itoa(rf.me) + ": ")
-	// fmt.Printf("%+q", rf.logEntries)
-	// fmt.Println(rf.logEntries)
 	// rf.printLogEntries("AppendEntries")
 }
 
@@ -506,16 +498,11 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 		rf.logEntries = append(rf.logEntries, logEntryEl)
 		rf.countResponses = 1
 
-		// fmt.Printf("%+q", rf.logEntries)
-		// fmt.Printf("%+q", rf.matchIdx)
-		// fmt.Print("Leader " + strconv.Itoa(rf.me) + " logEntries: ")
-		// fmt.Printf("%+q", rf.logEntries)
 		// rf.printLogEntries("Start leader")
 
 		return len(rf.logEntries) - 1, rf.currentTerm, rf.role == "l"
 
 	}
-	// fmt.Printf("%+q", rf.logEntries)
 
 	return len(rf.logEntries), rf.currentTerm, rf.role == "l"
 }
