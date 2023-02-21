@@ -1,2612 +1,345 @@
 Test (2B): basic agreement ...
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Inside Start Election0
-Inside Request Vote before lock2f
-Inside Request Vote after lock2
-Granted Vote2
-Elected leader
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[]Commit Idx: -1
---------
---------
-Append Entries Leader01l
-[]--------
-Inside Request Vote before lock1f
-Inside Request Vote after lock1
-Granted Vote1
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[]Commit Idx: -1
---------
---------
-Append Entries Leader01l
-[]--------
-Start before lockkkk1f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-100
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0l
-100
-Start acquired lockkkk
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Recieved Append Entries SUCCESS 2
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
-Response AppendEntries11
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-Leader Start After Start
---------
-Leader Start CommitIdx: 0l
-Recieved Append Entries SUCCESS 1
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-Response AppendEntries11
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'d' '\x01'}]--------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
-Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'d' '\x01'}]--------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
---------
-Append Entries 11f
-[{'d' '\x01'}]Commit Idx: 0
---------
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Line 602 config
---- FAIL: TestBasicAgree2B (3.53s)
-    config.go:608: one(100) failed to reach agreement
---------
-Append Entries 21f
-[{'d' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
-Inside sendAppendEntry after lock0
---------
-Append Entries Leader01l
-[{'d' '\x01'}]--------
+  ... Passed --   1.8  3   16    4134    3
 Test (2B): RPC byte count ...
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Leader Routine Lock0
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Inside Start Election0
-Inside Request Vote before lock2f
-Inside Request Vote after lock2
-Granted Vote2
-Inside Request Vote before lock1f
-Inside Request Vote after lock1
-Granted Vote1
-Elected leader
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[]Commit Idx: -1
---------
---------
-Append Entries 11f
-[]Commit Idx: -1
---------
---------
-Append Entries Leader01l
-[]--------
---------
-Append Entries Leader01l
-[]--------
-Start before lockkkk1f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk2f
-99
-Start acquired lockkkk
---------
-Leader Start CommitIdx: -1f
-[]--------
-Start before lockkkk0l
-99
-Start acquired lockkkk
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Recieved Append Entries SUCCESS 1
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
-Recieved Append Entries SUCCESS 2
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
-Response AppendEntries11
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-Leader Start After Start
---------
-Leader Start CommitIdx: 0l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-Response AppendEntries11
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-cmd1: 
-<nil>
-nd: 
-0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'c' '\x01'}]--------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Inside sendAppendEntry before lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-cmd1: 
-<nil>
-nd: 
-Inside sendAppendEntry after lock0
-0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries 21f
-[{'c' '\x01'}]--------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-Leader Routine Unlock0
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-cmd1: 
-<nil>
-nd: 
-0
-Leader Routine Lock0
-Leader Routine Unlock0
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 21f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-Inside sendAppendEntry before lock0
-Inside sendAppendEntry after lock0
---------
-Append Entries 11f
-[{'c' '\x01'}]Commit Idx: 0
---------
---------
-Append Entries Leader01l
-[{'c' '\x01'}]--------
-signal: interrupt
-FAIL	6.824/raft	6.911s
+  ... Passed --   3.4  3   48  113010   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   5.3  3   82   21206    7
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   6.6  5  160   37294    4
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.2  3   20    5258    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   6.7  3  150   35273    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  38.2  5 2560 2147747  106
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.3  3   64   17190   12
+PASS
+ok  	6.824/raft	68.362s
+Test (2B): basic agreement ...
+  ... Passed --   1.7  3   16    4102    3
+Test (2B): RPC byte count ...
+  ... Passed --   3.5  3   48  113106   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   7.1  3  100   25755    8
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   6.3  5  156   36182    3
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.2  3   18    4734    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   8.5  3  186   45003    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  39.5  5 2630 2223804  106
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.1  3   60   16022   12
+PASS
+ok  	6.824/raft	72.885s
+Test (2B): basic agreement ...
+  ... Passed --   2.0  3   16    4134    3
+Test (2B): RPC byte count ...
+  ... Passed --   4.6  3   48  113106   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   7.8  3   96   24639    8
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   6.7  5  164   39024    4
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.2  3   24    6258    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   6.8  3  138   32235    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  39.5  5 2572 2180700  106
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.3  3   62   16666   12
+PASS
+ok  	6.824/raft	73.804s
+Test (2B): basic agreement ...
+  ... Passed --   1.8  3   16    4134    3
+Test (2B): RPC byte count ...
+  ... Passed --   3.3  3   48  113010   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   7.2  3  100   25859    8
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   5.5  5  156   36182    3
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.2  3   20    5258    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   9.0  3  184   44163    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  36.5  5 2544 2228297  104
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.2  3   62   16530   12
+PASS
+ok  	6.824/raft	69.900s
+Test (2B): basic agreement ...
+  ... Passed --   1.9  3   16    4134    3
+Test (2B): RPC byte count ...
+  ... Passed --   3.7  3   48  113010   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   7.1  3   96   24489    8
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   6.2  5  156   35942    3
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.2  3   20    5258    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   6.4  3  140   32815    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  39.2  5 2596 2219027  106
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.2  3   62   16340   12
+PASS
+ok  	6.824/raft	70.984s
+Test (2B): basic agreement ...
+  ... Passed --   2.0  3   16    4134    3
+Test (2B): RPC byte count ...
+  ... Passed --   3.5  3   48  113106   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   5.0  3   80   20834    7
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   5.6  5  144   33896    4
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.4  3   25    6358    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   8.9  3  182   43924    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  38.7  5 2572 2185579  106
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.2  3   62   16666   12
+PASS
+ok  	6.824/raft	70.276s
+Test (2B): basic agreement ...
+  ... Passed --   2.1  3   16    4134    3
+Test (2B): RPC byte count ...
+  ... Passed --   3.5  3   48  113106   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   5.0  3   78   20332    7
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   6.9  5  164   38960    4
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.1  3   24    6306    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   6.6  3  140   32594    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  37.8  5 2544 2170810  107
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.2  3   66   17582   12
+PASS
+ok  	6.824/raft	68.235s
+Test (2B): basic agreement ...
+  ... Passed --   1.8  3   16    4102    3
+Test (2B): RPC byte count ...
+  ... Passed --   4.4  3   48  113010   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   6.9  3  184   48070    8
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   5.6  5  152   35370    4
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.1  3   24    6258    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   9.0  3  186   44815    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  38.9  5 2580 2148071  106
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.3  3   64   17190   12
+PASS
+ok  	6.824/raft	73.243s
+Test (2B): basic agreement ...
+  ... Passed --   2.0  3   16    4134    3
+Test (2B): RPC byte count ...
+  ... Passed --   3.4  3   48  113010   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   4.8  3   78   20298    7
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   5.7  5  148   36050    3
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.3  3   26    6778    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   6.9  3  146   34365    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  32.4  5 2364 2076749  104
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   5.2  3   60   16022   12
+PASS
+ok  	6.824/raft	62.890s
+Test (2B): basic agreement ...
+  ... Passed --   1.9  3   16    4134    3
+Test (2B): RPC byte count ...
+  ... Passed --   3.4  3   48  113106   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   7.2  3   96   24721    8
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   5.5  5  144   33812    4
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.1  3   22    5782    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   8.7  3  182   44143    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  34.3  5 2440 2089343  104
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.2  3   62   16666   12
+PASS
+ok  	6.824/raft	67.336s
+Test (2B): basic agreement ...
+  ... Passed --   2.7  3   16    4102    3
+Test (2B): RPC byte count ...
+  ... Passed --   3.4  3   48  113106   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   5.4  3   82   21370    7
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   4.6  5  148   34932    3
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.2  3   20    5218    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   8.7  3  180   43193    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  36.5  5 2532 2226401  104
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.2  3   62   16542   12
+PASS
+ok  	6.824/raft	67.788s
+Test (2B): basic agreement ...
+  ... Passed --   1.9  3   16    4134    3
+Test (2B): RPC byte count ...
+  ... Passed --   3.5  3   48  113106   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   7.8  3   92   23661    8
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   6.5  5  164   38254    3
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.1  3   20    5218    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   7.1  3  152   35478    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  40.6  5 2644 2249302  107
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   5.2  3   64   17062   12
+PASS
+ok  	6.824/raft	74.769s
+Test (2B): basic agreement ...
+  ... Passed --   1.8  3   16    4102    3
+Test (2B): RPC byte count ...
+  ... Passed --   4.4  3   48  113010   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   5.2  3   82   21370    7
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   4.6  5  148   35970    3
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.1  3   22    5738    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   8.7  3  186   45059    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  32.3  5 2372 2088437  104
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.2  3   62   16542   12
+PASS
+ok  	6.824/raft	63.515s
+Test (2B): basic agreement ...
+  ... Passed --   2.0  3   16    4102    3
+Test (2B): RPC byte count ...
+  ... Passed --   3.6  3   48  113010   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   8.0  3   96   24551    8
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   6.3  5  160   37246    3
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.3  3   22    5782    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   7.7  3  158   36856    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  35.8  5 2467 2133689  104
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.3  3   62   16666   12
+PASS
+ok  	6.824/raft	69.842s
+Test (2B): basic agreement ...
+  ... Passed --   1.8  3   16    4134    3
+Test (2B): RPC byte count ...
+  ... Passed --   3.4  3   48  113010   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   8.1  3   98   25051    8
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   5.7  5  156   36182    3
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.2  3   20    5258    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   6.5  3  140   32607    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  38.1  5 2536 2151025  106
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.1  3   60   16022   12
+PASS
+ok  	6.824/raft	69.958s
+Test (2B): basic agreement ...
+  ... Passed --   1.9  3   16    4134    3
+Test (2B): RPC byte count ...
+  ... Passed --   3.5  3   48  113010   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   8.3  3   96   24739    8
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   6.8  5  164   38598    4
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.3  3   18    4734    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   6.8  3  146   34133    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  39.5  5 2604 2192723  107
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.2  3   62   16542   12
+PASS
+ok  	6.824/raft	73.248s
+Test (2B): basic agreement ...
+  ... Passed --   1.8  3   16    4102    3
+Test (2B): RPC byte count ...
+  ... Passed --   3.7  3   48  113010   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   6.3  3   82   21370    7
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   5.8  5  152   35526    4
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.2  3   18    4734    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   6.8  3  146   33863    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  31.4  5 2325 2016929  104
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.6  3   64   17178   12
+PASS
+ok  	6.824/raft	62.574s
+Test (2B): basic agreement ...
+  ... Passed --   3.1  3   16    4134    3
+Test (2B): RPC byte count ...
+  ... Passed --   4.5  3   48  113010   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   7.3  3  118   30746    8
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   5.6  5  152   35198    3
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.2  3   24    6306    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   8.4  3  176   42560    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  39.0  5 2588 2209092  106
+Test (2B): RPC counts aren't too high ...
+  ... Passed --   4.2  3   62   16666   12
+PASS
+ok  	6.824/raft	74.382s
+Test (2B): basic agreement ...
+  ... Passed --   2.0  3   16    4134    3
+Test (2B): RPC byte count ...
+  ... Passed --   3.3  3   48  113106   11
+Test (2B): agreement after follower reconnects ...
+  ... Passed --   7.2  3   92   23684    8
+Test (2B): no agreement if too many followers disconnect ...
+  ... Passed --   6.8  5  156   36462    4
+Test (2B): concurrent Start()s ...
+  ... Passed --   2.2  3   26    6778    6
+Test (2B): rejoin of partitioned leader ...
+  ... Passed --   9.0  3  186   44564    4
+Test (2B): leader backs up quickly over incorrect follower logs ...
+  ... Passed --  41.0  5 2668 2281263  106
+Test (2B): RPC counts aren't too high ...
+--- FAIL: TestCount2B (4.62s)
+    test_test.go:788: too many RPCs (50) for 10 entries
+FAIL
+exit status 1
+FAIL	6.824/raft	76.122s
+*** FAILED TESTS IN TRIAL 19
