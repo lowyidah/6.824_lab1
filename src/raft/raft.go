@@ -24,6 +24,7 @@ import (
 	"bytes"
 	"fmt"
 	"math/rand"
+	"strconv"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -115,9 +116,9 @@ func (rf *Raft) persist() {
 //
 // restore previously persisted state.
 //
-func (rf *Raft) readPersist(data []byte) {
+func (rf *Raft) readPersist(data []byte) bool {
 	if data == nil || len(data) < 1 { // bootstrap without any state?
-		return
+		return false
 	}
 	// Your code here (2C).
 	// Example:
@@ -135,6 +136,8 @@ func (rf *Raft) readPersist(data []byte) {
 		rf.votedFor = votedFor
 		rf.currentTerm = currentTerm
 	}
+
+	return true
 }
 
 //
@@ -193,14 +196,13 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	if args.TERM < rf.currentTerm {
 		return
 	}
+	needPersist := false
 
 	if args.TERM > rf.currentTerm {
-		if rf.role == "l" {
-		}
 		rf.role = "f"
-
 		rf.currentTerm = args.TERM
 		rf.votedFor = -1
+		needPersist = true
 	}
 
 	if (rf.votedFor == -1 || rf.votedFor == args.CANDIDATEID) &&
@@ -208,10 +210,13 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 			((rf.logEntries[len(rf.logEntries)-1].TERM == args.LASTLOGTERM) && args.LASTLOGIDX >= len(rf.logEntries)-1)) {
 		reply.VOTEGRANTED = true
 		rf.votedFor = args.CANDIDATEID
+		needPersist = true
 		// fmt.Println(strconv.Itoa(rf.me) + " voted for " + strconv.Itoa(args.CANDIDATEID))
 	}
 
-	rf.persist()
+	if needPersist {
+		rf.persist()
+	}
 
 }
 
@@ -220,21 +225,21 @@ type LogEntry struct {
 	TERM int
 }
 
-// func (rf *Raft) printLogEntries(prefix string) {
-// 	// fmt.Print(prefix + " logEntries for " + strconv.Itoa(rf.me) + ": ")
-// 	for i := 0; i < len(rf.logEntries); i++ {
-// 		intCmd, intOk := rf.logEntries[i].CMD.(int)
-// 		if intOk {
-// 			// fmt.Print("[CMD: " + strconv.Itoa(intCmd) + "; TERM: " + strconv.Itoa(rf.logEntries[i].TERM) + "]")
-// 		}
-// 		stringCmd, stringOk := rf.logEntries[i].CMD.(string)
-// 		if stringOk {
-// 			// fmt.Print("[CMD: " + stringCmd + "; TERM: " + strconv.Itoa(rf.logEntries[i].TERM) + "]")
-// 		}
+func (rf *Raft) printLogEntries(prefix string) {
+	fmt.Print(prefix + " logEntries for " + strconv.Itoa(rf.me) + ": ")
+	for i := 0; i < len(rf.logEntries); i++ {
+		intCmd, intOk := rf.logEntries[i].CMD.(int)
+		if intOk {
+			fmt.Print("[CMD: " + strconv.Itoa(intCmd) + "; TERM: " + strconv.Itoa(rf.logEntries[i].TERM) + "]")
+		}
+		stringCmd, stringOk := rf.logEntries[i].CMD.(string)
+		if stringOk {
+			fmt.Print("[CMD: " + stringCmd + "; TERM: " + strconv.Itoa(rf.logEntries[i].TERM) + "]")
+		}
 
-// 	}
-// 	// fmt.Println("")
-// }
+	}
+	fmt.Println("")
+}
 
 type AppendEntriesArgs struct {
 	LEADERTERM   int
@@ -246,8 +251,10 @@ type AppendEntriesArgs struct {
 }
 
 type AppendEntriesReply struct {
-	TERM    int
-	SUCCESS bool
+	TERM         int
+	SUCCESS      bool
+	NEXTIDX      int
+	CONFLICTTERM int
 }
 
 func min(a, b int) int {
@@ -279,7 +286,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 			rf.logEntries = rf.logEntries[:args.PREVLOGIDX+1]
 			reply.SUCCESS = true
 			rf.logEntries = append(rf.logEntries, args.ENTRIES...)
-
+			// commit
 			if args.LEADERCOMMIT > rf.commitIdx {
 				prevCommitIdx := rf.commitIdx
 				rf.commitIdx = min(args.LEADERCOMMIT, len(rf.logEntries)-1)
@@ -296,9 +303,19 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 		} else if args.PREVLOGIDX < len(rf.logEntries) && rf.logEntries[args.PREVLOGIDX].TERM != args.PREVLOGTERM { // unable to append log entries due to mismatched terms
 			rf.logEntries = rf.logEntries[:args.PREVLOGIDX]
 			reply.SUCCESS = false
+			reply.CONFLICTTERM = rf.logEntries[len(rf.logEntries)-1].TERM
+			// find first entry of this last mismatched term and set reply.NEXTIDX to it
+			for i := len(rf.logEntries) - 1; i >= 0; i-- {
+				if rf.logEntries[i].TERM != reply.CONFLICTTERM {
+					reply.NEXTIDX = i + 1
+					break
+				}
+			}
 			savePersist = true
 		} else { // unable to append log entries as do not have up to args.PREVLOGIDX
+			reply.NEXTIDX = len(rf.logEntries)
 			reply.SUCCESS = false
+			reply.CONFLICTTERM = -1
 		}
 	} else { // unable to append because leader aint a leader
 		reply.SUCCESS = false
@@ -309,6 +326,10 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	}
 
 	// rf.printLogEntries("AppendEntries")
+	// fmt.Print("args: ")
+	// fmt.Println(args)
+	// fmt.Print("reply: ")
+	// fmt.Println(reply)
 }
 
 // The ticker go routine starts a new election if this peer hasn't received
@@ -328,11 +349,10 @@ func (rf *Raft) ticker() {
 			rf.role = "c"
 			rf.currentTerm++
 			// fmt.Println("Candidate server: " + strconv.Itoa(rf.me) + " currentTerm is: " + strconv.Itoa(rf.currentTerm))
-			// TODO: possible persist needed?
 			rf.numVotes = 1
 			rf.votedFor = rf.me
+			rf.persist()
 			rf.lastAppendEntries = time.Now()
-			// TODO: maybe lock over this, args in sendRequestVote
 			for server_idx, _ := range rf.peers {
 				if server_idx != rf.me {
 					go rf.sendRequestVote(server_idx)
@@ -389,7 +409,7 @@ func (rf *Raft) sendRequestVote(server int) {
 	rf.peers[server].Call("Raft.RequestVote", &args, &reply)
 	rf.mu.Lock()
 	// fmt.Println("Return from sending requestVote from " + strconv.Itoa(rf.me) + " to " + strconv.Itoa(server))
-	if rf.role != "c" {
+	if rf.role != "c" || rf.currentTerm != args.TERM {
 		return
 	}
 	if reply.TERM > rf.currentTerm {
@@ -416,32 +436,38 @@ func (rf *Raft) sendRequestVote(server int) {
 	return
 }
 
+func (rf *Raft) commitN() {
+	rf.matchIdx[rf.me] = len(rf.logEntries) - 1
+	for N := len(rf.logEntries) - 1; N > rf.commitIdx; N-- {
+		if rf.logEntries[N].TERM < rf.currentTerm {
+			break
+		}
+		count := 0
+		for j := 0; j < len(rf.matchIdx); j++ {
+			if rf.matchIdx[j] >= N && rf.logEntries[N].TERM == rf.currentTerm {
+				count++
+			}
+			if count > len(rf.matchIdx)/2 {
+				for i := rf.commitIdx + 1; i <= N; i++ {
+					rf.applyCh <- ApplyMsg{
+						CommandValid: true,
+						Command:      rf.logEntries[i].CMD,
+						CommandIndex: i,
+					}
+				}
+				rf.commitIdx = N
+				N = -1 // break out of outer for loop
+				break
+			}
+		}
+	}
+}
+
 func (rf *Raft) leader_routine() {
 	//rf.mu.Lock()
 
 	for rf.killed() == false && rf.role == "l" {
-		// Match index algo
-		rf.matchIdx[rf.me] = len(rf.logEntries) - 1
-		for N := rf.commitIdx + 1; N < len(rf.logEntries); N++ {
-			count := 0
-			for j := 0; j < len(rf.matchIdx); j++ {
-				if rf.matchIdx[j] >= N && rf.logEntries[N].TERM == rf.currentTerm {
-					count++
-				}
-				if count > len(rf.matchIdx)/2 {
-					for i := rf.commitIdx + 1; i <= N; i++ {
-						rf.applyCh <- ApplyMsg{
-							CommandValid: true,
-							Command:      rf.logEntries[i].CMD,
-							CommandIndex: i,
-						}
-					}
-					rf.commitIdx = N
-					N = len(rf.logEntries) // to break out of outer for
-					break
-				}
-			}
-		}
+		rf.commitN()
 
 		// fmt.Println("Leader routine of leader: " + strconv.Itoa(rf.me) + " with commitIdx: " + strconv.Itoa(rf.commitIdx))
 		for server_idx, _ := range rf.peers {
@@ -466,13 +492,14 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 	args.ENTRIES = rf.logEntries[args.PREVLOGIDX+1:]
 	args.LEADERCOMMIT = rf.commitIdx
 	reply := AppendEntriesReply{}
+	logLen := len(rf.logEntries)
 	if rf.role != "l" {
 		return
 	}
 	rf.mu.Unlock()
 	ok := rf.peers[server_idx].Call("Raft.AppendEntries", &args, &reply)
 	rf.mu.Lock()
-	if ok && rf.role == "l" {
+	if ok && rf.role == "l" && rf.currentTerm == args.LEADERTERM {
 		if reply.TERM > rf.currentTerm {
 			rf.currentTerm = reply.TERM
 			rf.votedFor = -1
@@ -482,10 +509,32 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 			return
 		}
 		if reply.SUCCESS {
-			rf.nextIdx[server_idx] = len(rf.logEntries)
-			rf.matchIdx[server_idx] = len(rf.logEntries) - 1
+			rf.nextIdx[server_idx] = logLen
+			// fmt.Println("Successfully appended entries to: " + strconv.Itoa(server_idx))
+			// fmt.Print("rf.nextIdx[server_idx]: ")
+			// fmt.Println(rf.nextIdx[server_idx])
+			// TODO: Check len() for lock. When previous return true, len could have changed
+			rf.matchIdx[server_idx] = logLen - 1
 		} else {
-			rf.nextIdx[server_idx]--
+			if reply.CONFLICTTERM == -1 {
+				rf.nextIdx[server_idx] = reply.NEXTIDX
+			} else {
+				// search to check if leader has reply.CONFLICTTERM
+				hasConflictTerm := false
+				for i := logLen - 1; i >= 0; i-- {
+					if rf.logEntries[i].TERM == reply.CONFLICTTERM {
+						rf.nextIdx[server_idx] = i
+						hasConflictTerm = true
+						break
+					}
+					if rf.logEntries[i].TERM < reply.CONFLICTTERM {
+						break
+					}
+				}
+				if !hasConflictTerm {
+					rf.nextIdx[server_idx] = reply.NEXTIDX
+				}
+			}
 		}
 	}
 }
@@ -577,7 +626,6 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.countResponses = 0
 	rf.votedFor = -1
 	rf.test = 0
-	// ??? possible fuck up
 	rf.applyCh = applyCh
 	rf.nextIdx = make(map[int]int)
 	rf.matchIdx = make(map[int]int)
@@ -585,8 +633,10 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.logEntries = append(rf.logEntries, LogEntry{0, 0})
 
 	// initialize from state persisted before a crash
-	rf.readPersist(persister.ReadRaftState())
-	rf.persist()
+	newInit := rf.readPersist(persister.ReadRaftState())
+	if newInit {
+		rf.persist()
+	}
 
 	for i := 0; i < len(rf.peers); i++ {
 		rf.nextIdx[i] = 1
