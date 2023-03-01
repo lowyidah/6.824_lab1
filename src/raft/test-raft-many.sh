@@ -12,7 +12,7 @@ trap 'kill -INT -$pid; exit 1' INT
 runs=$1
 
 for i in $(seq 1 $runs); do
-    go test -run 2B &
+    go test -run 2C &
     pid=$!
     if ! wait $pid; then
         echo '***' FAILED TESTS IN TRIAL $i
