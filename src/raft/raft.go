@@ -203,6 +203,36 @@ func (rf *Raft) readPersist(data []byte) bool {
 	return true
 }
 
+// the service using Raft (e.g. a k/v server) wants to start
+// agreement on the next command to be appended to Raft's log. if this
+// server isn't the leader, returns false. otherwise start the
+// agreement and return immediately. there is no guarantee that this
+// command will ever be committed to the Raft log, since the leader
+// may fail or lose an election. even if the Raft instance has been killed,
+// this function should return gracefully.
+//
+// the first return value is the index that the command will appear at
+// if it's ever committed. the second return value is the current
+// TERM. the third return value is true if this server believes it is
+// the leader.
+//
+func (rf *Raft) Start(command interface{}) (int, int, bool) {
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
+	// Your code here (2B).
+	if rf.role == "l" {
+		logEntryEl := LogEntry{command, rf.currentTerm}
+		rf.logEntries = append(rf.logEntries, logEntryEl)
+		rf.countResponses = 1
+		rf.persist()
+		lastLogIdx, _ := rf.lastIdxAndTerm()
+		return lastLogIdx, rf.currentTerm, rf.role == "l"
+
+	}
+	lastLogIdx, _ := rf.lastIdxAndTerm()
+	return lastLogIdx, rf.currentTerm, rf.role == "l"
+}
+
 //
 // A service wants to switch to snapshot.  Only do so if Raft hasn't
 // have more recent info since it communicate the snapshot on applyCh.
@@ -218,8 +248,6 @@ func (rf *Raft) CondInstallSnapshot(lastIncludedTERM int, lastIncludedIndex int,
 // all info up to and including index. this means the
 // service no longer needs the log through (and including)
 // that index. Raft should now trim its log as much as possible.
-
-// TODO: When client calls snapshot, client cannot read in applyCh (see applierSnap in config.go), hence cannot lock over applyCh
 func (rf *Raft) Snapshot(index int, snapshot []byte) {
 	// Your code here (2D).
 	// fmt.Println("Called Snapshot before lock on index: " + strconv.Itoa(index) + " and server " + strconv.Itoa(rf.me))
@@ -259,10 +287,8 @@ type InstallSnapshotReply struct {
 	TERM int
 }
 
-// TODO: sending snapshot to application on crash and reboot
+// Lock is already acquired when this function is called
 func (rf *Raft) sendInstallSnapshot(server int) {
-	rf.mu.Lock()
-	rf.mu.Unlock()
 	args := InstallSnapshotArgs{}
 	args.DATA = rf.persister.ReadSnapshot()
 	args.LASTINCLIDX = rf.lastIncludedIndex
@@ -270,7 +296,7 @@ func (rf *Raft) sendInstallSnapshot(server int) {
 	args.TERM = rf.currentTerm
 	reply := InstallSnapshotReply{}
 	rf.mu.Unlock()
-	ok := rf.peers[server].Call("Raft.RequestVote", &args, &reply)
+	ok := rf.peers[server].Call("Raft.InstallSnapshot", &args, &reply)
 	rf.mu.Lock()
 	if rf.currentTerm == args.TERM && rf.role == "l" {
 		if reply.TERM > rf.currentTerm {
@@ -279,8 +305,8 @@ func (rf *Raft) sendInstallSnapshot(server int) {
 			rf.persist()
 		}
 		if ok {
-			rf.matchIdx[server] = args.LASTINCLIDX
-			rf.nextIdx[server] = args.LASTINCLIDX + 1
+			rf.matchIdx[server] = max(args.LASTINCLIDX, rf.matchIdx[server])
+			rf.nextIdx[server] = max(args.LASTINCLIDX+1, rf.nextIdx[server])
 		}
 	}
 }
@@ -467,10 +493,20 @@ func min(a, b int) int {
 	return b
 }
 
-// TODO:
-func (rf *Raft) sendAppendEntry(server_idx int) {
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func (rf *Raft) sendAppendEntries(server_idx int) {
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
+	if rf.nextIdx[server_idx] <= rf.lastIncludedIndex {
+		rf.sendInstallSnapshot(server_idx)
+		return
+	}
 	args := AppendEntriesArgs{}
 	args.LEADERTERM = rf.currentTerm
 	args.LEADERID = rf.me
@@ -520,7 +556,6 @@ func (rf *Raft) sendAppendEntry(server_idx int) {
 						break
 					}
 				}
-				// TODO: sendInstallSnapshot
 				if !hasConflictTerm {
 					rf.nextIdx[server_idx] = reply.NEXTIDX
 				}
@@ -630,7 +665,6 @@ func (rf *Raft) commitN() {
 			if count > len(rf.matchIdx)/2 {
 				for i := rf.commitIdx + 1; i <= N; i++ {
 					// fmt.Println("Before leader server " + strconv.Itoa(rf.me) + " commited index " + strconv.Itoa(i))
-					// TODO: unlock and lock over applyCh???
 					applyMsg := ApplyMsg{
 						CommandValid:  true,
 						Command:       rf.logEntries[rf.raftIdxToLogIdx(i)].CMD,
@@ -654,7 +688,6 @@ func (rf *Raft) leader_routine() {
 	//rf.mu.Lock()
 
 	for rf.killed() == false && rf.role == "l" {
-		// TODO: check this
 		// fmt.Println("before commitN for leader: " + strconv.Itoa(rf.me))
 		rf.commitN()
 		// fmt.Println("after commitN for leader: " + strconv.Itoa(rf.me))
@@ -662,7 +695,7 @@ func (rf *Raft) leader_routine() {
 		// fmt.Println("Leader routine of leader: " + strconv.Itoa(rf.me) + " with commitIdx: " + strconv.Itoa(rf.commitIdx))
 		for server_idx, _ := range rf.peers {
 			if server_idx != rf.me {
-				go rf.sendAppendEntry(server_idx)
+				go rf.sendAppendEntries(server_idx)
 			}
 		}
 		rf.mu.Unlock()
@@ -672,37 +705,6 @@ func (rf *Raft) leader_routine() {
 		// fmt.Println("leader_routine lock")
 
 	}
-}
-
-//
-// the service using Raft (e.g. a k/v server) wants to start
-// agreement on the next command to be appended to Raft's log. if this
-// server isn't the leader, returns false. otherwise start the
-// agreement and return immediately. there is no guarantee that this
-// command will ever be committed to the Raft log, since the leader
-// may fail or lose an election. even if the Raft instance has been killed,
-// this function should return gracefully.
-//
-// the first return value is the index that the command will appear at
-// if it's ever committed. the second return value is the current
-// TERM. the third return value is true if this server believes it is
-// the leader.
-//
-func (rf *Raft) Start(command interface{}) (int, int, bool) {
-	rf.mu.Lock()
-	defer rf.mu.Unlock()
-	// Your code here (2B).
-	if rf.role == "l" {
-		logEntryEl := LogEntry{command, rf.currentTerm}
-		rf.logEntries = append(rf.logEntries, logEntryEl)
-		rf.countResponses = 1
-		rf.persist()
-		lastLogIdx, _ := rf.lastIdxAndTerm()
-		return lastLogIdx, rf.currentTerm, rf.role == "l"
-
-	}
-	lastLogIdx, _ := rf.lastIdxAndTerm()
-	return lastLogIdx, rf.currentTerm, rf.role == "l"
 }
 
 // The ticker go routine starts a new election if this peer hasn't received
@@ -774,6 +776,18 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	newInit := rf.readPersist(persister.ReadRaftState())
 	if newInit {
 		rf.persist()
+	}
+	if rf.lastIncludedIndex > -1 {
+		rf.persister.ReadSnapshot()
+		rf.commitIdx = rf.lastIncludedIndex
+		applyMsg := ApplyMsg{
+			SnapshotValid: true,
+			CommandValid:  false,
+			Snapshot:      rf.persister.ReadSnapshot(),
+			SnapshotTerm:  rf.lastIncludedTerm,
+			SnapshotIndex: rf.lastIncludedIndex,
+		}
+		applyCh <- applyMsg
 	}
 
 	for i := 0; i < len(rf.peers); i++ {
