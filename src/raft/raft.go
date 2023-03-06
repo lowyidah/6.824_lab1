@@ -117,6 +117,8 @@ func (rf *Raft) printLogEntries(prefix string) {
 // believes it is the leader.
 func (rf *Raft) GetState() (int, bool) {
 	// Your code here (2A).
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
 	return rf.currentTerm, rf.role == "l"
 }
 
@@ -217,10 +219,8 @@ func (rf *Raft) readPersist(data []byte) bool {
 // the leader.
 //
 func (rf *Raft) Start(command interface{}) (int, int, bool) {
-	fmt.Println("Start for server: " + strconv.Itoa(rf.me) + " called before lock")
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-	fmt.Println("Start for server: " + strconv.Itoa(rf.me) + " called after lock")
 
 	// Your code here (2B).
 	if rf.role == "l" {
@@ -253,10 +253,8 @@ func (rf *Raft) CondInstallSnapshot(lastIncludedTERM int, lastIncludedIndex int,
 // that index. Raft should now trim its log as much as possible.
 func (rf *Raft) Snapshot(index int, snapshot []byte) {
 	// Your code here (2D).
-	// fmt.Println("Called Snapshot before lock on index: " + strconv.Itoa(index) + " and server " + strconv.Itoa(rf.me))
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-	// fmt.Println("Called Snapshot after lock on index: " + strconv.Itoa(index))
 	prevLogIdx := rf.raftIdxToLogIdx(index)
 	rf.lastIncludedTerm = rf.logEntries[prevLogIdx].TERM
 	rf.lastIncludedIndex = index
@@ -292,7 +290,6 @@ type InstallSnapshotReply struct {
 
 // Lock is already acquired when this function is called
 func (rf *Raft) sendInstallSnapshot(server int) {
-	fmt.Println("Entered sendInstallSnapshot for leader: " + strconv.Itoa(rf.me))
 	args := InstallSnapshotArgs{}
 	args.DATA = rf.persister.ReadSnapshot()
 	args.LASTINCLIDX = rf.lastIncludedIndex
@@ -313,15 +310,11 @@ func (rf *Raft) sendInstallSnapshot(server int) {
 			rf.nextIdx[server] = max(args.LASTINCLIDX+1, rf.nextIdx[server])
 		}
 	}
-	fmt.Println("Exiting sendInstallSnapshot for leader: " + strconv.Itoa(rf.me))
 
 }
 
 func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapshotReply) {
-	fmt.Println("InstallSnapshot before lock for " + strconv.Itoa(rf.me))
 	rf.mu.Lock()
-	fmt.Println("InstallSnapshot after lock for " + strconv.Itoa(rf.me))
-
 	reply.TERM = rf.currentTerm
 	if rf.currentTerm > args.TERM || args.LASTINCLIDX <= rf.lastIncludedIndex || rf.role == "l" {
 		rf.mu.Unlock()
@@ -337,11 +330,7 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 	rf.lastIncludedIndex = args.LASTINCLIDX
 	rf.lastIncludedTerm = args.LASTINCLTERM
 	rf.commitIdx = args.LASTINCLIDX
-	fmt.Println("InstallSnapshot before SaveStateAndSnapshot for " + strconv.Itoa(rf.me))
-
 	rf.persister.SaveStateAndSnapshot(rf.getPersistenceData(), args.DATA)
-	fmt.Println("InstallSnapshot after SaveStateAndSnapshot for " + strconv.Itoa(rf.me))
-
 	applyMsg := ApplyMsg{
 		SnapshotValid: true,
 		CommandValid:  false,
@@ -350,9 +339,7 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 		SnapshotIndex: args.LASTINCLIDX,
 	}
 	rf.mu.Unlock()
-	fmt.Println("InstallSnapshot after unlock for " + strconv.Itoa(rf.me))
 	rf.applyCh <- applyMsg
-	fmt.Println("InstallSnapshot after applyCh for " + strconv.Itoa(rf.me))
 }
 
 //
@@ -414,11 +401,9 @@ func (rf *Raft) sendRequestVote(server int) {
 	args.LASTLOGIDX, args.LASTLOGTERM = rf.lastIdxAndTerm()
 	args.CANDIDATEID = rf.me
 	reply := RequestVoteReply{}
-	// fmt.Println("Sending requestVote from " + strconv.Itoa(rf.me) + " to " + strconv.Itoa(server))
 	rf.mu.Unlock()
 	rf.peers[server].Call("Raft.RequestVote", &args, &reply)
 	rf.mu.Lock()
-	// fmt.Println("Return from sending requestVote from " + strconv.Itoa(rf.me) + " to " + strconv.Itoa(server))
 	if rf.role != "c" || rf.currentTerm != args.TERM {
 		return
 	}
@@ -453,8 +438,6 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	// Your code here (2A, 2B).
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-	// fmt.Println(strconv.Itoa(rf.me) + " with currentTerm " + strconv.Itoa(rf.currentTerm) + " received requestVote from " + strconv.Itoa(args.CANDIDATEID) + " who has term " + strconv.Itoa(args.TERM))
-	//rf.lastAppendEntries = time.Now()
 	reply.TERM = rf.currentTerm
 	reply.VOTEGRANTED = false
 	if args.TERM < rf.currentTerm {
@@ -477,7 +460,6 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 		reply.VOTEGRANTED = true
 		rf.votedFor = args.CANDIDATEID
 		needPersist = true
-		// fmt.Println(strconv.Itoa(rf.me) + " voted for " + strconv.Itoa(args.CANDIDATEID))
 	}
 
 	if needPersist {
@@ -613,7 +595,6 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 				rf.commitIdx = min(args.LEADERCOMMIT, lastLogIdx)
 				// Apply all new commits
 				for i := prevCommitIdx + 1; i <= rf.commitIdx; i++ {
-					// fmt.Println("Follower server " + strconv.Itoa(rf.me) + " commited index " + strconv.Itoa(i))
 					// TODO: Possible problem for rf.persist() at end of function (things to persist might have changed).
 					applyMsg := ApplyMsg{
 						CommandValid:  true,
@@ -658,12 +639,6 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	if savePersist {
 		rf.persist()
 	}
-
-	// rf.printLogEntries("AppendEntries")
-	// fmt.Print("args: ")
-	// fmt.Println(args)
-	// fmt.Print("reply: ")
-	// fmt.Println(reply)
 }
 
 func (rf *Raft) commitN() {
@@ -680,7 +655,6 @@ func (rf *Raft) commitN() {
 			}
 			if count > len(rf.matchIdx)/2 {
 				for i := rf.commitIdx + 1; i <= N; i++ {
-					// fmt.Println("Before leader server " + strconv.Itoa(rf.me) + " commited index " + strconv.Itoa(i))
 					applyMsg := ApplyMsg{
 						CommandValid:  true,
 						Command:       rf.logEntries[rf.raftIdxToLogIdx(i)].CMD,
@@ -690,7 +664,6 @@ func (rf *Raft) commitN() {
 					rf.mu.Unlock()
 					rf.applyCh <- applyMsg
 					rf.mu.Lock()
-					// fmt.Println("After leader server " + strconv.Itoa(rf.me) + " commited index " + strconv.Itoa(i))
 				}
 				rf.commitIdx = N
 				N = -1 // break out of outer for loop
@@ -700,41 +673,46 @@ func (rf *Raft) commitN() {
 	}
 }
 
+// called with lock held
 func (rf *Raft) leader_routine() {
-	//rf.mu.Lock()
-
 	for rf.killed() == false && rf.role == "l" {
-		// fmt.Println("before commitN for leader: " + strconv.Itoa(rf.me))
 		rf.commitN()
-		// fmt.Println("after commitN for leader: " + strconv.Itoa(rf.me))
-
-		fmt.Println("Leader routine of leader: " + strconv.Itoa(rf.me) + " with commitIdx: " + strconv.Itoa(rf.commitIdx))
 		for server_idx, _ := range rf.peers {
 			if server_idx != rf.me {
 				go rf.sendAppendEntries(server_idx)
 			}
 		}
 		rf.mu.Unlock()
-		fmt.Println("leader_routine unlock")
 		time.Sleep(100 * time.Millisecond)
 		rf.mu.Lock()
-		fmt.Println("leader_routine lock")
-
 	}
 }
 
 // The ticker go routine starts a new election if this peer hasn't received
 // heartsbeats recently.
 func (rf *Raft) ticker() {
+	if rf.lastIncludedIndex > -1 {
+		snapshot := rf.persister.ReadSnapshot()
+		rf.commitIdx = rf.lastIncludedIndex
+		applyMsg := ApplyMsg{
+			SnapshotValid: true,
+			CommandValid:  false,
+			Snapshot:      snapshot,
+			SnapshotTerm:  rf.lastIncludedTerm,
+			SnapshotIndex: rf.lastIncludedIndex,
+		}
+		rf.applyCh <- applyMsg
+	}
+
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
+
 	for rf.killed() == false {
 
 		// Candidate state once entered this if statement
 		if rf.role != "l" && time.Now().Sub(rf.lastAppendEntries) > time.Duration(rf.timeout)*time.Millisecond {
 			rf.role = "c"
 			rf.currentTerm++
-			// fmt.Println("Candidate server: " + strconv.Itoa(rf.me) + " currentTerm is: " + strconv.Itoa(rf.currentTerm))
 			rf.numVotes = 1
 			rf.votedFor = rf.me
 			rf.persist()
@@ -792,18 +770,6 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	newInit := rf.readPersist(persister.ReadRaftState())
 	if newInit {
 		rf.persist()
-	}
-	if rf.lastIncludedIndex > -1 {
-		rf.persister.ReadSnapshot()
-		rf.commitIdx = rf.lastIncludedIndex
-		applyMsg := ApplyMsg{
-			SnapshotValid: true,
-			CommandValid:  false,
-			Snapshot:      rf.persister.ReadSnapshot(),
-			SnapshotTerm:  rf.lastIncludedTerm,
-			SnapshotIndex: rf.lastIncludedIndex,
-		}
-		applyCh <- applyMsg
 	}
 
 	for i := 0; i < len(rf.peers); i++ {

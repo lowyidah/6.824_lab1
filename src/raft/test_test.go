@@ -11,7 +11,6 @@ package raft
 import (
 	"fmt"
 	"math/rand"
-	"strconv"
 	"sync"
 	"sync/atomic"
 	"testing"
@@ -1247,13 +1246,10 @@ func snapcommon(t *testing.T, name string, disconnect bool, reliable bool, crash
 
 	cfg.begin(name)
 
-	fmt.Println("Line 1249")
 	cfg.one(rand.Int(), servers, true)
 	leader1 := cfg.checkOneLeader()
-	fmt.Println("Line 1251")
 
 	for i := 0; i < iters; i++ {
-		fmt.Println("Line 1253")
 		victim := (leader1 + 1) % servers
 		sender := leader1
 		if i%3 == 1 {
@@ -1275,7 +1271,6 @@ func snapcommon(t *testing.T, name string, disconnect bool, reliable bool, crash
 		for i := 0; i < nn; i++ {
 			cfg.rafts[sender].Start(rand.Int())
 		}
-		fmt.Println("Line 1277")
 
 		// let applier threads catch up with the Start()'s
 		if disconnect == false && crash == false {
@@ -1286,7 +1281,6 @@ func snapcommon(t *testing.T, name string, disconnect bool, reliable bool, crash
 		} else {
 			cfg.one(rand.Int(), servers-1, true)
 		}
-		fmt.Println("Line 1288")
 
 		if cfg.LogSize() >= MAXLOGSIZE {
 			cfg.t.Fatalf("Log size too large")
@@ -1295,18 +1289,13 @@ func snapcommon(t *testing.T, name string, disconnect bool, reliable bool, crash
 			// reconnect a follower, who maybe behind and
 			// needs to rceive a snapshot to catch up.
 			cfg.connect(victim)
-			fmt.Println("Reconnected victim: " + strconv.Itoa(victim))
 			cfg.one(rand.Int(), servers, true)
-			fmt.Println("After one reconnecting victim: " + strconv.Itoa(victim))
 			leader1 = cfg.checkOneLeader()
 		}
-		fmt.Println("Line 1300")
 		if crash {
 			cfg.start1(victim, cfg.applierSnap)
 			cfg.connect(victim)
-			fmt.Println("Reconnected crash victim: " + strconv.Itoa(victim))
 			cfg.one(rand.Int(), servers, true)
-			fmt.Println("After one reconnecting crash victim: " + strconv.Itoa(victim))
 			leader1 = cfg.checkOneLeader()
 		}
 	}
@@ -1326,53 +1315,52 @@ func TestSnapshotInstallUnreliable2D(t *testing.T) {
 		true, false, false)
 }
 
-// func TestSnapshotInstallCrash2D(t *testing.T) {
-// 	snapcommon(t, "Test (2D): install snapshots (crash)", false, true, true)
-// }
+func TestSnapshotInstallCrash2D(t *testing.T) {
+	snapcommon(t, "Test (2D): install snapshots (crash)", false, true, true)
+}
 
-// func TestSnapshotInstallUnCrash2D(t *testing.T) {
-// 	snapcommon(t, "Test (2D): install snapshots (unreliable+crash)", false, false, true)
-// }
+func TestSnapshotInstallUnCrash2D(t *testing.T) {
+	snapcommon(t, "Test (2D): install snapshots (unreliable+crash)", false, false, true)
+}
 
-//
 // do the servers persist the snapshots, and
 // restart using snapshot along with the
 // tail of the log?
-//
-// func TestSnapshotAllCrash2D(t *testing.T) {
-// 	servers := 3
-// 	iters := 5
-// 	cfg := make_config(t, servers, false, true)
-// 	defer cfg.cleanup()
 
-// 	cfg.begin("Test (2D): crash and restart all servers")
+func TestSnapshotAllCrash2D(t *testing.T) {
+	servers := 3
+	iters := 5
+	cfg := make_config(t, servers, false, true)
+	defer cfg.cleanup()
 
-// 	cfg.one(rand.Int(), servers, true)
+	cfg.begin("Test (2D): crash and restart all servers")
 
-// 	for i := 0; i < iters; i++ {
-// 		// perhaps enough to get a snapshot
-// 		nn := (SnapShotInterval / 2) + (rand.Int() % SnapShotInterval)
-// 		for i := 0; i < nn; i++ {
-// 			cfg.one(rand.Int(), servers, true)
-// 		}
+	cfg.one(rand.Int(), servers, true)
 
-// 		index1 := cfg.one(rand.Int(), servers, true)
+	for i := 0; i < iters; i++ {
+		// perhaps enough to get a snapshot
+		nn := (SnapShotInterval / 2) + (rand.Int() % SnapShotInterval)
+		for i := 0; i < nn; i++ {
+			cfg.one(rand.Int(), servers, true)
+		}
 
-// 		// crash all
-// 		for i := 0; i < servers; i++ {
-// 			cfg.crash1(i)
-// 		}
+		index1 := cfg.one(rand.Int(), servers, true)
 
-// 		// revive all
-// 		for i := 0; i < servers; i++ {
-// 			cfg.start1(i, cfg.applierSnap)
-// 			cfg.connect(i)
-// 		}
+		// crash all
+		for i := 0; i < servers; i++ {
+			cfg.crash1(i)
+		}
 
-// 		index2 := cfg.one(rand.Int(), servers, true)
-// 		if index2 < index1+1 {
-// 			t.Fatalf("index decreased from %v to %v", index1, index2)
-// 		}
-// 	}
-// 	cfg.end()
-// }
+		// revive all
+		for i := 0; i < servers; i++ {
+			cfg.start1(i, cfg.applierSnap)
+			cfg.connect(i)
+		}
+
+		index2 := cfg.one(rand.Int(), servers, true)
+		if index2 < index1+1 {
+			t.Fatalf("index decreased from %v to %v", index1, index2)
+		}
+	}
+	cfg.end()
+}
