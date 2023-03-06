@@ -217,8 +217,11 @@ func (rf *Raft) readPersist(data []byte) bool {
 // the leader.
 //
 func (rf *Raft) Start(command interface{}) (int, int, bool) {
+	fmt.Println("Start for server: " + strconv.Itoa(rf.me) + " called before lock")
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
+	fmt.Println("Start for server: " + strconv.Itoa(rf.me) + " called after lock")
+
 	// Your code here (2B).
 	if rf.role == "l" {
 		logEntryEl := LogEntry{command, rf.currentTerm}
@@ -289,6 +292,7 @@ type InstallSnapshotReply struct {
 
 // Lock is already acquired when this function is called
 func (rf *Raft) sendInstallSnapshot(server int) {
+	fmt.Println("Entered sendInstallSnapshot for leader: " + strconv.Itoa(rf.me))
 	args := InstallSnapshotArgs{}
 	args.DATA = rf.persister.ReadSnapshot()
 	args.LASTINCLIDX = rf.lastIncludedIndex
@@ -309,12 +313,18 @@ func (rf *Raft) sendInstallSnapshot(server int) {
 			rf.nextIdx[server] = max(args.LASTINCLIDX+1, rf.nextIdx[server])
 		}
 	}
+	fmt.Println("Exiting sendInstallSnapshot for leader: " + strconv.Itoa(rf.me))
+
 }
 
 func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapshotReply) {
+	fmt.Println("InstallSnapshot before lock for " + strconv.Itoa(rf.me))
 	rf.mu.Lock()
+	fmt.Println("InstallSnapshot after lock for " + strconv.Itoa(rf.me))
+
 	reply.TERM = rf.currentTerm
 	if rf.currentTerm > args.TERM || args.LASTINCLIDX <= rf.lastIncludedIndex || rf.role == "l" {
+		rf.mu.Unlock()
 		return
 	}
 	rf.currentTerm = args.TERM
@@ -327,7 +337,11 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 	rf.lastIncludedIndex = args.LASTINCLIDX
 	rf.lastIncludedTerm = args.LASTINCLTERM
 	rf.commitIdx = args.LASTINCLIDX
+	fmt.Println("InstallSnapshot before SaveStateAndSnapshot for " + strconv.Itoa(rf.me))
+
 	rf.persister.SaveStateAndSnapshot(rf.getPersistenceData(), args.DATA)
+	fmt.Println("InstallSnapshot after SaveStateAndSnapshot for " + strconv.Itoa(rf.me))
+
 	applyMsg := ApplyMsg{
 		SnapshotValid: true,
 		CommandValid:  false,
@@ -336,7 +350,9 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 		SnapshotIndex: args.LASTINCLIDX,
 	}
 	rf.mu.Unlock()
+	fmt.Println("InstallSnapshot after unlock for " + strconv.Itoa(rf.me))
 	rf.applyCh <- applyMsg
+	fmt.Println("InstallSnapshot after applyCh for " + strconv.Itoa(rf.me))
 }
 
 //
@@ -692,17 +708,17 @@ func (rf *Raft) leader_routine() {
 		rf.commitN()
 		// fmt.Println("after commitN for leader: " + strconv.Itoa(rf.me))
 
-		// fmt.Println("Leader routine of leader: " + strconv.Itoa(rf.me) + " with commitIdx: " + strconv.Itoa(rf.commitIdx))
+		fmt.Println("Leader routine of leader: " + strconv.Itoa(rf.me) + " with commitIdx: " + strconv.Itoa(rf.commitIdx))
 		for server_idx, _ := range rf.peers {
 			if server_idx != rf.me {
 				go rf.sendAppendEntries(server_idx)
 			}
 		}
 		rf.mu.Unlock()
-		// fmt.Println("leader_routine unlock")
+		fmt.Println("leader_routine unlock")
 		time.Sleep(100 * time.Millisecond)
 		rf.mu.Lock()
-		// fmt.Println("leader_routine lock")
+		fmt.Println("leader_routine lock")
 
 	}
 }

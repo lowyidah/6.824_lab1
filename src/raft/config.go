@@ -579,7 +579,10 @@ func (cfg *config) one(cmd interface{}, expectedServers int, retry bool) int {
 			}
 			cfg.mu.Unlock()
 			if rf != nil {
+				fmt.Println("One before start")
 				index1, _, ok := rf.Start(cmd)
+				fmt.Println("One after start")
+
 				if ok {
 					index = index1
 					break
