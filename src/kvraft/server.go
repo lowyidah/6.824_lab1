@@ -28,6 +28,7 @@ type Op struct {
 	KEY       string
 	VALUE     string
 	CMDID     int
+	CLIENTID  int64
 }
 
 type KVServer struct {
@@ -40,32 +41,46 @@ type KVServer struct {
 	maxraftstate int // snapshot if log grows this big
 
 	// Your definitions here.
-	table         map[string]string
-	cmdId_to_cv   map[int]*sync.Cond
-	cmdId_to_done map[int]bool
+	table            map[string]string
+	clientId_to_cv   map[int64]*sync.Cond
+	clientId_to_done map[int64]bool
+	index_to_cmdId   map[int]int
+
+	// client_to_currentCmdId -> to track if got same cmdId to apply more than once through applyCh. cmdId increases monotonically
+	// clientId_to_cv	(to identify each rpc) -> could have multiple same index??. change to clientId_to_cv
+	// if already have clientId_to_cv -> broadcast previous cvs associated to clientId and cleanmaps, send error message
+	// index_to_op -> to check if applyMsg index matches cmdId (if leader lost status)
 }
 
 // Called with lock held
-func (kv *KVServer) makeCond(cmdId int) *sync.Cond {
-	kv.cmdId_to_cv[cmdId] = sync.NewCond(&kv.mu)
-	kv.cmdId_to_done[cmdId] = false
-	return kv.cmdId_to_cv[cmdId]
+func (kv *KVServer) makeCond(clientId int64) *sync.Cond {
+	kv.clientId_to_cv[clientId] = sync.NewCond(&kv.mu)
+	kv.clientId_to_done[clientId] = false
+	return kv.clientId_to_cv[clientId]
 
 }
 
 // Called with lock held
-func (kv *KVServer) cleanMaps(cmdId int) {
-	delete(kv.cmdId_to_cv, cmdId)
-	delete(kv.cmdId_to_done, cmdId)
+func (kv *KVServer) cleanMaps(clientId int64) {
+	delete(kv.clientId_to_cv, clientId)
+	delete(kv.clientId_to_done, clientId)
 }
 
-func (kv *KVServer) conditionalBroadcast(cmdId int) {
-	cv, hasCv := kv.cmdId_to_cv[cmdId]
+func (kv *KVServer) conditionalBroadcast(clientId int64) {
+	cv, hasCv := kv.clientId_to_cv[clientId]
 	if hasCv {
 		// fmt.Println("broadcasted")
 		cv.Broadcast()
-		kv.cmdId_to_done[cmdId] = true
+		kv.clientId_to_done[clientId] = true
 	}
+
+	// // case where the op that this server called Start on did not end up at the supposed index (server lost leader status)
+	// addedCmdId, hasAddedCmdId := kv.index_to_cmdId[commandIndex]
+	// if hasAddedCmdId {
+	// 	if cmdId != addedCmdId {
+
+	// 	}
+	// }
 }
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
@@ -76,13 +91,15 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	op.KEY = args.Key
 	op.CMDID = args.CmdId
 	op.OPERATION = "Get"
+	op.CLIENTID = args.ClientId
 	_, _, isLeader := kv.rf.Start(op)
+	// kv.index_to_cmdId[index] = args.CmdId
 	if !isLeader {
 		reply.Err = ErrWrongLeader
 		return
 	}
-	cv := kv.makeCond(args.CmdId)
-	for kv.cmdId_to_done[args.CmdId] == false {
+	cv := kv.makeCond(args.ClientId)
+	for kv.clientId_to_done[args.ClientId] == false && !kv.killed() {
 		cv.Wait()
 	}
 	val, valOk := kv.table[args.Key]
@@ -92,7 +109,7 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	} else {
 		reply.Err = ErrNoKey
 	}
-	kv.cleanMaps(args.CmdId)
+	kv.cleanMaps(args.ClientId)
 }
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
@@ -103,22 +120,24 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	op.KEY = args.Key
 	op.VALUE = args.Value
 	op.CMDID = args.CmdId
+	op.CLIENTID = args.ClientId
 	op.OPERATION = args.Op
 	// fmt.Println("PutAppend before calling Start for server: " + strconv.Itoa(kv.me))
 	_, _, isLeader := kv.rf.Start(op)
+	// kv.index_to_cmdId[index] = args.CmdId
 	// fmt.Println("PutAppend after calling Start for server: " + strconv.Itoa(kv.me))
 	if !isLeader {
 		// fmt.Println("Server code, server: " + strconv.Itoa(kv.me) + " thinks its not leader " + "term: " + strconv.Itoa(term))
 		reply.Err = ErrWrongLeader
 		return
 	}
-	cv := kv.makeCond(args.CmdId)
-	for kv.cmdId_to_done[args.CmdId] == false {
+	cv := kv.makeCond(args.ClientId)
+	for kv.clientId_to_done[args.ClientId] == false && !kv.killed() {
 		cv.Wait()
 	}
 	// fmt.Println("Server: " + strconv.Itoa(kv.me) + "returned from")
 	reply.Err = OK
-	kv.cleanMaps(args.CmdId)
+	kv.cleanMaps(args.ClientId)
 }
 
 //
@@ -145,6 +164,9 @@ func (kv *KVServer) killed() bool {
 // Keeps running as a go routine until killed, continuously tries to apply stuff from the applyCh to the database
 func (kv *KVServer) applier() {
 	for m := range kv.applyCh {
+		if kv.killed() {
+			return
+		}
 		// fmt.Print("m from applyCh before lock: ")
 		// fmt.Println(m)
 		kv.mu.Lock()
@@ -153,6 +175,13 @@ func (kv *KVServer) applier() {
 		if m.CommandValid {
 			operationCmd, operationOk := m.Command.(Op)
 			if operationOk {
+				// case where the op that this server called Start on did not end up at the supposed index (server lost leader status)
+				// addedCmdId, hasAddedCmdId := kv.index_to_cmdId[m.CommandIndex]
+				// if hasAddedCmdId {
+				// 	if operationCmd.CMDID != addedCmdId {
+
+				// 	}
+				// }
 				// In the case that this server is the leader
 				if operationCmd.OPERATION == "Put" {
 					kv.table[operationCmd.KEY] = operationCmd.VALUE
@@ -164,7 +193,7 @@ func (kv *KVServer) applier() {
 						kv.table[operationCmd.KEY] = operationCmd.VALUE
 					}
 				}
-				kv.conditionalBroadcast(operationCmd.CMDID)
+				kv.conditionalBroadcast(operationCmd.CLIENTID)
 				// TODO: signal relevant RPC handler cv
 			} else {
 				// fmt.Println("Invalid operation")
@@ -205,8 +234,8 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
-	kv.cmdId_to_cv = make(map[int]*sync.Cond)
-	kv.cmdId_to_done = make(map[int]bool)
+	kv.clientId_to_cv = make(map[int64]*sync.Cond)
+	kv.clientId_to_done = make(map[int64]bool)
 	kv.table = make(map[string]string)
 
 	// You may need initialization code here.

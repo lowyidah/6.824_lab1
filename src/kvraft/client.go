@@ -13,8 +13,9 @@ import (
 type Clerk struct {
 	servers []*labrpc.ClientEnd
 	// You will have to modify this struct.
-	leader int
-	cmdId  int
+	leader   int
+	cmdId    int
+	clientId int64
 }
 
 func nrand() int64 {
@@ -30,6 +31,7 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	// You'll have to add code here.
 	ck.leader = 0
 	ck.cmdId = 0
+	ck.clientId = nrand()
 	return ck
 }
 
@@ -52,6 +54,7 @@ func (ck *Clerk) Get(key string) string {
 	args := GetArgs{}
 	args.Key = key
 	args.CmdId = ck.cmdId
+	args.ClientId = ck.clientId
 	ck.cmdId += 1
 	for i := ck.leader; i < math.MaxInt32; i++ {
 		reply := GetReply{}
@@ -91,6 +94,7 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 	args.Key = key
 	args.Value = value
 	args.CmdId = ck.cmdId
+	args.ClientId = ck.clientId
 	ck.cmdId += 1
 	for i := ck.leader; i < math.MaxInt32; i++ {
 		reply := PutAppendReply{}
