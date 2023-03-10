@@ -1,13 +1,20 @@
 package kvraft
 
-import "6.824/labrpc"
-import "crypto/rand"
-import "math/big"
+import (
+	"crypto/rand"
+	// "fmt"
+	"math"
+	"math/big"
+	"time"
 
+	"6.824/labrpc"
+)
 
 type Clerk struct {
 	servers []*labrpc.ClientEnd
 	// You will have to modify this struct.
+	leader int
+	cmdId  int
 }
 
 func nrand() int64 {
@@ -21,6 +28,8 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	ck := new(Clerk)
 	ck.servers = servers
 	// You'll have to add code here.
+	ck.leader = 0
+	ck.cmdId = 0
 	return ck
 }
 
@@ -39,6 +48,28 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 func (ck *Clerk) Get(key string) string {
 
 	// You will have to modify this function.
+	// fmt.Println("Get key: " + key)
+	args := GetArgs{}
+	args.Key = key
+	args.CmdId = ck.cmdId
+	ck.cmdId += 1
+	for i := ck.leader; i < math.MaxInt32; i++ {
+		reply := GetReply{}
+		// fmt.Println("Trying Get for server: " + strconv.Itoa(i))
+		ok := ck.servers[i%len(ck.servers)].Call("KVServer.Get", &args, &reply)
+		if ok {
+			if reply.Err != ErrWrongLeader {
+				ck.leader = i
+				if reply.Err == ErrNoKey {
+					return ""
+				} else {
+					return reply.Value
+				}
+			} else if i != ck.leader && (i-ck.leader)%len(ck.servers) == 0 { // case where went one loop and did not find a leader, wait for election to complete
+				time.Sleep(100 * time.Millisecond)
+			}
+		}
+	}
 	return ""
 }
 
@@ -54,11 +85,35 @@ func (ck *Clerk) Get(key string) string {
 //
 func (ck *Clerk) PutAppend(key string, value string, op string) {
 	// You will have to modify this function.
+
+	args := PutAppendArgs{}
+	args.Op = op
+	args.Key = key
+	args.Value = value
+	args.CmdId = ck.cmdId
+	ck.cmdId += 1
+	for i := ck.leader; i < math.MaxInt32; i++ {
+		reply := PutAppendReply{}
+		// fmt.Println("Trying PutAppend for server: " + strconv.Itoa(i%len(ck.servers)))
+		ok := ck.servers[i%len(ck.servers)].Call("KVServer.PutAppend", &args, &reply)
+		if ok {
+			// fmt.Println("reply.Err: " + reply.Err)
+			if reply.Err != ErrWrongLeader {
+				ck.leader = i
+				return
+			} else if i != ck.leader && (i-ck.leader)%len(ck.servers) == 0 { // case where went one loop and did not find a leader, wait for election to complete
+				time.Sleep(100 * time.Millisecond)
+			}
+		}
+	}
 }
 
 func (ck *Clerk) Put(key string, value string) {
+	// fmt.Println("Put key: " + key + " val: " + value)
 	ck.PutAppend(key, value, "Put")
 }
 func (ck *Clerk) Append(key string, value string) {
+	// fmt.Println("Append key: " + key + " val: " + value)
+
 	ck.PutAppend(key, value, "Append")
 }
