@@ -2,6 +2,7 @@ package kvraft
 
 import (
 	// "fmt"
+
 	"log"
 	"sync"
 	"sync/atomic"
@@ -44,7 +45,12 @@ type KVServer struct {
 	table            map[string]string
 	clientId_to_cv   map[int64]*sync.Cond
 	clientId_to_done map[int64]bool
-	index_to_cmdId   map[int]int
+	// possible fuck up??? multiple clients at same index???
+	index_to_op              map[int]Op
+	clientId_to_currentCmdId map[int64]int
+	clientId_to_isLeader     map[int64]bool
+
+	clientId_to_ch map[int64](chan bool)
 
 	// client_to_currentCmdId -> to track if got same cmdId to apply more than once through applyCh. cmdId increases monotonically
 	// clientId_to_cv	(to identify each rpc) -> could have multiple same index??. change to clientId_to_cv
@@ -69,7 +75,6 @@ func (kv *KVServer) cleanMaps(clientId int64) {
 func (kv *KVServer) conditionalBroadcast(clientId int64) {
 	cv, hasCv := kv.clientId_to_cv[clientId]
 	if hasCv {
-		// fmt.Println("broadcasted")
 		cv.Broadcast()
 		kv.clientId_to_done[clientId] = true
 	}
@@ -87,20 +92,32 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	// Your code here.
 	kv.mu.Lock()
 	defer kv.mu.Unlock()
+
 	op := Op{}
 	op.KEY = args.Key
 	op.CMDID = args.CmdId
 	op.OPERATION = "Get"
 	op.CLIENTID = args.ClientId
-	_, _, isLeader := kv.rf.Start(op)
+	index, _, isLeader := kv.rf.Start(op)
 	// kv.index_to_cmdId[index] = args.CmdId
 	if !isLeader {
 		reply.Err = ErrWrongLeader
 		return
 	}
-	cv := kv.makeCond(args.ClientId)
-	for kv.clientId_to_done[args.ClientId] == false && !kv.killed() {
-		cv.Wait()
+	kv.clientId_to_isLeader[op.CLIENTID] = true
+	kv.index_to_op[index] = op
+	// cv := kv.makeCond(args.ClientId)
+	// for kv.clientId_to_done[args.ClientId] == false && !kv.killed() {
+	// 	cv.Wait()
+	// }
+	kv.clientId_to_ch[args.ClientId] = make(chan bool)
+	kv.mu.Unlock()
+	isLeader = <-kv.clientId_to_ch[args.ClientId]
+	kv.mu.Lock()
+
+	if !isLeader {
+		reply.Err = ErrWrongLeader
+		return
 	}
 	val, valOk := kv.table[args.Key]
 	if valOk {
@@ -110,34 +127,46 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 		reply.Err = ErrNoKey
 	}
 	kv.cleanMaps(args.ClientId)
+
 }
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	// Your code here.
+
 	kv.mu.Lock()
 	defer kv.mu.Unlock()
+
 	op := Op{}
 	op.KEY = args.Key
 	op.VALUE = args.Value
 	op.CMDID = args.CmdId
 	op.CLIENTID = args.ClientId
 	op.OPERATION = args.Op
-	// fmt.Println("PutAppend before calling Start for server: " + strconv.Itoa(kv.me))
-	_, _, isLeader := kv.rf.Start(op)
+	index, _, isLeader := kv.rf.Start(op)
 	// kv.index_to_cmdId[index] = args.CmdId
-	// fmt.Println("PutAppend after calling Start for server: " + strconv.Itoa(kv.me))
 	if !isLeader {
-		// fmt.Println("Server code, server: " + strconv.Itoa(kv.me) + " thinks its not leader " + "term: " + strconv.Itoa(term))
 		reply.Err = ErrWrongLeader
 		return
 	}
-	cv := kv.makeCond(args.ClientId)
-	for kv.clientId_to_done[args.ClientId] == false && !kv.killed() {
-		cv.Wait()
+	kv.clientId_to_isLeader[op.CLIENTID] = true
+	kv.index_to_op[index] = op
+	// cv := kv.makeCond(args.ClientId)
+	// for kv.clientId_to_done[args.ClientId] == false && !kv.killed() {
+	// 	cv.Wait()
+	// }
+	kv.clientId_to_ch[args.ClientId] = make(chan bool)
+	kv.mu.Unlock()
+	isLeader = <-kv.clientId_to_ch[args.ClientId]
+
+	kv.mu.Lock()
+
+	if !isLeader {
+		reply.Err = ErrWrongLeader
+		return
 	}
-	// fmt.Println("Server: " + strconv.Itoa(kv.me) + "returned from")
 	reply.Err = OK
 	kv.cleanMaps(args.ClientId)
+
 }
 
 //
@@ -164,14 +193,10 @@ func (kv *KVServer) killed() bool {
 // Keeps running as a go routine until killed, continuously tries to apply stuff from the applyCh to the database
 func (kv *KVServer) applier() {
 	for m := range kv.applyCh {
+		kv.mu.Lock()
 		if kv.killed() {
 			return
 		}
-		// fmt.Print("m from applyCh before lock: ")
-		// fmt.Println(m)
-		kv.mu.Lock()
-		// fmt.Print("m from applyCh after lock: ")
-		// fmt.Println(m)
 		if m.CommandValid {
 			operationCmd, operationOk := m.Command.(Op)
 			if operationOk {
@@ -182,6 +207,15 @@ func (kv *KVServer) applier() {
 
 				// 	}
 				// }
+
+				// currentCmdId, hasCurrentCmdId := kv.clientId_to_currentCmdId[operationCmd.CLIENTID]
+				// if hasCurrentCmdId {
+				// 	// case where duplicate command
+				// 	if operationCmd.CMDID <= currentCmdId {
+				// 		kv.conditionalBroadcast(oerationCmd.CLIENTID)
+				// 	}
+				// }
+				// kv.clientId_to_currentCmdId[operationCmd.CLIENTID] = operationCmd.CMDID
 				// In the case that this server is the leader
 				if operationCmd.OPERATION == "Put" {
 					kv.table[operationCmd.KEY] = operationCmd.VALUE
@@ -193,15 +227,26 @@ func (kv *KVServer) applier() {
 						kv.table[operationCmd.KEY] = operationCmd.VALUE
 					}
 				}
-				kv.conditionalBroadcast(operationCmd.CLIENTID)
+				// If this server has put something at that log index and it is not the same as what it put there, bail as not leader
+				op, hasOp := kv.index_to_op[m.CommandIndex]
+				// Case where this server put something at this log index and is pending the RPC response
+				if hasOp { // case where not leader
+					if op.CLIENTID != operationCmd.CLIENTID || op.CMDID != operationCmd.CMDID {
+						kv.clientId_to_ch[op.CLIENTID] <- false
+						continue
+					} else { // case where still leader
+						// Need to check if put at that index
+						kv.clientId_to_ch[op.CLIENTID] <- true
+					}
+				}
+				// kv.conditionalBroadcast(op.CLIENTID)
+
 				// TODO: signal relevant RPC handler cv
 			} else {
-				// fmt.Println("Invalid operation")
 			}
 		} else if m.SnapshotValid {
 			// TODO: snapshotting
 		} else {
-			// fmt.Println("Error: unknown commited log entry type")
 		}
 		kv.mu.Unlock()
 	}
@@ -236,7 +281,13 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 	kv.clientId_to_cv = make(map[int64]*sync.Cond)
 	kv.clientId_to_done = make(map[int64]bool)
+	kv.clientId_to_isLeader = make(map[int64]bool)
+	kv.index_to_op = make(map[int]Op)
+
 	kv.table = make(map[string]string)
+	kv.index_to_op = make(map[int]Op)
+	kv.clientId_to_currentCmdId = make(map[int64]int)
+	kv.clientId_to_ch = make(map[int64](chan bool))
 
 	// You may need initialization code here.
 
